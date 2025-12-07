@@ -1,0 +1,23 @@
+{
+    "turnout": {
+        "average_turnout_pct": 5.07,
+        "median_turnout_pct": 5.11,
+        "min_turnout_pct": 3.89,
+        "max_turnout_pct": 6.24,
+        "total_mkr_supply": 977631,
+        "polls_analyzed": 10
+    },
+    "delegation": {
+        "total_delegated_mkr": 175900,
+        "num_delegates": 15,
+        "top_1_share_pct": 19.9,
+        "top_5_share_pct": 67.08,
+        "top_10_share_pct": 90.68,
+        "delegation_gini": 0.4386
+    },
+    "metadata": {
+        "analysis_date": "2025-11-25T00:49:57.516384",
+        "data_source": "Public governance data (Dune Analytics estimates)",
+        "note": "Data represents estimated values from publicly available sources"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "mkr_supply": 977631,
+    "delegation": {
+        "error": "Could not fetch blockchain data",
+        "note": "Using estimated data instead"
+    },
+    "holder_activity": {
+        "recent_active_addresses": 0,
+        "note": "Sample from recent transfers, not total holder count"
+    },
+    "metadata": {
+        "analysis_date": "2025-11-25T00:59:26.370299",
+        "data_source": "Ethereum blockchain via Etherscan API",
+        "api_version": "v1",
+        "note": "Real on-chain data. Full historical analysis requires dedicated indexer."
+    }
+}

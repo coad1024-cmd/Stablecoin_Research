@@ -1,0 +1,22 @@
+{
+    "collateral_breakdown": {
+        "USDC-A": {
+            "amount_usd": 100000000,
+            "share_pct": 20.5,
+            "custodian": "Coinbase",
+            "type": "RWA"
+        },
+        "WBTC-A": {
+            "amount_usd": 50000000,
+            "share_pct": 10.2,
+            "custodian": "BitGo",
+            "type": "Crypto"
+        },
+        "RWA-001": {
+            "amount_usd": 20000000,
+            "share_pct": 4.1,
+            "custodian": "Monetalis",
+            "type": "RWA"
+        }
+    }
+}
