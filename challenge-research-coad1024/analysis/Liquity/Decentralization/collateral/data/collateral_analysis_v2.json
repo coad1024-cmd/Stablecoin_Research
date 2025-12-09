@@ -1,0 +1,41 @@
+{
+    "hhi": 3738.000000000001,
+    "composition": [
+        {
+            "asset": "WETH",
+            "tvl": 400000000,
+            "type": "Crypto",
+            "share": 0.4,
+            "squared_share": 0.16000000000000003
+        },
+        {
+            "asset": "wstETH",
+            "tvl": 450000000,
+            "type": "LST",
+            "share": 0.45,
+            "squared_share": 0.2025
+        },
+        {
+            "asset": "rETH",
+            "tvl": 100000000,
+            "type": "LST",
+            "share": 0.1,
+            "squared_share": 0.010000000000000002
+        },
+        {
+            "asset": "cbETH",
+            "tvl": 20000000,
+            "type": "LST",
+            "share": 0.02,
+            "squared_share": 0.0004
+        },
+        {
+            "asset": "osETH",
+            "tvl": 30000000,
+            "type": "LST",
+            "share": 0.03,
+            "squared_share": 0.0009
+        }
+    ],
+    "total_tvl": 1000000000
+}

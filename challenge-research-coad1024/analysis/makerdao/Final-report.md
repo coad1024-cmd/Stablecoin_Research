@@ -38,7 +38,7 @@ From your distribution snapshot:
 
 **Insert Figure G1 — MKR Holder Distribution (Top 20)**
 
-![Figure G1 — MKR Holder Distribution (Top 20)](images/g1_mkr_distribution_top20.png)
+**[Figure G1 — MKR Holder Distribution (Top 20) - Pending Real-Time Data Pipeline]**
 
 ---
 
@@ -49,7 +49,7 @@ From your distribution snapshot:
 
 **Insert Figure G2 — Delegation Concentration**
 
-![Figure G2 — Delegation Concentration](images/g2_delegation_concentration.png)
+**[Figure G2 — Delegation Concentration - Pending Real-Time Data Pipeline]**
 
 ---
 
@@ -63,7 +63,7 @@ From your governance dataset:
 
 **Insert Figure G3 — MKR Governance Turnout Over Time**
 
-![Figure G3 — MKR Governance Turnout Over Time](images/g3_mkr_turnout_timeseries.png)
+**[Figure G3 — MKR Governance Turnout Over Time - Pending Real-Time Data Pipeline]**
 
 ---
 
@@ -81,7 +81,7 @@ From your governance dataset:
 
 **Insert Figure C1 — Collateral Composition Breakdown (ETH, WBTC, USDC, RWAs)**
 
-![Figure C1 — Collateral Composition Breakdown](images/c1_collateral_composition.png)
+**[Figure C1 — Collateral Composition Breakdown - Pending Real-Time Data Pipeline]**
 
 ---
 
@@ -93,7 +93,7 @@ CR5: 93.47%
 
 **Insert Figure C2 — Collateral Concentration (HHI, CR3, CR5)**
 
-![Figure C2 — Collateral Concentration (HHI, CR3, CR5)](images/c2_collateral_concentration_metrics.png)
+**[Figure C2 — Collateral Concentration (HHI, CR3, CR5) - Pending Real-Time Data Pipeline]**
 
 ---
 
@@ -101,7 +101,7 @@ CR5: 93.47%
 
 **Insert Figure C3 — RWA & Custodian Exposure**
 
-![Figure C3 — RWA & Custodian Exposure](images/c3_counterparty_exposure.png)
+**[Figure C3 — RWA & Custodian Exposure - Pending Real-Time Data Pipeline]**
 
 Caption:
 *Share of DAI collateral controlled by each custodial class (Circle/Coinbase, U.S. banks, BitGo, trustless ETH).*
@@ -122,7 +122,7 @@ DAI is *not decentralized* in its collateral backing.
 
 **Insert Figure O1 — Keeper Concentration (Top 10)**
 
-![Figure O1 — Keeper Concentration (Top 10)](images/o1_keeper_concentration_top10.png)
+**[Figure O1 — Keeper Concentration (Top 10) - Pending Real-Time Data Pipeline]**
 
 Caption:
 *Distribution of liquidation volume among ETH-A keeper addresses.*
@@ -133,7 +133,7 @@ Caption:
 
 **Insert Figure O2 — Oracle Architecture Diagram**
 
-![Figure O2 — Oracle Architecture Diagram](images/o2_oracle_architecture.png)
+**[Figure O2 — Oracle Architecture Diagram - Pending Real-Time Data Pipeline]**
 
 ---
 
@@ -141,7 +141,7 @@ Caption:
 
 **Insert Figure O3 — RWA Custody Stack Diagram**
 
-![Figure O3 — RWA Custody Stack Diagram](images/o3_rwa_custody_stack.png)
+**[Figure O3 — RWA Custody Stack Diagram - Pending Real-Time Data Pipeline]**
 
 ---
 
@@ -149,7 +149,7 @@ Caption:
 
 ### **Insert Figure F1 — Failure Propagation Pathways (Governance → Collateral → Operations)**
 
-![Figure F1 — Failure Propagation Pathways](images/f1_failure_pathways.png)
+![Figure F1 — Failure Propagation Pathways - Pending Real-Time Data Pipeline]
 
 ---
 
@@ -157,7 +157,7 @@ Caption:
 
 ### **Optional Figure R1 — Summary of Mitigation Strategies**
 
-![Figure R1 — Decentralization Mitigation Strategies](images/r1_mitigation_summary.png)
+![Figure R1 — Decentralization Mitigation Strategies - Pending Real-Time Data Pipeline]
 
 ---
 
@@ -165,7 +165,7 @@ Caption:
 
 ### **Insert Figure S1 — Decentralization Radar Chart (G / C / O)**
 
-![Figure S1 — Decentralization Scorecard Radar](images/s1_radar_scorecard.png)
+![Figure S1 — Decentralization Scorecard Radar - Pending Real-Time Data Pipeline]
 
 ---
 
