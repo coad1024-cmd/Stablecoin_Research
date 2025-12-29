@@ -1,0 +1,135 @@
+
+import csv
+import datetime
+import os
+
+DATA_DIR = "../data"
+OUTPUT_DIR = "../diagrams"
+
+class SVGPlot:
+    def __init__(self, width=800, height=500, title="", xlabel="", ylabel=""):
+        self.width = width
+        self.height = height
+        self.title = title
+        self.xlabel = xlabel
+        self.ylabel = ylabel
+        self.padding = 60
+        self.data_series = []
+        self.plot_x = self.padding
+        self.plot_y = self.padding
+        self.plot_w = self.width - 2*self.padding
+        self.plot_h = self.height - 2*self.padding
+        self.min_x = float('inf')
+        self.max_x = float('-inf')
+        self.min_y = float('inf')
+        self.max_y = float('-inf')
+
+    def add_series(self, data, x_key, y_key, color="blue", label="", dashed=False, fill_area=False):
+        pts = []
+        for r in data:
+            dt = datetime.datetime.strptime(r[x_key], "%Y-%m-%d")
+            ts = dt.timestamp()
+            val = float(r[y_key])
+            pts.append((ts, val))
+            self.min_x = min(self.min_x, ts)
+            self.max_x = max(self.max_x, ts)
+            self.min_y = min(self.min_y, val)
+            self.max_y = max(self.max_y, val)
+        self.data_series.append({"pts": pts, "color": color, "label": label, "dashed": dashed, "fill": fill_area})
+
+    def scale_x(self, ts):
+        span = self.max_x - self.min_x
+        if span == 0: span = 1
+        return self.plot_x + (ts - self.min_x)/span * self.plot_w
+
+    def scale_y(self, val):
+        span = 14 # Fixed max 14B for better comparative view? Or dynamic.
+        # Use dynamic max
+        span = self.max_y - 0 # Always anchor to 0
+        if span == 0: span = 1
+        return (self.plot_y + self.plot_h) - (val - 0)/span * self.plot_h
+
+    def render(self, filename):
+        # Override MaxY for consistency
+        self.max_y = 15 # As per checkpoint max 14
+        
+        svg = []
+        svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="{self.width}" height="{self.height}">')
+        svg.append(f'<rect width="100%" height="100%" fill="white"/>')
+        
+        # Title
+        svg.append(f'<text x="{self.width/2}" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">{self.title}</text>')
+        
+        # Grid
+        for i in range(6):
+            y_val = 0 + (i/5)*(self.max_y)
+            y_pos = self.scale_y(y_val)
+            svg.append(f'<line x1="{self.plot_x}" y1="{y_pos}" x2="{self.plot_x+self.plot_w}" y2="{y_pos}" stroke="#eee" stroke-width="1"/>')
+            lbl = f"${y_val:.0f}B"
+            svg.append(f'<text x="{self.plot_x-10}" y="{y_pos+4}" font-family="Arial" font-size="10" text-anchor="end">{lbl}</text>')
+
+        # Axis
+        svg.append(f'<line x1="{self.plot_x}" y1="{self.plot_y}" x2="{self.plot_x}" y2="{self.plot_y+self.plot_h}" stroke="black" stroke-width="1"/>')
+        svg.append(f'<line x1="{self.plot_x}" y1="{self.plot_y+self.plot_h}" x2="{self.plot_x+self.plot_w}" y2="{self.plot_y+self.plot_h}" stroke="black" stroke-width="1"/>')
+        svg.append(f'<text x="{self.width/2}" y="{self.height-15}" font-family="Arial" font-size="12" text-anchor="middle">{self.xlabel}</text>')
+        svg.append(f'<text x="20" y="{self.height/2}" font-family="Arial" font-size="12" text-anchor="middle" transform="rotate(-90 20,{self.height/2})">{self.ylabel}</text>')
+
+        # Plot Data
+        for s in self.data_series:
+            d_path = []
+            
+            # Area fill calculation
+            if s["fill"]:
+                 start_x = self.scale_x(s["pts"][0][0])
+                 bot_y = self.scale_y(0)
+                 d_path.append(f"{start_x:.1f},{bot_y:.1f}")
+            
+            for ts, val in s["pts"]:
+                x = self.scale_x(ts)
+                y = self.scale_y(val)
+                d_path.append(f"{x:.1f},{y:.1f}")
+                
+            if s["fill"]:
+                 end_x = self.scale_x(s["pts"][-1][0])
+                 d_path.append(f"{end_x:.1f},{bot_y:.1f}")
+                 
+            path_str = "M " + " L ".join(d_path) + (" Z" if s["fill"] else "")
+            
+            if s["fill"]:
+                svg.append(f'<path d="{path_str}" fill="{s["color"]}" fill-opacity="0.3" stroke="none"/>')
+                # Add line on top
+                line_path = path_str[:-2] if path_str.endswith(" Z") else path_str
+                # Re-trace line part only? 
+                # Simplification: Draw line separately
+            
+            stroke_dash = 'stroke-dasharray="5,5"' if s["dashed"] else ''
+            no_fill = "none" if not s["fill"] else "none" # Stroke only for main line
+            # Actually line needs to be drawn again if fill is used
+            
+            # Just draw the line path
+            l_pts = []
+            for ts, val in s["pts"]:
+                l_pts.append(f"{self.scale_x(ts):.1f},{self.scale_y(val):.1f}")
+            l_str = "M " + " L ".join(l_pts)
+            svg.append(f'<path d="{l_str}" fill="none" stroke="{s["color"]}" stroke-width="2" {stroke_dash}/>')
+
+        # Legend
+        svg.append(f'<rect x="{self.plot_x+20}" y="{self.plot_y+10}" width="150" height="50" fill="white" stroke="#ccc"/>')
+        for i, s in enumerate(self.data_series):
+            y_base = self.plot_y + 30 + i*20
+            svg.append(f'<line x1="{self.plot_x+30}" y1="{y_base}" x2="{self.plot_x+60}" y2="{y_base}" stroke="{s["color"]}" stroke-width="2"/>')
+            svg.append(f'<text x="{self.plot_x+70}" y="{y_base+4}" font-family="Arial" font-size="12">{s["label"]}</text>')
+
+        svg.append('</svg>')
+        with open(f"{OUTPUT_DIR}/{filename}", "w") as f:
+            f.write("\n".join(svg))
+        print(f"Saved {OUTPUT_DIR}/{filename}")
+
+if __name__ == "__main__":
+    with open(f"{DATA_DIR}/anchor_metrics.csv", "r") as f:
+        data = list(csv.DictReader(f))
+        
+    plot = SVGPlot(title="Figure 3.1: Anchor Deposits vs Borrows (Reconstructed)", xlabel="Date (2021-2022)", ylabel="Value ($B)")
+    plot.add_series(data, "Date", "Total_Deposits_B", color="#1f77b4", label="Deposits (Liability)", fill_area=True)
+    plot.add_series(data, "Date", "Total_Borrows_B", color="#d62728", label="Borrows (Asset)")
+    plot.render("fig_anchor_imbalance_empirical.svg")

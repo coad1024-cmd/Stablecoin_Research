@@ -1,6 +1,6 @@
 # Stablecoin Research: Analysis, Design, and Modelling
 
-## 1. Analysis (Status: 2/3 Complete)
+## 1. Analysis (Status: Complete)
 
 ### Objective
 
@@ -8,30 +8,31 @@ Compare 3 of the most relevant stablecoins: **MakerDAO (DAI)**, **Liquity V2 (BO
 
 ### Comparison Matrix
 
-| Feature | MakerDAO (DAI/USDS) | Liquity V2 (BOLD) | Terra (UST) [PENDING] |
+| Feature | MakerDAO (DAI/USDS) | Liquity V2 (BOLD) | Terra (UST) |
 | :--- | :--- | :--- | :--- |
-| **Backing Type** | **Hybrid RWA** | **Crypto-Native** | *Algorithmic (Seigniorage)* |
-| **Sustainability** | **Volume Business** | **Spread Business** | *Ponzi / Subsidy* |
-| **Decentralization** | **Pragmatic** (Delegated) | **Purist** (Immutable) | *Validator Heavy* |
+| **Backing Type** | **Hybrid RWA** | **Crypto-Native** | **Algorithmic** (Seigniorage) |
+| **Sustainability** | **Volume Business** | **Spread Business** | **Subsidized** (Ponzi Dynamics) |
+| **Decentralization** | **Pragmatic** (Delegated) | **Purist** (Immutable) | **DINO** (Decentralized In Name Only) |
 
 ### Deep Dive
 
-#### A. MakerDAO (Completed)
+#### A. MakerDAO
 
 * **Backing**: Transitioned to Hybrid RWA to scale. T-Bills provide 60% of revenue.
 * **Sustainability**: "Cost of Carry" model. Profitable but relies on active management of DSR vs Asset Yield. (See `analysis/makerdao/Sustainability`).
 * **Decentralization**: Low Nakamoto (Delegates). High Gini.
 
-#### B. Liquity V2 (Completed)
+#### B. Liquity V2 (BOLD)
 
 * **Backing**: Pure Crypto (ETH/LSTs). No RWA.
 * **Sustainability**: User-set rates create organic equilibrium. Immune to "Stagflation". (See `analysis/Liquity`).
 * **Decentralization**: High (~0.3 Gini). Governance-free.
 
-#### C. Terra / UST (Next Up)
+#### C. Terra / UST (Completed)
 
-* **Status**: Analysis Pending.
-* **Focus**: Post-mortem of the interaction between Anchor Protocol yields and LUNA burn mechanism.
+* **Backing**: **Endogenous**. Relied on the "Burn-and-Mint" mechanism where LUNA absorbed UST volatility. Failed when LUNA market cap fell below UST liabilities. (See [Backing Analysis](analysis/Terra/Backing%20Mechanism/Article_Backing_Mechanism.md)).
+* **Sustainability**: **Unsustainable**. The Anchor Protocol's ~20% fixed APY created a liability that exceeded income from borrowing. The system relied on external capital injections (LFG) to maintain the yield reserve. (See [Sustainability Analysis](analysis/Terra/Sustainability/Article_Sustainability.md)).
+* **Decentralization**: **Centralized Vectors**. The "Decentralized" defense mechanism (LFG) was a discretionary fund. Validators halted the chain during the crash, proving operational centralization. (See [Decentralization Analysis](analysis/Terra/Decentralization/Article_Decentralization.md)).
 
 ---
 

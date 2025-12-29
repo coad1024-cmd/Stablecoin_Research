@@ -1,6 +1,6 @@
 # Research Task Tracker
 
-## 1. Analysis Module (2/3 Complete)
+## 1. Analysis Module (3/3 Complete)
 
 ### A. MakerDAO (Done)
 
@@ -14,12 +14,15 @@
 - [x] **Parity**: Achieved visualization parity with MakerDAO.
 - [x] **Verification**: Validated Collateral HHI and Governance Gini.
 
-### C. Terra / UST (In Progress)
+### C. Terra / UST (Done)
 
-- [x] **Setup**: Created `analysis/Terra` environment and structure.
-- [x] **Literature Review**: Post-mortem of Anchor Protocol & LUNA mechanics.
-- [ ] **Analysis**: Document the "Death Spiral" dynamics in `research/stablecoins.md`.
-- [ ] **Comparison**: Benchmarking against Maker/Liquity resilience.
+- [x] **Structure**: Created Analysis directories.
+- [x] **Backing Analysis**: `analysis/Terra/Backing Mechanism/Article_Backing_Mechanism.md`.
+- [x] **Sustainability Analysis**: `analysis/Terra/Sustainability/Article_Sustainability.md`.
+- [x] **Decentralization Analysis**: `analysis/Terra/Decentralization/Article_Decentralization.md`.
+- [x] **Data Support**:
+    - `simulate_terra_crash_data.py`: Death Spiral mechanics.
+    - `simulate_anchor_depletion.py`: Yield Reserve runway model.
 
 ---
 

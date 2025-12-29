@@ -1,25 +1,38 @@
-# Implementation Plan - Liquity V2 Data & Visualizations
+# Implementation Plan: Liquity Decentralization Analysis
 
 ## Goal
+Conduct a rigorous, empirical decentralization audit of the **Liquity (LUSD)** protocol using the standardized `Decentralization-Framework-General.md`. The goal is to produce an "Institutional Grade" report that evaluates Liquity's unique immutable architecture.
 
-Generate missing visualizations (Plots) and ensure data is correctly organized, matching the MakerDAO analysis standard.
+## Strategy
+Liquity differs from Maker/Terra because it claims "Governance Minimization". Our analysis must test this claim. We will focus on:
+1.  **G (Governance):** Verifying immutability (Code vs Admin Keys).
+2.  **B (Backing):** ETH concentration and LUSD holders (Stability Pool).
+3.  **O (Operational):** Frontend diversity (Kickback rates) and Oracle reliance (Chainlink vs Tellor).
+4.  **C (Control):** Emergency recovery mode triggers.
 
-## Proposed Changes
+## Artifacts to Create
+*   `analysis/Liquity/Decentralization/Article_Decentralization.md`: The final report.
+*   `analysis/Liquity/Decentralization/Data_Acquisition_Plan.md`: How to fetch TheGraph/Dune data.
+*   `analysis/Liquity/Decentralization/scripts/`: Python scripts for calculating Gini/HHI.
 
-### 1. Collateral Analysis
+## Step-by-Step Plan
 
-- **Script Update**: `analyze_v2_collateral.py`
-  - Add `matplotlib` to generate a **Pie Chart** of Collateral Composition.
-  - Save plot to `collateral/plots/composition.png`.
+### Phase 1: Setup & Framework Application (Current)
+- [x] Create Directory Structure.
+- [ ] Create `Article_Decentralization.md` template.
+- [ ] Create `Data_Acquisition_Plan.md`.
 
-### 2. Governance Analysis
+### Phase 2: Data Acquisition (Empirical)
+- [ ] **G:** Verification of contract immutability (Etherscan check).
+- [ ] **B:** Fetch Stability Pool depositor distribution (TheGraph).
+- [ ] **O:** Fetch Frontend Operator diversity (Kickback rate distribution).
+- [ ] **O:** Oracle update frequency analysis (Chainlink).
 
-- **Script Update**: `analyze_v2_governance.py`
-  - Add `matplotlib` to generate a **Lorenz Curve** or Bar Chart of Top Voters.
-  - Save plot to `governance/plots/voting_power.png`.
+### Phase 3: Analysis & Visualization
+- [ ] Generate `fig_frontend_decentralization.svg` (Lorenz curve of frontends).
+- [ ] Generate `fig_trove_concentration.svg` (Whale dominance).
+- [ ] Score Liquity against the G-B-O-C framework.
 
-### 3. Operational Analysis
-
-- **Script Update**: `analyze_frontends.py`
-  - Add `matplotlib` to generate a **Bar Chart** of Frontend shares.
-  - Save plot to `operational/plots/frontends.png`.
+### Phase 4: Synthesis
+- [ ] Write Verdict: "Is Immutable Decentralization Real?"
+- [ ] Final Polish & formatting.
