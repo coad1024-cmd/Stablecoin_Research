@@ -69,7 +69,7 @@ where $\beta_t$ is a conversion factor updated after payouts and resets.
 
 **Figure 1: Dual-Tranche Capital Structure**
 
-![Dual-Tranche Stablecoin Architecture](../../Design/Designing%20with%20Volatile%20reserves/Leveraged%20Tranche%20Token-2026-01-02-163747.png)
+![Dual-Tranche Stablecoin Architecture](images/Leveraged%20Tranche%20Token-2026-01-02-163747.png)
 
 *A schematic showing a single collateral pool backing two claims with strict senior–junior priority. This partitioning follows tranche-based designs long studied in dual-purpose funds and adapted to stablecoins as an alternative to liquidation-based risk management*
 
@@ -137,7 +137,7 @@ State transitions occur deterministically under the following conditions:
 
 **Figure 2: Reset and Liquidation State Machine**
 
-![Reset and Liquidation State Machine](../../Design/Designing%20with%20Volatile%20reserves/Reset%20Sequence%20Diagram%20(1)%20(1).png)
+![Reset and Liquidation State Machine](images/Reset%20Sequence%20Diagram%20(1)%20(1).png)
 
 *A finite-state diagram showing transitions between normal operation, upward reset, downward reset, and liquidation. Reset-based solvency enforcement replaces continuous liquidation and is explicitly analyzed under both diffusion and jump processes in prior stablecoin models*
 
