@@ -28,7 +28,7 @@ The objective is not realism, but **structural clarity**.
 This result is not a policy recommendation. It is a degeneracy condition that isolates which components of stablecoin design exist to manage volatility rather than to define money-like liabilities themselves, echoing classical narrow-banking arguments ([Gorton & Zhang, 2021](#ref-gorton-zhang)).
 
 **Figure 1: Design Space Collapse in the Non-Volatile Limit**
-![**Figure 1: Design Space Collapse in the Non-Volatile Limit**](../../Design/Design%20with%20Non-volatle%20reserves/Output/Diagrams/Gemini_Generated_Image_5b291m5b291m5b29.png)
+![**Figure 1: Design Space Collapse in the Non-Volatile Limit**](images/Gemini_Generated_Image_5b291m5b291m5b29.png)
 _Design space collapse under the non-volatile collateral limit. As reserve volatility approaches zero (σ² → 0), stablecoin mechanisms designed to manage price risk become redundant, and system design converges to a fully backed, primary-market-only structure equivalent to a tokenized narrow bank._
 
 ---
@@ -65,7 +65,7 @@ We classify stablecoin risks and evaluate their status under the stated assumpti
 
 ### 3.1 Eliminated Risks (by Assumption)
 **Figure 2: Stablecoin Risk Matrix Across Collateral Regimes**
-![**Figure 2: Stablecoin Risk Matrix Across Collateral Regimes**](../../Design/Design%20with%20Non-volatle%20reserves/Output/Diagrams/Gemini_Generated_Image_efeyzlefeyzlefey.png)
+![**Figure 2: Stablecoin Risk Matrix Across Collateral Regimes**](images/Gemini_Generated_Image_efeyzlefeyzlefey.png)
 _Risk classification under volatile and non-volatile collateral regimes. Price-driven solvency risks are eliminated by assumption in the non-volatile limit, while operational and custodial risks remain active constraints_.
 
 1. **Credit Risk**
