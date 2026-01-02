@@ -73,28 +73,38 @@ Each artifact:
 
 These artifacts abstract across systems and are explicitly **non-empirical**.
 
-* D1. Stablecoin Design with Non-Volatile Collateral
-* D2. Stablecoin Design with Highly Volatile Collateral
+*   **D1. Stablecoin Design with Non-Volatile Collateral** (`non_volatile_collateral_limit.md`)
+    *   **Thesis**: In the limit of zero collateral volatility and legal enforceability, all stablecoin designs collapse to a degenerate "narrow bank" structure. Mechanisms like liquidations and governance become redundant.
+    *   **Role**: Serves as the theoretical baseline (control group) for evaluating volatile designs.
+
+*   **D2. Stablecoin Design with Highly Volatile Collateral** (`volatile_collateral_limit.md`)
+    *   **Thesis**: Volatility cannot be eliminated, only contained. Stability under jump-diffusion price dynamics requires a deterministic dual-tranche capital structure (Senior/Junior) with autonomous reset rules.
+    *   **Role**: Defines the "canonical" architecture for crypto-native stablecoins, separating risk absorption (Junior) from stability conservation (Senior).
 
 Properties:
 
-* draw exclusively from A1–A9
-* introduce no new system facts
-* operate under explicit hypothetical assumptions
-* do not claim optimality
+*   draw exclusively from A1–A9
+*   introduce no new system facts
+*   operate under explicit hypothetical assumptions
+*   do not claim optimality
 
 ---
 
 ## 4. Modeling Artifact (1)
 
-* M1. Economic Feasibility of Attacks on Stablecoin Systems
+*   **M1. Economic Feasibility of Attacks on Stablecoin Systems** (`attack_vs_profitabiity .md`)
+    *   **Methodology**: Agent-based simulation (`DualTokenSim`) of a dual-token algorithmic stablecoin under "Soros-style" speculative attack.
+    *   **Key Findings**:
+        1.  **Cost of Attack**: Dumping the stablecoin alone is a loss-making strategy (slippage > de-peg value).
+        2.  **Profitability Condition**: Attack becomes profitable *only* if the attacker holds a short position on the collateral token.
+        3.  **Leverage Sensitivity**: Profit scales linearly with short leverage, creating a "profitability frontier" where the attack becomes risk-free once the peg breaks.
 
 Scope:
 
-* formal modeling of attack cost vs profit
-* parameterized, not calibrated
-* references only mechanisms defined in A1–A9
-* uses mathematical abstraction (Appendix-style)
+*   formal modeling of attack cost vs profit
+*   parameterized, not calibrated
+*   references only mechanisms defined in A1–A9
+*   uses mathematical abstraction (Appendix-style)
 
 ---
 
