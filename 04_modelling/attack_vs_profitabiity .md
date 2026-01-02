@@ -19,7 +19,7 @@ This study does not aim to forecast market price trajectories or optimize protoc
 
 ---
 
-## 3. Model Theory [(Conceptual)(https://ieeexplore.ieee.org/document/11114693)
+## 3. Model Theory ([Conceptual](https://ieeexplore.ieee.org/document/11114693))
 
 ### 3.1 Dual‑Token Stabilization Logic
 
@@ -157,17 +157,17 @@ The metrics below correspond to **Phase 2 (Short + Dump)**, which represents the
 
 ### Figure 1 — Stablecoin Price De‑Peg
 
-![Stablecoin Price De-Peg](../../Algo-Attack-Model/DualTokenSim/simulation_results/single_attack/stablecoin_price_depeg.png)
+![Stablecoin Price De-Peg](images/stablecoin_price_depeg.png)
 
-The stablecoin remains tightly pegged prior to the attack. At the attack iteration, price drops below peg and fails to recover, triggering the panic regime.
+*The stablecoin remains tightly pegged prior to the attack. At the attack iteration, price drops below peg and fails to recover, triggering the panic regime.*
 
 ---
 
 ### Figure 2 — Collateral Price Collapse
 
-![Collateral Price and Supply](../../Algo-Attack-Model/DualTokenSim/simulation_results/single_attack/collateral_collapse_subplots.png)
+![Collateral Price and Supply](images/collateral_collapse_subplots.png)
 
-Following the peg break, collateral price enters a rapid and persistent collapse, aligning temporally with the attacker’s profit inflection.
+*Following the peg break, collateral price enters a rapid and persistent collapse, aligning temporally with the attacker’s profit inflection.*
 
 ---
 
@@ -175,15 +175,15 @@ Following the peg break, collateral price enters a rapid and persistent collapse
 
 *(See bottom panel of Figure 2)*
 
-Collateral supply expands sharply after the attack, confirming that price collapse is driven by endogenous minting rather than exogenous price forcing.
+*Collateral supply expands sharply after the attack, confirming that price collapse is driven by endogenous minting rather than exogenous price forcing.*
 
 ---
 
 ### Figure 4 — Attacker Portfolio Value Over Time
 
-![Attacker Portfolio Value](../../Algo-Attack-Model/DualTokenSim/simulation_results/single_attack/attacker_portfolio_history.png)
+![Attacker Portfolio Value](images/attacker_portfolio_history.png)
 
-The attacker experiences an initial drawdown corresponding to the cost of breaking the peg. As collateral collapses, gains from the short dominate, resulting in substantial net profit.
+*The attacker experiences an initial drawdown corresponding to the cost of breaking the peg. As collateral collapses, gains from the short dominate, resulting in substantial net profit.*
 
 ---
 
