@@ -8,6 +8,9 @@ export interface SimulationConfig {
     ustPoolSizeUsd: number;
     lunaPoolSizeUsd: number;
     marketDepth: MarketDepth;
+    attackSize: number;
+    shortSize: number;
+    leverage: number;
 }
 
 export interface SystemState {
@@ -19,6 +22,12 @@ export interface SystemState {
     ustPool: AMMPoolState;
     lunaPool: AMMPoolState;
     attackerPnl: number;
+    attackerCash: number;
+    debtValue: number;
+    shortPosition: number;
+    shortEntryPrice: number;
+    ustLiability: number;
+    lunaLiability: number;
     pegStatus: 'Stable' | 'De-pegged' | 'Collapsed';
 }
 

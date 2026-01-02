@@ -1,25 +1,37 @@
 import { AMM } from './AMM';
-import { AMMPoolState, SimulationConfig, SimulationLogEntry, SystemState } from './types';
+import type { AMMPoolState, SimulationConfig, SimulationLogEntry, SystemState } from './types';
 
 export class StablecoinSystem {
     private state: SystemState;
-    private config: SimulationConfig;
+    private cashUsd: number = 0; 
 
     constructor(config: SimulationConfig) {
-        this.config = config;
         this.state = this.initializeState(config);
     }
 
     private initializeState(config: SimulationConfig): SystemState {
+        let liquidityMultiplier = 1.0;
+        if (config.marketDepth === 'shallow') liquidityMultiplier = 0.2;
+        if (config.marketDepth === 'deep') liquidityMultiplier = 4.0;
+
+        const adjustedUstPool = config.ustPoolSizeUsd * liquidityMultiplier;
+        const adjustedLunaPool = config.lunaPoolSizeUsd * liquidityMultiplier;
+
         return {
             step: 0,
             ustPrice: config.initialUstPrice,
             lunaPrice: config.initialLunaPrice,
             ustSupply: config.initialUstSupply,
             lunaSupply: config.initialLunaSupply,
-            ustPool: AMM.createPool(config.initialUstPrice, config.ustPoolSizeUsd),
-            lunaPool: AMM.createPool(config.initialLunaPrice, config.lunaPoolSizeUsd),
+            ustPool: AMM.createPool(config.initialUstPrice, adjustedUstPool),
+            lunaPool: AMM.createPool(config.initialLunaPrice, adjustedLunaPool),
             attackerPnl: 0,
+            attackerCash: 0,
+            debtValue: 0,
+            shortPosition: 0,
+            shortEntryPrice: 0,
+            ustLiability: 0,
+            lunaLiability: 0,
             pegStatus: 'Stable',
         };
     }
@@ -28,118 +40,128 @@ export class StablecoinSystem {
         return { ...this.state };
     }
 
-    // Simulate an external market sell/buy of UST
-    public swapUstOnMarket(ustAmountIn: number, isSell: boolean): void {
-        let newPool: AMMPoolState;
-        let usdFlow: number;
+    private gaussianRandom(mean: number, stdev: number): number {
+        const u = 1 - Math.random(); 
+        const v = Math.random();
+        const z = Math.sqrt( -2.0 * Math.log( u ) ) * Math.cos( 2.0 * Math.PI * v );
+        return z * stdev + mean;
+    }
 
-        if (isSell) {
-            // Sell UST for USD
-            const result = AMM.swapTokenForUsd(this.state.ustPool, ustAmountIn);
-            newPool = result.newPool;
-            usdFlow = result.usdOut; // User gets USD
-        } else {
-            // Buy UST with USD (simplified: we specify UST amount out target? No, input usually USD. 
-            // For simplicity let's say input is UST amount to Impact)
-            // Reverse calc is hard, let's assume input is USD if Buying.
-            // Actually, let's just use swapUsdForToken if buying.
-            // Allow me to overload or change sig? For now let's adhere to "Impact".
-            // Let's assume the argument is always "Amount of Token involved"
+    private calculatePnl() {
+        const currentUstPrice = AMM.getPrice(this.state.ustPool) || 0.000001;
+        const currentLunaPrice = AMM.getPrice(this.state.lunaPool) || 0.000001;
 
-            // If buying UST, we need USD input.
-            // Let's assume we are selling `ustAmountIn` worth of USD? No that's confusing.
-            // Let's stick to: positive = sell UST, negative = buy UST?
-            // Or just exposed separate methods.
-            return; // Not implemented for single method yet
-        }
+        const currentUstLiabilityValue = this.state.ustLiability * currentUstPrice;
+        const currentLunaLiabilityValue = this.state.lunaLiability * currentLunaPrice;
+        
+        this.state.debtValue = currentUstLiabilityValue + currentLunaLiabilityValue;
+        this.state.attackerCash = this.cashUsd;
+        this.state.attackerPnl = this.cashUsd - this.state.debtValue;
+        
+        this.state.ustPrice = currentUstPrice;
+        this.state.lunaPrice = currentLunaPrice;
+    }
 
-        this.state.ustPool = newPool;
+    public openShort(shortSizeUsd: number): void {
+        if (shortSizeUsd <= 0) return;
+        const tokenAmount = shortSizeUsd / this.state.lunaPrice;
+        const result = AMM.swapTokenForUsd(this.state.lunaPool, tokenAmount);
+        this.state.lunaPool = result.newPool;
+        this.cashUsd += result.usdOut;
+        this.state.lunaLiability += tokenAmount;
         this.updatePrices();
+        this.calculatePnl();
     }
 
     public executeAttack(ustAmountToSell: number): void {
-        // 1. Attacker sells UST on External Market (AMM)
-        // they get USD back.
         const result = AMM.swapTokenForUsd(this.state.ustPool, ustAmountToSell);
         this.state.ustPool = result.newPool;
-
-        // Attacker Cost: they sold UST, they got USD.
-        // If they borrowed UST, they have a liability.
-        // Let's assume they owned it or borrowed it.
-        // PnL calculation depends on strategy (Soros style vs de-peg exploit).
-        // For now, track "USD Proceeds" vs "Initial Value"? 
-        // Let's just track the swap result for now in logs.
-
-        this.state.attackerPnl += (result.usdOut - (ustAmountToSell * 1.0)); // Assuming cost basis $1
+        this.cashUsd += result.usdOut;
+        this.state.ustLiability += ustAmountToSell;
         this.updatePrices();
+        this.calculatePnl();
     }
 
     public step(): SimulationLogEntry {
         this.state.step++;
 
+        // 0. Market Noise (Scaling with Liquidity)
+        const ustNoiseUsd = this.gaussianRandom(0, this.state.ustPool.usdReserve * 0.005);
+        if (Math.abs(ustNoiseUsd) > 100) {
+            if (ustNoiseUsd > 0) {
+                const res = AMM.swapTokenForUsd(this.state.ustPool, ustNoiseUsd / this.state.ustPrice);
+                this.state.ustPool = res.newPool;
+            } else {
+                const res = AMM.swapUsdForToken(this.state.ustPool, Math.abs(ustNoiseUsd));
+                this.state.ustPool = res.newPool;
+            }
+        }
+
+        const lunaNoiseUsd = this.gaussianRandom(0, this.state.lunaPool.usdReserve * 0.005);
+        if (Math.abs(lunaNoiseUsd) > 100) {
+             const lunaAmt = Math.abs(lunaNoiseUsd) / this.state.lunaPrice;
+             if (lunaNoiseUsd > 0) {
+                 const res = AMM.swapTokenForUsd(this.state.lunaPool, lunaAmt);
+                 this.state.lunaPool = res.newPool;
+             } else {
+                 const res = AMM.swapUsdForToken(this.state.lunaPool, Math.abs(lunaNoiseUsd));
+                 this.state.lunaPool = res.newPool;
+             }
+        }
+        
+        this.updatePrices();
+
         // 1. Arbitrage Step
-        // If UST < 1.0, Arbs buy UST on market and redeem for $1 LUNA
         if (this.state.ustPrice < 0.99) {
             this.runArbitrageCycle();
         }
 
-        // 2. Volatility / Noise (optional)
+        this.calculatePnl();
 
-        // 3. Update Status
-        if (this.state.ustPrice < 0.8) {
-            this.state.pegStatus = 'De-pegged';
-        }
-        if (this.state.lunaPrice < 0.01) {
-            this.state.pegStatus = 'Collapsed';
-        }
-        if (this.state.ustPrice >= 0.99) {
-            this.state.pegStatus = 'Stable';
-        }
+        if (this.state.ustPrice < 0.8) this.state.pegStatus = 'De-pegged';
+        if (this.state.lunaPrice < 0.05) this.state.pegStatus = 'Collapsed';
+        if (this.state.ustPrice >= 0.99) this.state.pegStatus = 'Stable';
 
-        return {
-            ...this.state,
-            action: 'Step'
-        };
+        return { ...this.state, action: 'Step' };
     }
 
     private runArbitrageCycle() {
-        // Arb capability depends on market depth and capital.
-        // Let's assume Arbs clear X% of the deviation or have fixed capital.
-        const targetPrice = 1.00;
-        const currentPrice = this.state.ustPrice;
-        const deviation = targetPrice - currentPrice;
+        // TERMINAL CONDITION: If LUNA is dead, Arbs give up.
+        if (this.state.lunaPrice < 0.05) return;
 
-        if (deviation <= 0) return;
-
-        // Arbs buy UST from Pool (raising Price)
-        // How much to buy?
-        // Simplified: Buy 10% of Pool Depth or enough to close gap?
-        // Let's buy a chunk.
-        const arbTradeSizeUsd = this.state.ustPool.usdReserve * 0.05; // 5% of liquidity
-
-        const swapRes = AMM.swapUsdForToken(this.state.ustPool, arbTradeSizeUsd);
-        this.state.ustPool = swapRes.newPool;
-        const ustBought = swapRes.tokenOut;
-
-        // Protocol Redeem: Burn UST, Mint LUNA
-        this.state.ustSupply -= ustBought;
-        // Mint LUNA worth $1 per UST.
-        // LUNA Amount = (UST Amount * $1) / LUNA Price
-        // Note: Terra used Oracle Price for minting, but with a spread usually.
-        // If LUNA is crashing, this mints exponential LUNA.
-        const lunaMinted = (ustBought * 1.0) / this.state.lunaPrice;
-        this.state.lunaSupply += lunaMinted;
-
-        // Arbs sell LUNA on Market to realize profit (USD)
-        // Sell `lunaMinted` on Luna Pool
-        const lunaSellRes = AMM.swapTokenForUsd(this.state.lunaPool, lunaMinted);
+        // 1. How much UST do we want to buy back? (Max 5% of pool per step)
+        const targetUsdToSpend = this.state.ustPool.usdReserve * 0.05;
+        
+        // 2. Protocol Mints LUNA to raise that USD
+        // We need 'targetUsdToSpend' worth of USD. 
+        // How much LUNA to mint? Approx target / price.
+        const lunaToMint = targetUsdToSpend / this.state.lunaPrice;
+        
+        // 3. Sell that LUNA on the LUNA market
+        const lunaSellRes = AMM.swapTokenForUsd(this.state.lunaPool, lunaToMint);
         this.state.lunaPool = lunaSellRes.newPool;
+        
+        // 4. Use ONLY the actual proceeds to buy UST
+        const actualUsdProceeds = lunaSellRes.usdOut;
+        const ustBuyRes = AMM.swapUsdForToken(this.state.ustPool, actualUsdProceeds);
+        this.state.ustPool = ustBuyRes.newPool;
+        
+        // 5. Update Supply
+        this.state.ustSupply -= ustBuyRes.tokenOut;
+        this.state.lunaSupply += lunaToMint;
 
         this.updatePrices();
     }
 
     private updatePrices() {
-        this.state.ustPrice = AMM.getPrice(this.state.ustPool);
-        this.state.lunaPrice = AMM.getPrice(this.state.lunaPool);
+        const pUst = AMM.getPrice(this.state.ustPool);
+        let pLuna = AMM.getPrice(this.state.lunaPool);
+        
+        if (pLuna < 0.01 || this.state.lunaPrice < 0.01) {
+            pLuna = 0.000001; // Terminal Collapse
+        }
+
+        this.state.ustPrice = pUst || 0.000001;
+        this.state.lunaPrice = pLuna || 0.000001;
     }
 }

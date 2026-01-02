@@ -1,73 +1,28 @@
-# React + TypeScript + Vite
+# Algo-Attack-Model Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based interactive simulator for visualizing algorithmic stablecoin de-pegging dynamics (inspired by Terra/LUNA).
 
-Currently, two official plugins are available:
+## Features
+*   **Interactive Simulation**: Start/Stop/Reset the simulation engine.
+*   **Attack Trigger**: Simulate a $100M market dump to trigger de-pegging.
+*   **Real-time Visualization**: Watch UST price, LUNA price, and Supply dynamics on live charts.
+*   **Client-Side Engine**: The entire simulation runs in your browser (`src/engine/StablecoinSystem.ts`).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Setup
 
-## React Compiler
+1.  **Install Dependencies**:
+    ```bash
+    npm install
+    ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
 
-## Expanding the ESLint configuration
+3.  **Open Browser**:
+    Navigate to the URL shown in the terminal (usually `http://localhost:5173`).
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Simulation Controls
+*   **Start**: Begins the simulation loop.
+*   **Execute Attack**: Sells 100M UST for USD, creating immediate sell pressure. Watch how the Arbitrage loop attempts (and potentially fails) to restore the peg.

@@ -1,4 +1,4 @@
-import { AMMPoolState } from './types';
+import type { AMMPoolState } from './types';
 
 export class AMM {
     static createPool(tokenPrice: number, liquidityUsd: number): AMMPoolState {
@@ -12,33 +12,44 @@ export class AMM {
     }
 
     static getAmountOut(amountIn: number, reserveIn: number, reserveOut: number): number {
-        const amountInWithFee = amountIn * 0.997; // 0.3% fee
-        const numerator = amountInWithFee * reserveOut;
-        const denominator = reserveIn + amountInWithFee;
-        return numerator / denominator;
+        const aIn = Number(amountIn);
+        const rIn = Number(reserveIn);
+        const rOut = Number(reserveOut);
+        
+        const amountInWithFee = aIn * 0.997; 
+        const numerator = amountInWithFee * rOut;
+        const denominator = rIn + amountInWithFee;
+        
+        if (denominator === 0) return 0;
+        const out = numerator / denominator;
+        
+        // Safety: Never drain more than 99.9% of liquidity in one swap
+        return out >= rOut ? rOut * 0.999 : out;
     }
 
     static swapTokenForUsd(pool: AMMPoolState, tokenAmountIn: number): { usdOut: number; newPool: AMMPoolState } {
-        const usdOut = this.getAmountOut(tokenAmountIn, pool.tokenReserve, pool.usdReserve);
+        const tIn = Number(tokenAmountIn);
+        const usdOut = this.getAmountOut(tIn, pool.tokenReserve, pool.usdReserve);
         return {
             usdOut,
             newPool: {
                 ...pool,
-                tokenReserve: pool.tokenReserve + tokenAmountIn,
-                usdReserve: pool.usdReserve - usdOut,
-                k: pool.k // k slightly increases due to fees
+                tokenReserve: Number(pool.tokenReserve) + tIn,
+                usdReserve: Number(pool.usdReserve) - usdOut,
+                k: pool.k 
             }
         };
     }
 
     static swapUsdForToken(pool: AMMPoolState, usdAmountIn: number): { tokenOut: number; newPool: AMMPoolState } {
-        const tokenOut = this.getAmountOut(usdAmountIn, pool.usdReserve, pool.tokenReserve);
+        const uIn = Number(usdAmountIn);
+        const tokenOut = this.getAmountOut(uIn, pool.usdReserve, pool.tokenReserve);
         return {
             tokenOut,
             newPool: {
                 ...pool,
-                usdReserve: pool.usdReserve + usdAmountIn,
-                tokenReserve: pool.tokenReserve - tokenOut,
+                usdReserve: Number(pool.usdReserve) + uIn,
+                tokenReserve: Number(pool.tokenReserve) - tokenOut,
                 k: pool.k
             }
         };
