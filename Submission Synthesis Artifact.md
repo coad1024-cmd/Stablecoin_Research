@@ -83,9 +83,9 @@ These artifacts abstract across systems and are explicitly **non-empirical**.
 
 Properties:
 
-*   draw exclusively from A1–A9
-*   introduce no new system facts
+*   represent theoretical "limit cases"
 *   operate under explicit hypothetical assumptions
+*   derive from academic literature and formal theory (independent of A1–A9)
 *   do not claim optimality
 
 ---
