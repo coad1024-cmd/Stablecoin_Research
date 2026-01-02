@@ -1,6 +1,3 @@
-The previous draft was a high-level synthesis. To meet the **1,500-word target** and the technical rigor required for your senior audience, we must explicitly expand these subsections to explain the *mechanics* of contagion and the *mathematics* of isolation.
-
-Here is the **Full Section 1**, expanded to cover 1.1, 1.2, and 1.3 in depth, integrating the architectural details from the codebase and the risk concepts from the Chaos Labs review.
 
 ***
 
@@ -43,8 +40,8 @@ If the surplus is exhausted, the protocol must either:
 In both cases, the failure of one specific market segment propagates to the entire ecosystem. The contagion is absolute.
 
 ---
-> **[Diagram Placeholder: Contagion Cascade in Single-Vat Systems]**
-> *Visual Description: A flow chart showing three collateral inputs (ETH, WBTC, Token X) feeding into a single "Global Solvency Engine." A red "Exploit" icon on Token X flows down, turning the "Global Surplus" red, and finally cracking the "Stablecoin Peg."*
+![Contagion Cascade in Single-Vat Systems](../Diagrams/Article1/Contagion_Cascade.png)
+*Fig 1.1: In a unified pool, a failure in Token X creates bad debt that drains the Global Surplus, threatening the peg for all users.*
 ---
 
 ## 1.2 Liquity V2’s Core Insight: Separate Solvency, Unify Liability
@@ -78,8 +75,8 @@ By compartmentalizing risk, V2 ensures that the failure of one asset class resul
 
 ---
 
-> **[Diagram Placeholder: Liquity V2 Federated Architecture]**
-> *Visual Description: A central "Collateral Registry" and "BOLD Token" connecting to three distinct, isolated circles: "WETH Branch," "wstETH Branch," and "rETH Branch." Inside each circle is a separate ActivePool and StabilityPool. Arrows show "Minting" flowing inward to BOLD, but "Collateral Risk" contained within the circles.*
+![Liquity V2 Federated Architecture](../Diagrams/Article1/Federated_Architecture.png)
+*Fig 1.2: The Hub-and-Spoke model. Assets (Spokes) are isolated in separate Stability Pools, while the Liability (Hub) is unified.*
 ---
 
 ## 1.3 Core Thesis of V2
@@ -119,6 +116,9 @@ This separation ensures that the "Hard Peg" mechanism (redemptions) acts as an a
 
 > Diagram A (The Redemption Routing Engine): Place this in Subsection 2.1 ("The Hub: CollateralRegistry as the Solvency Router"), immediately following the bulleted list describing the "Flow of Funds."
 
+![Redemption Routing Engine](../Diagrams/Article1/Redemption_Routing_Engine.png)
+*Fig 2.1: The Registry routes redemptions proportionally to the "Unbackedness" of each branch, healing the system's weakest links.*
+
 ## 2.2 The Spokes: Isolated Branch Economies
 
 A "Branch" in Liquity V2 is a fully self-contained lending market. Whether it backs BOLD with WETH, wstETH, or rETH, each branch operates as if it were the only protocol in existence. It manages its own solvency, liquidation logic, and interest rates.
@@ -144,6 +144,9 @@ If the `rETH` token suffers an infinite mint exploit, the `rETH` branch will bec
 
 > Diagram B (The Bulkhead Security Pattern): Place this in Subsection 2.2.2 ("The Bulkhead Security Pattern"), immediately after the paragraph describing the "Contagion Firewall."
 
+![Bulkhead Security Pattern](../Diagrams/Article1/Bulkhead_Security_Pattern.png)
+*Fig 2.2: The Bulkhead Pattern ensures that an infinite mint exploit in the rETH branch cannot drain the WETH Stability Pool.*
+
 ## 2.3 The Link: `BoldToken` and the Unified Liability
 
 While assets are strictly siloed, the liability (BOLD) is unified to ensure fungibility and utility. The `BoldToken` contract acts as the bridge connecting the independent branches.
@@ -154,6 +157,9 @@ The system employs a **Federated Minting / Centralized Burning** model:
 * **Burning (Peg Maintenance):** Burning rights are centralized in the `CollateralRegistry`. This ensures that when the system contracts supply to maintain the peg (via redemption), it does so globally and consistently, regardless of which specific branch provided the collateral.
 
 > Diagram C (The Federated Mint / Centralized Burn Model): Place this in Subsection 2.3 ("The Link: BoldToken and the Unified Liability"), at the very end of the section after the explanation of Minting and Burning rights.
+
+![Federated Mint / Centralized Burn](../Diagrams/Article1/Federated_Mint_Centralized_Burn.png)
+*Fig 2.3: Any authorized branch can mint BOLD (Growth), but only the Registry can burn execution rights (Peg Maintenance).*
 
 ***
 
@@ -292,12 +298,8 @@ V2 solves this with the **Zombie State**.
   * **Accounting:** It remains in the `Troves` mapping, preserving its collateral and debt data.
   * **Resolution:** The system tracks a `lastZombieTroveId` pointer. If a new redemption occurs, the protocol checks this pointer first. If the zombie has collateral, it is cleaned up (fully redeemed) before the traversal begins on the active list.
 
-**Diagram: Zombie Trove State Machine**
-*(Instructions for Designer: Create a state diagram with three nodes: "Active", "Zombie", and "Closed".
-Arrow 1 [Active -> Zombie]: Label "Partial Redemption (Debt < Min)".
-Arrow 2 [Zombie -> Closed]: Label "Redemption / Repayment".
-Arrow 3 [Zombie -> Active]: Label "User Adds Collateral/Debt".
-Arrow 4 [Active -> Closed]: Label "Full Redemption / Liquidation".)*
+![Zombie Trove State Machine](../Diagrams/Article1/Zombie_Trove_State_Machine_Specific.png)
+*Fig 4.1: Troves decay into Zombie state when debt < 2000 BOLD, removing them from the sorted queue to save gas.*
 
 -----
 
@@ -449,9 +451,20 @@ To ensure that arbitrageurs actually show up to clear the debt, the protocol cre
 
 The Urgent Mode remains active until the debt has been unwound sufficiently to raise the branch's TCR back above the SCR threshold (if the shutdown was economic). However, for many branches, shutdown is a one-way street: the goal is to wind down the market entirely, allowing all users to reclaim their funds and migrate to a healthy branch.
 
-**Diagram: Mode Switch State Diagram**
-*(Instructions for Designer:
-Nodes: "Normal Mode", "Shutdown Mode".
-Transition 1 [Normal -> Shutdown]: Label "Trigger: TCR < SCR OR Oracle Fail".
-Transition 2 [Shutdown Self-Loop]: Label "urgentRedemption() (0% Fee + Bonus)".
-Visual Cue: Make "Shutdown Mode" look like an emergency state (red border), emphasizing that borrowing is frozen.)*
+![Mode Switch State Diagram](../Diagrams/Article1/Mode_Switch_State_Diagram_Specific.png)
+*Fig 6.1: When a branch becomes unsafe (TCR < SCR), it enters Shutdown Mode, enabling Urgent Redemptions with 0% fees.*
+
+***
+
+# 7. Conclusion: The Modular Future of Solvency
+
+Liquity V2 represents a paradigm shift from **Monolithic Solvency** to **Modular Liability**. By unbundling the stablecoin from its backing, it solves the "Unified Debt Trilemma," allowing the protocol to scale into diverse, yield-bearing assets without forcing users to underwrite risks they did not choose.
+
+The core mechanics analyzed in this report—**Branch Isolation**, **Unbackedness Routing**, and **User-Set Rates**—provide the mathematical foundation for this scaler. They ensure that even if a specific asset fails (e.g., rETH goes to zero), the contagion is strictly contained, and the BOLD peg remains defended by the healthy branches.
+
+## Next Steps in the Series
+
+This deep dive into the **Backing Mechanism** (Part I) establishes *how* the system functions. However, a mechanism is only as good as its economic viability and governance resistance.
+
+*   **Part II: Economic Sustainability** will analyze the Profit & Loss (P&L) of the protocol. Can the "User-Set Rate" model generate enough revenue to sustain a defense budget (Stability Pool yield) that competes with external DeFi rates?
+*   **Part III: Decentralization & Risk** will stress-test the "Governance-Free" claim. We will examine the immutable parameters, the reliance on Oracle providers, and the "Front-End Operator" model to determine if V2 retains the censorship resistance of V1.

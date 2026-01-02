@@ -116,9 +116,22 @@ The following chart summarizes the relationship between **Short Position Size** 
 
 ![Profitable Attack Metrics](profitable_attack_metrics.png)
 
-* **X-Axis**: Time (Iterations).
-* **Y-Axis**: PnL.
-* **The Gap**: The distance between the "Dump Cost" (the initial drop) and the "Short Profit" (the rising curve) represents the **Protocol Security Margin**. If an attacker can borrow enough CT to bridge this gap, the protocol is mathematically doomed.
+### 5.1 Sensitivity Analysis: The Profitability Heatmap
+
+To generalize these findings, we ran a parameter sweep simulating the attack across varying dimensions of **Stablecoin Dump Size** (Cost) and **Collateral Short Size** (Reward).
+
+![PnL Sensitivity Heatmap](sensitivity_analysis_results/pnl_heatmap_short_swap.png)
+
+*   **Grid Structure**:
+    *   **X-Axis (Stablecoin Dump Amount)**: Represents the capital required to trigger the de-peg.
+    *   **Y-Axis (Collateral Short Amount)**: Represents the leverage used to capture the downside.
+    *   **Color Scale**: Net PnL (Dark Blue = Loss, Yellow/Green = Peak Profit).
+
+*   **Interpretation**:
+    The heatmap reveals a clear **"Profitability Frontier"**.
+    1.  **The Loss Zone (Bottom)**: When the Short Position is too small, the profit from the collateral crash acts merely as a rebate on the cost of the dump. The attacker loses money.
+    2.  **The Profit Zone (Top)**: As the Short Position scales, the PnL turns positive. Crucially, the profit scales *linearly* with the short size, while the cost of the dump remains relatively fixed (it saturates once the peg is broken).
+    3.  **Strategic Implication**: The limiting factor for an attacker is not the cost to break the peg (which is finite), but the *liquidity available to short* the collateral token.
 
 ---
 

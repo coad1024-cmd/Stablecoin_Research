@@ -89,7 +89,8 @@ class ThreePoolsSimulation:
             "stablecoin_free_supply_history": [],
             "collateral_free_supply_history": [],
             "virtual_pool_delta": [],
-            "attacker_pnl": 0.0
+            "attacker_pnl": 0.0,
+            "attacker_portfolio_history": []
         }
         
         initial_attacker_portfolio = 0
@@ -109,6 +110,9 @@ class ThreePoolsSimulation:
                 simulation_data["stablecoin_free_supply_history"].append(self.stablecoin_token.free_supply)
                 simulation_data["collateral_free_supply_history"].append(self.collateral_token.free_supply)
                 simulation_data["virtual_pool_delta"].append(self.virtual_pool.delta)
+                
+                if self.attacker:
+                    simulation_data["attacker_portfolio_history"].append(self.attacker.get_portfolio_value())
 
                 self.market_simulator.execute_random_purchases()
                 pbar.update(1)

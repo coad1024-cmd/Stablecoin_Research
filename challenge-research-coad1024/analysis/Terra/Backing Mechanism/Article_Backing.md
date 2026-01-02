@@ -1,4 +1,9 @@
-
+---
+title: "The Terra Protocol: Architecture of an Algorithmic Sovereign Economy"
+version: 1.0.0
+status: Draft
+date: 2026-01-02
+authors: ["Research Team"]
 ---
 
 # The Terra Protocol: Architecture of an Algorithmic Sovereign Economy
@@ -7,9 +12,11 @@
 
 ## Abstract
 
-The Terra protocol (Classic) represents a distinct class of decentralized ledger architectures known as **Elastic Supply Protocols**. Unlike custodial stablecoins (e.g., USDC), which rely on legal convertibility of fiat reserves, or over-collateralized crypto-backed stablecoins (e.g., DAI), which rely on liquidation engines to maintain solvency, Terra utilizes an **Algorithmic Market Module** to manage the money supply.
+The term *backed* carries different meanings across stablecoin designs. In collateralized systems, backing refers to the presence of assets held in reserve whose value exceeds outstanding liabilities. In algorithmic systems, the term is often used more loosely, sometimes ambiguously.
 
-The system functions as a decentralized central bank. It achieves price stability for its liability token (TerraUSD/UST) not by guaranteeing redemption, but by providing a deterministic, on-chain liquidity facility for swapping between the liability and the equity token (LUNA). This document provides a forensic architectural analysis of the **Backing Mechanism**, specifically the **Virtual Automated Market Maker (vAMM)** defined in the `x/market` module and the **Sensor Network** defined in the `x/oracle` module.
+Terra adopted a specific and narrow definition of backing: **protocol-enforced convertibility**. UST was considered backed insofar as holders could exchange it for LUNA through the protocol at prices determined by on-chain logic and oracle inputs. No claim was made that UST was redeemable for external assets, nor that any terminal floor price existed independent of market conditions.
+
+This article documents how that property was implemented. It explains how backing worked, where it lived on-chain, and what constraints governed it. Questions of sustainability, failure dynamics, governance intervention, and historical outcomes are intentionally deferred to Part II.
 
 ---
 
@@ -33,7 +40,10 @@ The protocol enforces this via a mechanism called the **Market Module**. It repl
 * **Expansion (Minting):** When UST > $1.00, the protocol allows users to burn $1 of LUNA to mint 1 UST.
 * **Contraction (Burning):** When UST < $1.00, the protocol allows users to burn 1 UST to mint $1 of LUNA.
 
+
 While often described as "Burn and Mint," the technical implementation is a **Constant Product Market Maker (CPMM)**.
+
+![Terra Backing Mechanism Architecture](Diagrams/Terra%20Architecture-2025-12-29-195802.svg)
 
 ---
 
@@ -56,6 +66,19 @@ In the Terra source code (specifically `keeper/swap.go`), this is implemented us
 
 The constant product  is defined as the square of the `BasePool`:
 
+
+
+```mermaid
+graph LR
+    subgraph "Virtual Liquidity Pools"
+    T[TerraPool (UST)] --- L[LunaPool (LUNA)]
+    end
+    
+    style T fill:#f9f,stroke:#333,stroke-width:2px
+    style L fill:#bbf,stroke:#333,stroke-width:2px
+    
+    T -->|Product = BasePool^2| L
+```
 
 * **`BasePool`**: Defined in `x/market/types/params.go`.
 * *Default Value:* 50,000,000 SDR (Special Drawing Rights).
@@ -86,6 +109,8 @@ The virtual pool sizes for any given block are calculated dynamically:
 * This makes the `TerraPool` larger and the `LunaPool` smaller, shifting the price along the  curve.
 
 ### 2.3 The Stability Spread (Pricing Volatility)
+
+![Stability Spread Model](Diagrams/Section%202.3%20Stability%20Spread-2025-12-29-203430.png)
 
 The protocol prevents immediate depletion of reserves during a bank run by implementing a **Spread Fee**. This fee is dynamic and functions as an automatic stabilizer. As selling pressure increases, the cost of exiting the system increases.
 
@@ -139,25 +164,31 @@ Validators do not vote in every block. They vote in windows to reduce network co
 
 This introduces a critical **Latency Vector**. The price used by the blockchain is always a lagging indicator of the real-time market price, delayed by at least 30 seconds (plus block processing time).
 
-### 3.2 The Oracle Front-Running Attack (Forensic Analysis)
 
-The mismatch between the **On-Chain Oracle Price** and the **Off-Chain Market Price** created a risk-free arbitrage loop that accelerated the collapse.
 
-**The Loop:**
-1.  **Spot Market Crash**: LUNA drops from $80 to $60 on Binance in 10 seconds.
-2.  **Oracle Lag**: The protocol still quotes LUNA at $80 for the remaining 20 seconds of the VotePeriod.
-3.  **The Attack**: Arbitrageurs buy LUNA on Binance for $60.
-4.  **The Mint**: They burn LUNA for UST on-chain. The protocol credits them $80 worth of UST (valuing LUNA at the stale price).
-5.  **The Profit**: They sell the UST for USD.
-    *   Cost: $60.
-    *   Revenue: $80 (minus spreads).
-    *   **Profit: $20 risk-free.**
-
-This arbitrage did not stabilize the peg; it **printed uncovered liabilities**. The protocol issued UST backed by LUNA that the market knew was worthless, purely because the Oracle was too slow to mark it down.
 
 ### 3.3 The Commit-Reveal Scheme
 
 To prevent validators from "lazy voting" (copying the votes of large validators), the system enforces a Commit-Reveal scheme.
+
+```mermaid
+sequenceDiagram
+    participant Validator
+    participant OracleModule
+    
+    Note over Validator, OracleModule: Vote Period N (Commit)
+    Validator->>OracleModule: MsgAggregateExchangeRatePrevote(Hash(Price + Salt))
+    
+    Note over Validator, OracleModule: Vote Period N+1 (Reveal)
+    Validator->>OracleModule: MsgAggregateExchangeRateVote(Price, Salt)
+    
+    OracleModule->>OracleModule: Hash(Price + Salt) == Prevote?
+    alt Match
+        OracleModule->>OracleModule: Include in Weighted Median
+    else Mismatch
+        OracleModule->>OracleModule: Slashing (Miss)
+    end
+```
 
 1. **Prevote (`MsgAggregateExchangeRatePrevote`):**
 In the first half of the window, a validator submits a SHA256 hash:
@@ -195,6 +226,8 @@ The protocol aligns incentives using a "Schelling Point" game.
 ## Part IV: Execution Flow — The `MsgSwap` Lifecycle
 
 To fully document the backing mechanism, we must trace the atomic execution of a swap transaction where a user redeems UST for LUNA (peg defense).
+
+![Terra MsgSwap Sequence Diagram](Diagrams/Terra%20Architecture-2025-12-29-201835.png)
 
 **Scenario:** User sends `MsgSwap` to burn 1,000 UST and mint LUNA.
 
@@ -274,4 +307,10 @@ This document avoids historical analysis of the May 2022 de-peg event to adhere 
 * **Pre-1164:** `BasePool` was 50M SDR.
 * **Post-1164:** `BasePool` was increased to 100M SDR.
 
-Referring to the formulas in **Section 2.3**, doubling the `BasePool` implies that for the same amount of selling pressure (), the Spread is halved. This modification mathematically reduced the system's "damping" force, allowing for faster capital flight at lower cost. This correlation between parameter configuration and system failure is the primary subject of study for algorithmic stability researchers.
+referring to the formulas in **Section 2.3**, doubling the `BasePool` implies that for the same amount of selling pressure (), the Spread is halved. This modification mathematically reduced the system's "damping" force, allowing for faster capital flight at lower cost. This correlation between parameter configuration and system failure is the primary subject of study for algorithmic stability researchers.
+
+## Revision History
+
+| Version | Date       | Author          | Description                                    |
+| :---    | :---       | :---            | :---                                           |
+| 1.0.0   | 2026-01-02 | Research Team   | Initial standardized version                   |
