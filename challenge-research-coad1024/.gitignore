@@ -8,9 +8,11 @@ __pycache__/
 *.pyd
 venv/
 .venv/
+.sky_venv/
 env/
 .pytest_cache/
 .tox/
+.agent/
 
 # Logs and databases
 logs/

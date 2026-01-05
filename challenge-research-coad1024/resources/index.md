@@ -1,57 +1,73 @@
 # Research Resources
 
-Use this file to track papers, repositories, and articles relevant to the project.
+This directory acts as the central repository for all raw materials, external literature, and protocol documentation.
 
-> **Note:** Place all PDF files in the `resources/pdfs/` directory.
+## Directory Structure
 
-## 1. HackMD Research Notes
+```
+resources/
+├── literature/          # Academic papers & converted PDFs
+├── protocols/           # Official protocol documentation
+│   ├── Liquity/
+│   ├── Sky_Ecosystem/   # (MakerDAO & Sky)
+│   └── Terra/
+├── notes/               # Rough research notes & HackMD exports
+└── index.md             # This file
+```
 
-*Integrated from HackMD (Nov 2025)*
+---
 
-### Analysis / DAI (Sky Ecosystem)
+## 1. Literature (`resources/literature/`)
 
-**Tier 1: Master Documents**
+Research papers converted to Markdown for analysis.
 
-- [The Anatomy of Stability: A Comprehensive Meta-Analytical Framework](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/Analysis-Meta-framework.md)
-  - *Key Topics:* Epistemological Foundations, Stablecoin LEGO, Risk Rosettes.
-- [DAI at the Crossroads, Part I: Solvency & Mechanics](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/resources/hackmd/Analysis/DAI/DAI%20at%20the%20Crossroads,%20Part%20I%20Where%20Sky's%20Solvency%20Lives%20On-Chain%20(and%20Where%20It%20Doesn't).md)
-  - *Key Topics:* Vat Accounting, Oracle Delay, Liquidation (Dog/Clip/Vow), Global Settlement.
-- [DAI at the Crossroads, Part II: Sustainability](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/resources/hackmd/Analysis/DAI/Updated%20Part%20II%20Sustainability%20—%20When%20Stability%20Has%20to%20Pay%20for%20Itself.md)
-  - *Key Topics:* Sustainability Triangle, Klages-Mundt Framework, Auction Bottlenecks, 2025 Metrics.
+| Title / File | Topics |
+|---|---|
+| [(In)Stability for the Blockchain](literature/(In)Stability%20for%20the%20Blockchain.md) | Stability analysis |
+| [Algorithmic Stablecoins Analysis](literature/Algorithmic%20Stablecoins-dual%20token%20sim.md) | Algo-stable simulation |
+| [Collateral Portfolio Optimization](literature/Collateral%20Portfolio%20Optimization%20in%20Crypto%20Backed%20Stablecoins.md) | Portfolio risk |
+| [Designing Stablecoins](literature/Designing%20Stablecoins.md) | Design principles |
+| [From Stablecoins to CBDCs](literature/From%20Stablecoins%20to%20CBDCs.md) | Macro view |
+| [Kjaeer Martin (2021) - MakerDAO Liquidations](literature/Kjaeer%20Martin%20-%202021%20-%20Quantitative%20Analysis%20of%20MakerDAOs%20Liquidation%20System.md) | **MakerDAO Deep Dive** |
+| [Klages-Mundt: While Stability Lasts](literature/While%20Stability%20Lasts.md) | **Canonical Framework** |
+| [Liquity V2 Mechanism Design Review](literature/Liquity%20V2%20Mechanism%20Desgin%20Review.md) | **Liquity V2 Source** |
+| [On the Economic Design of Stablecoins](literature/On%20the%20Economic%20Design%20of%20Stablecoins.md) | Economics |
+| [Setting Standards for Reserves](literature/Setting%20standards%20for%20stablecoin%20reserves.md) | Regulation |
+| [Some Simple Economics of Stablecoins](literature/Some%20Simple%20Economics%20of%20Stablecoins.md) | Basic models |
+| [Stablecoin 2.0](literature/Stablecoin2.0.md) | Next-gen design |
+| [The Libra Reserve](literature/TheLibraReserve_en_US_Rev0814.md) | Historical context |
 
-### Design
+---
 
-- [How to Design a Stablecoin with a Highly Volatile Crypto Reserve](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/resources/Stablecoin-meta-framework.md)
-  - *Key Topics:* Dual-Tranche Structure, Deterministic NAV, Autonomous Resets.
+## 2. Protocol Documentation (`resources/protocols/`)
 
-## 2. Official Documentation (Cloned)
+Official local copies of documentation.
 
-*Local copies of official repositories (Nov 2025)*
+### Sky Ecosystem (MakerDAO)
+*Location: `resources/protocols/Sky_Ecosystem/`*
 
-### Technical Docs (Sky Ecosystem)
+- **Legacy MakerDAO:** `legacy_makerdao/intro_docs/`, `legacy_makerdao/technical_docs/`
+- **Sky Docs:** `sky_docs/developerguides/`, `sky_docs/sky/`
 
-*Source: `sky-ecosystem/mcd-docs-content`*
+### Liquity
+*Location: `resources/protocols/Liquity/`*
 
-- [Smart Contract Modules](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/resources/makerdao/technical_docs/smart-contract-modules)
-- [Keepers](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/resources/makerdao/technical_docs/keepers)
-- [Security](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/resources/makerdao/technical_docs/security)
+- V2 Mechanism Reviews
+- Protocol Specifications
 
-### Introductory Docs
+### Terra
+*Location: `resources/protocols/Terra/`*
 
-*Source: `sky-ecosystem/intro-docs`*
+- Historical documentation and post-mortem analysis.
 
-- [Overview](file:///c:/Users/DELL/Desktop/Research%20Challenge/challenge-research-coad1024/resources/makerdao/intro_docs/overview)
+---
 
-## 3. PDFs
+## 3. Research Notes (`resources/notes/`)
 
-*Place PDF papers in `resources/pdfs/`*
+*Location: `resources/notes/hackmd/`*
 
-- (Empty)
+Contains raw notes pulled from HackMD, organized by topic:
+- **Analysis/DAI**: Deep dives into MakerDAO solvency and mechanics.
+- **Design**: Notes on stablecoin design frameworks.
 
-## 4. External References
-
-### Stablecoins (General)
-
-- [Link] Title - Description
-
-### DAI (MakerDAO)
+> **Note:** These notes are raw inputs. Canonical research is located in the `research/` directory.

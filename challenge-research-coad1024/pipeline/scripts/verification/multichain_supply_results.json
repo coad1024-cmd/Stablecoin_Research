@@ -1,0 +1,52 @@
+{
+  "total_dai": 4944878893.118716,
+  "total_usds": 6395918116.98195,
+  "grand_total": 11340797010.100666,
+  "by_chain": [
+    {
+      "chain": "Ethereum",
+      "dai": 4224052907.647032,
+      "usds": 6395918116.98195
+    },
+    {
+      "chain": "Arbitrum",
+      "dai": 22052358.126782045,
+      "usds": 0
+    },
+    {
+      "chain": "Optimism",
+      "dai": 15317149.026486734,
+      "usds": 0
+    },
+    {
+      "chain": "Base",
+      "dai": 2246265.1339015537,
+      "usds": 0
+    },
+    {
+      "chain": "Polygon",
+      "dai": 628107844.657365,
+      "usds": 0
+    },
+    {
+      "chain": "Gnosis",
+      "dai": 64191.61132913408,
+      "usds": 0
+    },
+    {
+      "chain": "zkSync Era",
+      "dai": 212872.58498567916,
+      "usds": 0
+    },
+    {
+      "chain": "Avalanche",
+      "dai": 11825332.81348089,
+      "usds": 0
+    },
+    {
+      "chain": "BNB Chain",
+      "dai": 40999971.51735277,
+      "usds": 0
+    }
+  ]
+}

@@ -45,8 +45,8 @@ Every article must append a **Revision History** table at the very end of the do
 
 | Version | Date       | Author          | Description                                    |
 | :---    | :---       | :---            | :---                                           |
-| 1.0.1   | 2026-01-03 | Research Team   | Fixed typos in Section 2.1                     |
-| 1.0.0   | 2026-01-02 | Research Team   | Initial standardized version                   |
+| 1.0.1   | 2026-01-03 | Internal Research   | Fixed typos in Section 2.1                     |
+| 1.0.0   | 2026-01-02 | Internal Research   | Initial standardized version                   |
 ```
 
 ## 4. Best Practices

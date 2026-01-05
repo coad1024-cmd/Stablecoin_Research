@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-01-05T22:31:59.378909Z",
+  "block_number": 24171462,
+  "claims": {
+    "F1_DSR": {
+      "value": "1.2500%",
+      "raw": "1000000000393915525145987602",
+      "claimed": "1.25%",
+      "status": "\u2705"
+    },
+    "F4_DAI_Supply": {
+      "value": "$4.22B",
+      "raw": "4223837383291075512501357403",
+      "claimed": "$5.36B",
+      "status": "\u274c"
+    },
+    "F3_USDS_Supply": {
+      "value": "$6.40B",
+      "raw": "6395895065836568831051788652",
+      "claimed": "$9.71B",
+      "status": "\u274c"
+    },
+    "F2_Combined_Supply": {
+      "value": "$10.62B",
+      "claimed": "$15.07B",
+      "status": "\u274c"
+    },
+    "F5_USDC_PSM": {
+      "value": "$3.99B",
+      "raw": "3993473454433135",
+      "claimed": "$3.93B",
+      "status": "\u2705"
+    },
+    "F6_Vow_Surplus": {
+      "value": "$247.2M",
+      "raw": "247166429234812766219514010491392201313354915909051187",
+      "claimed": "$247M",
+      "status": "\u2705"
+    },
+    "F7_Bad_Debt": {
+      "value": "$281.6M",
+      "raw": "281597847510568004209943221905802865980466629379813217",
+      "claimed": "$281M",
+      "status": "\u2705"
+    }
+  },
+  "derived": {
+    "Net_Equity": "$-34.4M",
+    "USDC_Dependency_Pct": "37.6%",
+    "Claimed_Dependency": "26.1%"
+  }
+}

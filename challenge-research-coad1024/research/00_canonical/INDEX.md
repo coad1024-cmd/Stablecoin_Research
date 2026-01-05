@@ -42,14 +42,17 @@ research/00_canonical/
 | `data/balance_sheet.json` | Data Source | Balance Sheet Estimates |
 | `data/yield_metrics.csv` | Data Source | On-chain DSR |
 
-### Key Verified Metrics
+### Key Verified Metrics (Block 24,171,462)
 | Metric | Value | Source |
 |:---|:---|:---|
-| DAI Total Supply | 4.22B | On-chain |
+| Combined Supply (DAI+USDS) | **$10.62B** | On-chain |
+| DAI Supply | $4.22B | On-chain |
+| USDS Supply | $6.40B | On-chain |
+| USDC PSM Balance | **$3.99B** | On-chain (Pocket: 0x37305B1c...) |
+| USDC Dependency | **37.6%** | Calculated |
 | DSR APY | 1.25% | On-chain |
-| Net Vow Position | -$34M | On-chain |
+| Net Vow Position | −$34M | On-chain |
 | Smart Burn Engine | $96M+ burned | CoinMarketCap |
-| LDR | < 0.4% | Steakhouse Financial |
 
 ---
 
@@ -119,15 +122,15 @@ research/00_canonical/
 
 | Protocol | Data Source | Verification Script | Snapshot Date |
 |:---|:---|:---|:---|
-| **Sky Ecosystem** | Ethereum Mainnet | `scripts/fetch_maker_data.js` | Jan 5, 2026 |
-| **Liquity V1** | TroveManager Contract | `analysis/Liquity/scripts/fetch_liquity_onchain.js` | Jan 5, 2026 |
+| **Sky Ecosystem** | Ethereum Mainnet | `pipeline/scripts/data_fetchers/fetch_makerdao_data.py` | Jan 5, 2026 |
+| **Liquity V1** | TroveManager Contract | `pipeline/scripts/data_fetchers/fetch_liquity_v2_onchain.js` | Jan 5, 2026 |
 | **Liquity V2** | Mainnet Trove Snapshot | `analysis/Liquity/data/trove_snapshot_mainnet.csv` | Dec 9, 2025 |
-| **V2 Operational** | Official Liquity API | `scripts/fetch_v2_operational_stats.js` | Jan 5, 2026 |
+| **V2 Operational** | Official Liquity API | `pipeline/scripts/data_fetchers/fetch_v2_operational_stats.js` | Jan 5, 2026 |
 
-**Data Processing Scripts:**
-- **Collateral Analysis**: `analysis/Liquity/Decentralization/collateral/scripts/analyze_v2_collateral.py`
-- **Governance Analysis**: `analysis/Liquity/Decentralization/governance/scripts/analyze_v2_governance.py`
-- **V1 Visuals**: `analysis/Liquity/Decentralization/scripts/analyze_v1_plots.py`
+**Data Visualization Scripts:**
+- **Decentralization Metrics**: `pipeline/scripts/visualization/generate_decentralization_plots.py`
+- **Liquity Plots**: `pipeline/scripts/visualization/generate_liquity_plots.py`
+- **MakerDAO/Sky Plots**: `pipeline/scripts/visualization/generate_makerdao_plots.py`
 
 **Verification Standard:**
 - ✅ **Real Data**: Direct blockchain queries or official API responses

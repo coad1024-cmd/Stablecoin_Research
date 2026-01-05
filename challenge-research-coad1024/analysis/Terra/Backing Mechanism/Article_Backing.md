@@ -3,7 +3,7 @@ title: "The Terra Protocol: Architecture of an Algorithmic Sovereign Economy"
 version: 1.0.0
 status: Draft
 date: 2026-01-02
-authors: ["Research Team"]
+authors: ["Internal Research"]
 ---
 
 # The Terra Protocol: Architecture of an Algorithmic Sovereign Economy
@@ -313,4 +313,4 @@ referring to the formulas in **Section 2.3**, doubling the `BasePool` implies th
 
 | Version | Date       | Author          | Description                                    |
 | :---    | :---       | :---            | :---                                           |
-| 1.0.0   | 2026-01-02 | Research Team   | Initial standardized version                   |
+| 1.0.0   | 2026-01-02 | Internal Research   | Initial standardized version                   |

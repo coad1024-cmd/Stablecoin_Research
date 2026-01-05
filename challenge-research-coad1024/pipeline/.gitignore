@@ -1,0 +1,33 @@
+# External tools (can be reinstalled)
+# Uncomment the line below if you want to exclude large external dependencies
+# tools/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output files (adjust as needed)
+*.png
+*.jpg
+*.csv
+# But keep example/template images
+!templates/*.png
+!docs/*.png

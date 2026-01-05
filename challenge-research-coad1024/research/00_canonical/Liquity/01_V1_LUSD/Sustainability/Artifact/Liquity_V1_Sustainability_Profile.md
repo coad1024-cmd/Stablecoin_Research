@@ -67,7 +67,7 @@ Evaluating LUSD as a "Bank" (above) fails to capture its utility. Evaluated as a
 | **Protocol Equity Risk** | **$0 at Risk** | $0 | 🟢 **Risk-Free.** The protocol cannot go bankrupt (Pass-through). |
 
 ### 4.2 Comparative Risk Analysis (V1 Limitations)
-*Source: `resources/Liquity/marker_converted/converted_docs/Liquity V2 Mechanism Desgin Review.md`*
+*   *Source:* `resources/protocols/Liquity/marker_converted/converted_docs/Liquity V2 Mechanism Desgin Review.md`*
 1.  **Redemption Inefficiency (Section 5.4):** V1 orders redemptions via **Collateral Ratio (LIFO)**. This penalizes the riskiest users but *fails* to penalize non-contributors to yield. V2 fixes this by ordering via Interest Rate.
 2.  **Fee Rigidity (Section 5.3):** V1's redemption fee decay (half-life 12h) is fixed. V2's dynamic decay allows faster arbitrage.
     *   *Insight:* V1's rigidity makes it "Safe but Slow" to react to peg deviations compared to V2.
@@ -94,6 +94,6 @@ The analysis confirms that while V1 is safe, it is **economically obsolete** for
 ---
 
 ### Data Sources
-*   *On-Chain Script (`analysis/Liquity/scripts/fetch_liquity_onchain.js`)*
+*   *On-Chain Script (`pipeline/scripts/data_fetchers/fetch_liquity_v2_onchain.js`)*
 *   *Liquity Contract: `0xA397...` (TroveManager)*
 *   *Snapshot Date: Jan 05, 2026*
