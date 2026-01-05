@@ -1,0 +1,197 @@
+{
+    "config": {
+        "ACCOUNT_SCREEN": false,
+        "BLOCKING_LIST": "0x97044531D0fD5B84438499A49629488105Dc58e6",
+        "BLOCKING_VPNAPI": "[object Object]",
+        "CHAIN_BLOCK_EXPLORER": "Etherscan|https://etherscan.io/",
+        "CHAIN_CONTRACT_ENS_REGISTRY": null,
+        "CHAIN_CONTRACT_ENS_RESOLVER": null,
+        "CHAIN_CONTRACT_MULTICALL": "0xca11bde05977b3631167028862be2a173976ca11",
+        "CHAIN_CURRENCY": "Ether|ETH|18",
+        "CHAIN_ID": "1",
+        "CHAIN_NAME": "Ethereum",
+        "CHAIN_RPC_URL": "https://eth.drpc.org",
+        "DEPLOYMENT_FLAVOR": null,
+        "KNOWN_DELEGATES_URL": "https://api.liquity.org/v2/known-delegates/ethereum.json",
+        "KNOWN_INITIATIVES_URL": "https://api.liquity.org/v2/known-initiatives/ethereum.json",
+        "LEGACY_CHECK": "{\"BOLD_TOKEN\":\"0xb01dd87b29d187f3e3a4bf6cdaebfb97f3d9ab98\",\"COLLATERAL_REGISTRY\":\"0xd99de73b95236f69a559117ecd6f519af780f3f7\",\"GOVERNANCE\":\"0x636deb767cd7d0f15ca4ab8ea9a9b26e98b426ac\",\"INITIATIVES_SNAPSHOT_URL\":\"/initiatives-snapshot-1.json\",\"TROVES_SNAPSHOT_URL\":\"/troves-snapshot-1.json\",\"BRANCHES\":[{\"symbol\":\"ETH\",\"name\":\"ETH\",\"COLL_TOKEN\":\"0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2\",\"LEVERAGE_ZAPPER\":\"0x978d7188ae01881d254ad7e94874653b0c268004\",\"STABILITY_POOL\":\"0xf69eb8c0d95d4094c16686769460f678727393cf\",\"TROVE_MANAGER\":\"0x81d78814df42da2cab0e8870c477bc3ed861de66\"},{\"symbol\":\"WSTETH\",\"name\":\"wstETH\",\"COLL_TOKEN\":\"0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0\",\"LEVERAGE_ZAPPER\":\"0xc3d864adc2a9b49d52e640b697241408d896179f\",\"STABILITY_POOL\":\"0xcf46dab575c364a8b91bda147720ff4361f4627f\",\"TROVE_MANAGER\":\"0xb47ef60132deabc89580fd40e49c062d93070046\"},{\"symbol\":\"RETH\",\"name\":\"rETH\",\"COLL_TOKEN\":\"0xae78736cd615f374d3085123a210448e74fc6393\",\"LEVERAGE_ZAPPER\":\"0x7d5f19a1e48479a95c4eb40fd1a534585026e7e5\",\"STABILITY_POOL\":\"0xc4463b26be1a6064000558a84ef9b6a58abe4f7a\",\"TROVE_MANAGER\":\"0xde026433882a9dded65cac4fff8402fafff40fca\"}]}",
+        "LIQUITY_GOVERNANCE_URL": "https://api.liquity.org/v2/governance",
+        "LIQUITY_STATS_URL": "https://api.liquity.org/v2/ethereum.json",
+        "SAFE_API_URL": "https://safe-transaction-mainnet.safe.global/api",
+        "SBOLD": "0x50Bd66D59911F5e086Ec87aE43C811e0D059DD11",
+        "SUBGRAPH_URL": "https://gateway.thegraph.com/api/a4471d09d999cf523bd8b545736bd62d/subgraphs/id/6bg574MHrEZXopJDYTu7S7TAvJKEMsV111gpKLM7ZCA7",
+        "TROVE_EXPLORER_0": "[object Object]",
+        "TROVE_EXPLORER_1": "[object Object]",
+        "V1_STABILITY_POOL_CHECK": true,
+        "V1_STAKING_CHECK": true,
+        "YBOLD": true
+    },
+    "contracts": {
+        "BOLD_TOKEN": "0x6440f144b7e50d6a8439336510312d2f54beb01d",
+        "COLLATERAL_REGISTRY": "0xf949982b91c8c61e952b3ba942cbbfaef5386684",
+        "DEBT_IN_FRONT_HELPER": "0x4bb5e28fdb12891369b560f2fab3c032600677c6",
+        "EXCHANGE_HELPERS": "0x2f60bab0072abec7058017f48d7256ec288c8686",
+        "EXCHANGE_HELPERS_V2": "0xe453b864d3841469763bda2437e3dd0e38dca222",
+        "GOVERNANCE": "0x807def5e7d057df05c796f4bc75c3fe82bd6eee1",
+        "HINT_HELPERS": "0xf0cae19c96e572234398d6665cc1147a16cbe657",
+        "LQTY_STAKING": "0x4f9fbb3f1e99b56e0fe2892e623ed36a76fc605d",
+        "LQTY_TOKEN": "0x6dea81c8171d0ba574754ef6f8b412f2ed88c54d",
+        "LUSD_TOKEN": "0x5f98805a4e8be255a32880fdec7f6728c6568ba0",
+        "MULTI_TROVE_GETTER": "0xfa61db085510c64b83056db3a7acf3b6f631d235",
+        "REDEMPTION_HELPER": "0xb366256d033ae7e4f7bddec822a5adec9df07b80",
+        "V1_STABILITY_POOL": "0x66017D22b0f8556afDd19FC67041899Eb65a21bb",
+        "WETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+    },
+    "branches": [
+        {
+            "branchId": 0,
+            "symbol": "ETH",
+            "contracts": [
+                [
+                    "ACTIVE_POOL",
+                    "0xeb5a8c825582965f1d84606e078620a84ab16afe"
+                ],
+                [
+                    "BORROWER_OPERATIONS",
+                    "0x372abd1810eaf23cb9d941bbe7596dfb2c46bc65"
+                ],
+                [
+                    "COLL_SURPLUS_POOL",
+                    "0xedbe2509e502c0320d2e7f8b6746a49b4b50e2bf"
+                ],
+                [
+                    "COLL_TOKEN",
+                    "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"
+                ],
+                [
+                    "DEFAULT_POOL",
+                    "0xd4558240d50c2e219a21c9d25afd513bb6e5b1a0"
+                ],
+                [
+                    "LEVERAGE_ZAPPER",
+                    "0xdccbd7a365aee086aa3b4ede8afe895b20770ae3"
+                ],
+                [
+                    "PRICE_FEED",
+                    "0xcc5f8102eb670c89a4a3c567c13851260303c24f"
+                ],
+                [
+                    "SORTED_TROVES",
+                    "0xa25269e41bd072513849f2e64ad221e84f3063f4"
+                ],
+                [
+                    "STABILITY_POOL",
+                    "0x5721cbbd64fc7ae3ef44a0a3f9a790a9264cf9bf"
+                ],
+                [
+                    "TROVE_MANAGER",
+                    "0x7bcb64b2c9206a5b699ed43363f6f98d4776cf5a"
+                ],
+                [
+                    "TROVE_NFT",
+                    "0x1a0fc0b843afd9140267d25d4e575cb37a838013"
+                ]
+            ]
+        },
+        {
+            "branchId": 1,
+            "symbol": "WSTETH",
+            "contracts": [
+                [
+                    "ACTIVE_POOL",
+                    "0x531a8f99c70d6a56a7cee02d6b4281650d7919a0"
+                ],
+                [
+                    "BORROWER_OPERATIONS",
+                    "0xa741a32f9dcfe6adba088fd0f97e90742d7d5da3"
+                ],
+                [
+                    "COLL_SURPLUS_POOL",
+                    "0x36e6cbdf68f64cf00fc3a6c634a25be32dd0a235"
+                ],
+                [
+                    "COLL_TOKEN",
+                    "0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0"
+                ],
+                [
+                    "DEFAULT_POOL",
+                    "0xd796e1648526400386cc4d12fa05e5f11e6a22a1"
+                ],
+                [
+                    "LEVERAGE_ZAPPER",
+                    "0xe85230de04147c4ea363b21cdb801c1c19df0a56"
+                ],
+                [
+                    "PRICE_FEED",
+                    "0xe7aa2ba9e086a379d3beb224098bc634a46e314e"
+                ],
+                [
+                    "SORTED_TROVES",
+                    "0x84eb85a8c25049255614f0536bea8f31682e86f1"
+                ],
+                [
+                    "STABILITY_POOL",
+                    "0x9502b7c397e9aa22fe9db7ef7daf21cd2aebe56b"
+                ],
+                [
+                    "TROVE_MANAGER",
+                    "0xa2895d6a3bf110561dfe4b71ca539d84e1928b22"
+                ],
+                [
+                    "TROVE_NFT",
+                    "0x857aecebf75f1012dc18e15020c97096aea31b04"
+                ]
+            ]
+        },
+        {
+            "branchId": 2,
+            "symbol": "RETH",
+            "contracts": [
+                [
+                    "ACTIVE_POOL",
+                    "0x9074d72cc82dad1e13e454755aa8f144c479532f"
+                ],
+                [
+                    "BORROWER_OPERATIONS",
+                    "0xe8119fc02953b27a1b48d2573855738485a17329"
+                ],
+                [
+                    "COLL_SURPLUS_POOL",
+                    "0xba4a2bd8b76df84cac98eba3f4b967d8423192bf"
+                ],
+                [
+                    "COLL_TOKEN",
+                    "0xae78736cd615f374d3085123a210448e74fc6393"
+                ],
+                [
+                    "DEFAULT_POOL",
+                    "0x5cc5cefd034fdc4728d487a72ca58a410cddcd6b"
+                ],
+                [
+                    "LEVERAGE_ZAPPER",
+                    "0x75036b1d6de5665c60f5c33bb4a64e8e123211a2"
+                ],
+                [
+                    "PRICE_FEED",
+                    "0x34f1e9c7dcc279ec70d3c4488eb2d80fba8b7b2b"
+                ],
+                [
+                    "SORTED_TROVES",
+                    "0x14d8d8011df2b396ed2bbc4959bb73250324f386"
+                ],
+                [
+                    "STABILITY_POOL",
+                    "0xd442e41019b7f5c4dd78f50dc03726c446148695"
+                ],
+                [
+                    "TROVE_MANAGER",
+                    "0xb2b2abeb5c357a234363ff5d180912d319e3e19e"
+                ],
+                [
+                    "TROVE_NFT",
+                    "0x7ae430e25b67f19b431e1d1dc048a5bcf24c0873"
+                ]
+            ]
+        }
+    ]
+}

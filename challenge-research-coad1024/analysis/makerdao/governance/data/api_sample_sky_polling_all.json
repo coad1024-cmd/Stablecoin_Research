@@ -1,0 +1,1212 @@
+{
+  "paginationInfo": {
+    "totalCount": 104,
+    "page": 1,
+    "numPages": 6,
+    "hasNextPage": true
+  },
+  "stats": {
+    "active": 1,
+    "finished": 103,
+    "total": 104,
+    "type": {
+      "single-choice": 104,
+      "rank-free": 0,
+      "majority": 0,
+      "choose-free": 0
+    }
+  },
+  "polls": [
+    {
+      "pollId": 1607,
+      "startDate": "2025-11-24T16:00:00.000Z",
+      "endDate": "2025-11-27T16:00:00.000Z",
+      "multiHash": "QmSKnB98KuoayfSjByvLeju9nUrfnHqjEDek1CHC8j7RUj",
+      "slug": "QmSKnB98",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-11-24-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-11-24/27452",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - November 24, 2025",
+      "summary": "This Atlas edit 1) authorizes Core Executor Agent funding, 2) defines a new Ranked Delegate compensation system, 3) updates Agent Artifact for Obex launch, 4) triggers subsidized borrowing for Spark and Grove, 5) expands the use of StarGuard, 6) removes Spark and Grove Senior Risk Capital, 7) adds new DAO Resolution to Grove Artifact, 8) adds internal references.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "grove",
+        "obex",
+        "weekly",
+        "dao-resolution",
+        "technical",
+        "misc-governance",
+        "delegates",
+        "misc-funding",
+        "endgame"
+      ]
+    },
+    {
+      "pollId": 1606,
+      "startDate": "2025-11-17T16:00:00.000Z",
+      "endDate": "2025-11-20T16:00:00.000Z",
+      "multiHash": "QmdomJ7o8ikJ3TAcozJRqgqKdP3zaFxKGDvKtW3BC6YkFP",
+      "slug": "QmdomJ7o",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-11-17-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-11-17/27421",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - November 17, 2025",
+      "summary": "This Atlas edit 1) updates Sky Direct Exposures logic, 2) adds a new public dashboard requirement for Interim Deployments, 3) updates the timeline for the Monthly Settlement Cycle, 4) adds a new DAO Resolution to the Grove Artifact, 5) adds a new SubProxy account for Launch Agent 4, 6) updates remaining references to the Accessibility Reward, 7) adds Allocation System Primitive documents for Keel.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "grove",
+        "keel",
+        "weekly",
+        "dao-resolution",
+        "collateral-onboard",
+        "technical",
+        "real-world-assets",
+        "misc-governance",
+        "endgame",
+        "bridge"
+      ]
+    },
+    {
+      "pollId": 1605,
+      "startDate": "2025-11-10T16:00:00.000Z",
+      "endDate": "2025-11-13T16:00:00.000Z",
+      "multiHash": "QmawWucPPJH4P2AfwMm3XXnrZf4Z31fBycpS5gruHCu48H",
+      "slug": "QmawWucP",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-11-10-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-11-10/27400",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - November 10, 2025",
+      "summary": "This Atlas edit 1) authorizes Gnosis payment 2) updates ASC Requirements for soft launch 3) removes Grove Interim Deployments restrictions 4) adds Prime Spell security enforcement mechanism.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "medium-impact",
+        "risk-parameter",
+        "grove",
+        "weekly",
+        "real-world-assets",
+        "misc-governance",
+        "misc-funding"
+      ]
+    },
+    {
+      "pollId": 1604,
+      "startDate": "2025-11-06T16:00:00.000Z",
+      "endDate": "2025-11-10T16:00:00.000Z",
+      "multiHash": "QmYPMN4yw3kPNKFWRkFJPPSiv12xRBNcJ36qmN6yh1zG7W",
+      "slug": "QmYPMN4y",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-11-06-oos-Atlas-edit-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/out-of-schedule-atlas-edit-proposal/27393",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Bootstrapping Atlas Edit Proposal - November 6, 2025",
+      "summary": "This bootstrapping Atlas edit 1) authorizes the Genesis Capital transfer to Launch Agent 4 2) adds documentation for Rate Limits on Base for Grove",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "grove",
+        "technical",
+        "misc-governance",
+        "misc-funding",
+        "endgame",
+        "bridge"
+      ]
+    },
+    {
+      "pollId": 1603,
+      "startDate": "2025-11-03T16:00:00.000Z",
+      "endDate": "2025-11-06T16:00:00.000Z",
+      "multiHash": "Qmetv8fpDfAskBRfnQUdG1116z3hvwowiJ1sVbyGbTq2ar",
+      "slug": "Qmetv8fp",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-11-03-Atlas-editt-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-11-03/27381",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - November 3, 2025",
+      "summary": "This Atlas edit 1) prepares for deployment of the LayerZero bridge 2) updates the Accessibility Reward Primitive 3) renames Risk Tolerance Ratio to Encumberance Ratio 4) Adds Allocation System Primitive Documents for Launch Agent 4 5) adds new Active Instances for Grove 6) Changes Ecosystem Entity Grants to past tense 7) clarifies the process for Pioneer Chain Reimbursement 8) updates references in the Risk Framework 9) updates language regarding the MKR to SKY upgrade.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "grove",
+        "keel",
+        "weekly",
+        "dao-resolution",
+        "collateral-onboard",
+        "technical",
+        "real-world-assets",
+        "misc-governance",
+        "endgame",
+        "bridge"
+      ]
+    },
+    {
+      "pollId": 1601,
+      "startDate": "2025-10-27T16:00:00.000Z",
+      "endDate": "2025-10-30T16:00:00.000Z",
+      "multiHash": "Qmbs7wEMtfajxg38PsLmMkSN6ADUKiNibDzJ5dXRBnEBEm",
+      "slug": "Qmbs7wEM",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-10-27-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-10-27/27362",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - October 27, 2025",
+      "summary": "This proposal 1) enables SKY Rewards for SKY stakers 2) activates Treasury Management Function 3) updates Atlas for new Kicker Module 4) adds listing of capital contributions to Genesis Agents 5) moves to Stage 2 of Monthly Settlement Cycle 6) soft launches ASC System 7) implements StarGuard 8) adds information regarding multisigs in the Grove Artifact 9) removes Grove Interim Deployments Restrictions 10) cleans up Supporting Documents 11) updates terminology in Atlas to reflect Executor Agents.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "grove",
+        "weekly",
+        "surplus",
+        "technical",
+        "misc-governance",
+        "misc-funding",
+        "endgame",
+        "psm"
+      ]
+    },
+    {
+      "pollId": 1602,
+      "startDate": "2025-10-27T16:00:00.000Z",
+      "endDate": "2025-10-30T16:00:00.000Z",
+      "multiHash": "QmbzWao8JBffBqTotVNnUFVfaYishWCoogkBfBkWp3mvim",
+      "slug": "QmbzWao8",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-10-27-stusds-beam-parameter-changes.md",
+      "discussionLink": "https://forum.sky.money/t/stusds-beam-rate-setter-configuration/27161/20",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "stUSDS BEAM Parameter Update - October 27, 2025",
+      "summary": "Signal your support or opposition to adjusting the `stepStrBps` and `stepDutyBps` parameters for the stUSDS Bounded External Access Module (stUSDS BEAM).",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "medium-impact",
+        "risk-parameter"
+      ]
+    },
+    {
+      "pollId": 1600,
+      "startDate": "2025-10-20T16:00:00.000Z",
+      "endDate": "2025-10-23T16:00:00.000Z",
+      "multiHash": "Qmef8C3au11ghyLPgMNqLx4SLgA9iSxw5G5bE2mr7eUDe3",
+      "slug": "Qmef8C3a",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-10-20-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-10-20/27327",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - October 20, 2025",
+      "summary": "This proposal 1) introduces Sky Direct Exposures 2) defines the process for Interim Deployments 3) renames RRC to CRR 4) replaces Stability Scope Advisor with Core Council Risk Advisor 5) refined documentation of the spell validation process 6) provides flexibility in updating Smart Burn Engine parameters 7) adds new instances to the Grove Artifact.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "grove",
+        "weekly",
+        "dao-resolution",
+        "collateral-onboard",
+        "surplus",
+        "real-world-assets",
+        "misc-governance",
+        "endgame"
+      ]
+    },
+    {
+      "pollId": 1599,
+      "startDate": "2025-10-13T16:00:00.000Z",
+      "endDate": "2025-10-16T16:00:00.000Z",
+      "multiHash": "QmWyJQpEetFpQJhCjYmm8mfiqvpkKpv6ZoUbpDXvLcrLxj",
+      "slug": "QmWyJQpE",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-10-13-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-10-13/27311",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - October 13, 2025",
+      "summary": "This Atlas Edit 1) introduces Launch Agent 4, 2) updates the Financial RRC Percentage for Pendle PTs, 3) updates the Grove Artifact to authorize investment in Pendle PTs, 4) corrects a definition in the Risk Framework, 5) updates terminology in the Atlas to reflect Executor Agents, 6) clarifies Governance Poll approval requirements, 7) introduces a minor language cleanup.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "grove",
+        "weekly",
+        "dao-resolution",
+        "collateral-onboard",
+        "real-world-assets",
+        "misc-governance",
+        "endgame"
+      ]
+    },
+    {
+      "pollId": 1598,
+      "startDate": "2025-10-06T16:00:00.000Z",
+      "endDate": "2025-10-09T16:00:00.000Z",
+      "multiHash": "QmW1PtnySTmd43LTdeTN4WUVPFVtfLvfxKyRDBPdkNo2JJ",
+      "slug": "QmW1Ptny",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-10-06-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-10-06/27272",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - October 6, 2025",
+      "summary": "This Atlas Edit 1) introduces Keel, 2) specifies near term logic for the October Monthly Settlement Cycle, 3) specifies expected timing for Stage 2 of Monthly Settlement Cycle implementation, 4) clarifies the definition of Genesis Capital, 5) defines the Capped SKY Oracle Wrapper, 6) allows direct investment in Pendle PTs, 7) implements Equivalent Loss Framework for real world assets, 8) increases Required Risk Capital for Superstate, 9) adds near term logic for Plume, 10) defines the Executive Process.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "keel",
+        "weekly",
+        "oracle",
+        "technical",
+        "real-world-assets",
+        "misc-governance",
+        "endgame"
+      ]
+    },
+    {
+      "pollId": 1597,
+      "startDate": "2025-09-29T16:00:00.000Z",
+      "endDate": "2025-10-02T16:00:00.000Z",
+      "multiHash": "QmcuRr3cshczF3JQNqge6QewbhEMgCbQNLsjq5uNGn9WBa",
+      "slug": "QmcuRr3c",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-29-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-09-29/27222",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - September 29, 2025",
+      "summary": "This Atlas edit 1) develops Risk Framework for Real World Assets, 2) authorizes Genesis Agent Backstop, 3) adds timeline for Primes to submit Atlas Edit requests, 4) authorizes Core GovOps review of Agent Artifacts, 5) authorizes transfer to Spark Foundation, 6) defines role of Spark Assets Foundation, 7) authorizes sweep of Spark profits from the Spark Liquidity Layer, 8) updates terminology in the Atlas to reflect Executor Agents, 9) improves language in the GSM Pause Delay exceptions.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "spark",
+        "weekly",
+        "real-world-assets",
+        "misc-governance",
+        "endgame"
+      ]
+    },
+    {
+      "pollId": 1585,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmNnPRX7wvbeemrWkzfZWZ8NysVgEp9GdgZHfDMtFpYGfH",
+      "slug": "QmNnPRX7",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-Atlas-edit-weekly-cycle-proposal.md",
+      "discussionLink": "https://forum.sky.money/t/atlas-edit-weekly-cycle-proposal-week-of-2025-09-22/27188",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "and",
+            "conditions": [
+              {
+                "type": "plurality"
+              },
+              {
+                "type": "comparison",
+                "comparator": ">=",
+                "value": 480000000
+              }
+            ]
+          },
+          {
+            "type": "default",
+            "value": 2
+          }
+        ]
+      },
+      "title": "Atlas Edit Weekly Cycle Proposal - September 22, 2025",
+      "summary": "This Atlas edit 1) updated near-term logic regarding perpetual exposures, 2) adds the Ecosystem Dispute Resolution process, 3) corrects a typographical error.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "weekly",
+        "misc-governance",
+        "endgame"
+      ]
+    },
+    {
+      "pollId": 1586,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmUn84agoKvXwgCBRFZzoGinnUWwxq27jtg1rxS2f49dti",
+      "slug": "QmUn84ag",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-launch-spark-savings-v2.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "Spark Savings Mainnet - Launch Savings v2 Vaults for USDC, USDT, and ETH - September 22, 2025",
+      "summary": "Signal your support or opposition to launching Spark Savings v2 vaults for USDC, USDT, and ETH.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "spark",
+        "technical"
+      ]
+    },
+    {
+      "pollId": 1587,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmSaMJWy5b2VG8ehForTY7dgDdAu7TWibarNLuxHc4xbjm",
+      "slug": "QmSaMJWy",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-sll-mainnet-add-transferasset-rate-limit-for-syrup.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "Spark Liquidity Layer Mainnet - Add transferAsset Rate Limit for SYRUP - September 22, 2025",
+      "summary": "Signal your support or opposition to adding a transferAsset rate limit for SYRUP in the Spark Liquidity Layer on mainnet.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "medium-impact",
+        "risk-parameter",
+        "spark"
+      ]
+    },
+    {
+      "pollId": 1588,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmdY24CmVtuBtxBTC9VYRTpnWwakgT3yxty17ru2v8K2Fx",
+      "slug": "QmdY24Cm",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-sll-mainnet-claim-aave-core-ausds-rewards.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "Spark Liquidity Layer Mainnet - Claim Aave Core aUSDS Rewards - September 22, 2025",
+      "summary": "Signal your support or opposition to claiming Aave Core aUSDS rewards for the Spark Liquidity Layer on mainnet.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "low-impact",
+        "spark",
+        "misc-funding"
+      ]
+    },
+    {
+      "pollId": 1589,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmTNrfXkmwSHgbpRTT4nyWfCHyMs6pdCFHNCXULN9V47t8",
+      "slug": "QmTNrfXk",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-sll-mainnet-onboard-b2c2-penny-for-otc-services.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "Spark Liquidity Layer Mainnet - Onboard B2C2 Penny for OTC Services - September 22, 2025",
+      "summary": "Signal your support or opposition to onboarding B2C2 Penny to provide OTC services for the Spark Liquidity Layer on mainnet.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "spark"
+      ]
+    },
+    {
+      "pollId": 1590,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmREvn1iRvAwSq6a2zuVwGJK3vSHtJEXJsNXE8vgAGzAG9",
+      "slug": "QmREvn1i",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-sll-mainnet-onboard-speth.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "Spark Liquidity Layer Mainnet - Onboard SparkLend ETH - September 22, 2025",
+      "summary": "Signal your support or opposition to onboarding SparkLend ETH to the Spark Liquidity Layer on mainnet.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "risk-parameter",
+        "spark",
+        "collateral-onboard",
+        "technical"
+      ]
+    },
+    {
+      "pollId": 1591,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmerdKkX656MqBMGZi4diqXnBuziTVNxAyc7DNowUkq8Qx",
+      "slug": "QmerdKkX",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-spark-spk-staking-configure-symbiotic.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "Spark Mainnet - SPK Staking - Configure Symbiotic Instance - September 22, 2025",
+      "summary": "Signal your support or opposition to configuring the Symbiotic Instance for SPK staking on mainnet.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "high-impact",
+        "spark",
+        "technical"
+      ]
+    },
+    {
+      "pollId": 1592,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmXYRjmQb5Cc5ABL5FgA4dLVySqxL529uroid2pdBZhr6H",
+      "slug": "QmXYRjmQ",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-spark-usds-morpho-increase-ptusde27nov-supply-cap.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "Spark USDS Morpho Vault - Increase PT-USDe-27Nov2025 Supply Cap - September 22, 2025",
+      "summary": "Signal your support or opposition to increasing the PT-USDe-27Nov2025 supply cap.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "medium-impact",
+        "risk-parameter",
+        "spark"
+      ]
+    },
+    {
+      "pollId": 1593,
+      "startDate": "2025-09-22T16:00:00.000Z",
+      "endDate": "2025-09-25T16:00:00.000Z",
+      "multiHash": "QmeKTbg6ZjgK7g4ZYshxReNme2NKvEzHWTJ9qsT9YvasCo",
+      "slug": "QmeKTbg6",
+      "url": "https://raw.githubusercontent.com/sky-ecosystem/polls/refs/heads/main/2025/2025-09-22-sparklend-withdraw-dai-usds-reserves.md",
+      "discussionLink": "https://forum.sky.money/t/october-2-2025-proposed-changes-to-spark-for-upcoming-spell/27191",
+      "type": "single-choice",
+      "parameters": {
+        "inputFormat": {
+          "type": "single-choice",
+          "abstain": [
+            0
+          ],
+          "options": []
+        },
+        "resultDisplay": "single-vote-breakdown",
+        "victoryConditions": [
+          {
+            "type": "plurality"
+          }
+        ]
+      },
+      "title": "SparkLend Mainnet - Withdraw USDS and DAI Reserves from SparkLend - September 22, 2025",
+      "summary": "Signal your support or opposition to withdrawing USDS and DAI reserves from SparkLend to the Spark Proxy on mainnet.",
+      "options": {
+        "0": "Abstain",
+        "1": "Yes",
+        "2": "No"
+      },
+      "tags": [
+        "low-impact",
+        "spark",
+        "misc-funding"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "id": "collateral-offboard",
+      "shortname": "Collateral Off",
+      "longname": "Collateral Offboarding",
+      "recommend_ui": true,
+      "description": "Polls relating to the offboarding of collateral from the Sky Protocol or its Stars",
+      "precedence": 17,
+      "count": 1
+    },
+    {
+      "id": "collateral-onboard",
+      "shortname": "Collateral On",
+      "longname": "Collateral Onboarding",
+      "recommend_ui": true,
+      "description": "Polls relating to the onboarding of collateral into the Sky Protocol or its Stars",
+      "precedence": 10,
+      "count": 28
+    },
+    {
+      "id": "dao-resolution",
+      "shortname": "DAO Resolution",
+      "longname": "DAO Resolution",
+      "recommend_ui": true,
+      "description": "Polls relating to DAO Resolutions for agreements relating to the Sky Protocol or its Stars",
+      "precedence": 18,
+      "count": 8
+    },
+    {
+      "id": "delegates",
+      "shortname": "Delegates",
+      "longname": "Delegates",
+      "recommend_ui": true,
+      "description": "Polls relating to Sky Protocol's Aligned Delegates",
+      "related_link": "https://sky-atlas.powerhouse.io/A.1.5_Aligned_Delegates/4addc93d-996d-408e-9750-b9c39743af4e|0db3",
+      "precedence": 19,
+      "count": 3
+    },
+    {
+      "id": "ddm",
+      "shortname": "DDM",
+      "longname": "Direct Deposit Module",
+      "recommend_ui": true,
+      "description": "Polls relating to changes to, or onboarding of, Direct Deposit Modules in the Sky Protocol or its Stars",
+      "precedence": 23,
+      "count": 2
+    },
+    {
+      "id": "endgame",
+      "shortname": "Endgame",
+      "longname": "Endgame",
+      "recommend_ui": true,
+      "description": "Polls relating to the Endgame Plan",
+      "precedence": 27,
+      "count": 28
+    },
+    {
+      "id": "grove",
+      "shortname": "Grove",
+      "longname": "Grove Star",
+      "recommend_ui": true,
+      "description": "Polls related to the Grove Star",
+      "related_link": "https://www.grove.finance",
+      "precedence": 7,
+      "count": 25
+    },
+    {
+      "id": "high-impact",
+      "shortname": "High Impact",
+      "longname": "High Impact",
+      "recommend_ui": true,
+      "description": "Polls that the Governance Facilitators have judged high impact",
+      "related_link": "https://forum.sky.money/t/introducing-impact-estimations/14267",
+      "precedence": 1,
+      "count": 75
+    },
+    {
+      "id": "keel",
+      "shortname": "Keel",
+      "longname": "Keel Star",
+      "recommend_ui": true,
+      "description": "Polls related to the Keel Star",
+      "precedence": 8,
+      "count": 4
+    },
+    {
+      "id": "low-impact",
+      "shortname": "Low Impact",
+      "longname": "Low Impact",
+      "recommend_ui": true,
+      "description": "Polls that the Governance Facilitators have judged low impact",
+      "related_link": "https://forum.sky.money/t/introducing-impact-estimations/14267",
+      "precedence": 16,
+      "count": 8
+    },
+    {
+      "id": "medium-impact",
+      "shortname": "Med Impact",
+      "longname": "Medium Impact",
+      "recommend_ui": true,
+      "description": "Polls that the Governance Facilitators have judged medium impact",
+      "related_link": "https://forum.sky.money/t/introducing-impact-estimations/14267",
+      "precedence": 12,
+      "count": 21
+    },
+    {
+      "id": "misc-funding",
+      "shortname": "Misc Fund",
+      "longname": "Misc Funding",
+      "recommend_ui": true,
+      "description": "Polls relating to miscellaneous funding proposals",
+      "precedence": 25,
+      "count": 11
+    },
+    {
+      "id": "misc-governance",
+      "shortname": "Misc Gov",
+      "longname": "Misc Governance",
+      "recommend_ui": true,
+      "description": "Miscellaneous Polls relating to Governance",
+      "precedence": 26,
+      "count": 25
+    },
+    {
+      "id": "monthly",
+      "shortname": "Monthly",
+      "longname": "Monthly Atlas Edit",
+      "recommend_ui": true,
+      "description": "Polls relating to Atlas Edit Proposals (AEPs) through the Atlas Edit Monthly Cycle",
+      "related_link": "https://sky-atlas.powerhouse.io/A.1.11.2_Atlas_Edit_Monthly_Cycle/430185a5-fa5d-4664-89cf-21c9e6cfc109|0db3326e",
+      "precedence": 5,
+      "count": 1
+    },
+    {
+      "id": "bridge",
+      "shortname": "Bridge",
+      "longname": "Multi-Chain Bridge",
+      "recommend_ui": true,
+      "description": "Polls relating to the bridging of USDS, SKY, and/or the Sky Protocol or its Stars to other chains",
+      "precedence": 15,
+      "count": 7
+    },
+    {
+      "id": "obex",
+      "shortname": "Obex",
+      "longname": "Obex",
+      "recommend_ui": true,
+      "description": "Polls related to the Obex Institutional Prime",
+      "precedence": 9,
+      "count": 1
+    },
+    {
+      "id": "oracle",
+      "shortname": "Oracle",
+      "longname": "Oracle",
+      "recommend_ui": true,
+      "description": "Polls concerning Oracles used by the Sky Protocol or its Stars",
+      "precedence": 11,
+      "count": 1
+    },
+    {
+      "id": "psm",
+      "shortname": "PSM",
+      "longname": "Peg Stability Module",
+      "recommend_ui": true,
+      "description": "Polls relating to changes to, or onboarding of, Peg Stability Modules in the Sky Protocol or its Stars",
+      "related_link": "https://sky-atlas.powerhouse.io/A.3.4.2.7.1_Peg_Stability_Module/1b2f2ff0-8d73-80f4-a8bf-e0a9e05f52a3|57eaaad19a16b74d",
+      "precedence": 24,
+      "count": 2
+    },
+    {
+      "id": "real-world-assets",
+      "shortname": "RWA",
+      "longname": "Real World Asset",
+      "recommend_ui": true,
+      "description": "Polls relating to Real World Assets in the Sky Protocol or its Stars",
+      "precedence": 13,
+      "count": 19
+    },
+    {
+      "id": "risk-parameter",
+      "shortname": "Parameter",
+      "longname": "Risk Parameter",
+      "recommend_ui": true,
+      "description": "Polls that change risk parameters within the Sky Protocol or its Stars",
+      "precedence": 2,
+      "count": 53
+    },
+    {
+      "id": "spark",
+      "shortname": "Spark",
+      "longname": "Spark Star",
+      "recommend_ui": true,
+      "description": "Polls related to the Spark Star",
+      "related_link": "https://spark.fi",
+      "precedence": 6,
+      "count": 65
+    },
+    {
+      "id": "surplus",
+      "shortname": "Surplus",
+      "longname": "System Surplus",
+      "recommend_ui": true,
+      "description": "Changes to the System Surplus Buffer",
+      "related_link": "https://sky-atlas.powerhouse.io/A.3.6.1_Surplus_Buffer/11af2ff0-8d73-806a-afb0-ca38393197d3|57ea2c54",
+      "precedence": 14,
+      "count": 4
+    },
+    {
+      "id": "technical",
+      "shortname": "Tech",
+      "longname": "Technical",
+      "recommend_ui": true,
+      "description": "Polls relating to technical changes to the Sky Protocol or its Stars",
+      "precedence": 3,
+      "count": 25
+    },
+    {
+      "id": "weekly",
+      "shortname": "Weekly",
+      "longname": "Weekly Atlas Edit",
+      "recommend_ui": true,
+      "description": "Polls relating to Atlas Edit Weekly Cycle Proposals",
+      "related_link": "https://sky-atlas.powerhouse.io/A.1.10.2_Atlas_Edit_Weekly_Cycle/4a8ad9ad-5c5d-4994-9b46-f04c0e61ce59|0db30308",
+      "precedence": 4,
+      "count": 28
+    }
+  ]
+}

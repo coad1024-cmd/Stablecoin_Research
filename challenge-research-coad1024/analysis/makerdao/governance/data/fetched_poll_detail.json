@@ -1,0 +1,209 @@
+{
+  "parameters": {
+    "inputFormat": {
+      "type": "single-choice",
+      "abstain": [
+        0
+      ],
+      "options": []
+    },
+    "resultDisplay": "single-vote-breakdown",
+    "victoryConditions": [
+      {
+        "type": "and",
+        "conditions": [
+          {
+            "type": "plurality"
+          },
+          {
+            "type": "comparison",
+            "comparator": ">=",
+            "value": 20000
+          }
+        ]
+      },
+      {
+        "type": "default",
+        "value": 2
+      }
+    ]
+  },
+  "winner": 1,
+  "victoryConditionMatched": 0,
+  "numVoters": 12,
+  "totalMkrParticipation": "134055003070982852629491",
+  "totalMkrActiveParticipation": "134055003070982852629491",
+  "winningOptionName": "Yes",
+  "results": [
+    {
+      "optionId": 1,
+      "winner": true,
+      "mkrSupport": "134055003070982852629491",
+      "optionName": "Yes",
+      "firstPct": 100,
+      "transferPct": 0
+    },
+    {
+      "optionId": 0,
+      "winner": false,
+      "mkrSupport": "0",
+      "optionName": "Abstain",
+      "firstPct": 0,
+      "transferPct": 0
+    },
+    {
+      "optionId": 2,
+      "winner": false,
+      "mkrSupport": "0",
+      "optionName": "No",
+      "firstPct": 0,
+      "transferPct": 0
+    }
+  ],
+  "votesByAddress": [
+    {
+      "voter": "0xe1ff7ecf038900dd14a1e7e3a8ccf23f71f6a1c2",
+      "optionIdRaw": "1",
+      "mkrSupport": "72666.291436541784335555",
+      "chainId": 1,
+      "blockTimestamp": "2025-05-13T16:45:11+00:00",
+      "hash": "0xd703a0f178025411c739fa01c53fbc2cb4445b15a751e63280a98d3684e32e00",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0xb02e05c257291acd65a527227aca6b7662e047f4",
+      "optionIdRaw": "1",
+      "mkrSupport": "30034.319619822330322090",
+      "chainId": 42161,
+      "blockTimestamp": "2025-05-13T16:57:01+00:00",
+      "hash": "0x125614f297987ddddc3f784b57fe654515171cc0a62e07a4be9967f597236fda",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0xf1423f5a97940349e105b0d1c860d3dce87e56db",
+      "optionIdRaw": "1",
+      "mkrSupport": "16103.176237880000000000",
+      "chainId": 1,
+      "blockTimestamp": "2025-05-12T18:24:59+00:00",
+      "hash": "0x0a80434f83d0a94e1726f2187c9f878ac901ae0efaa6da25a259241cd976873f",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0x5d4a96afadb5505a8ff21ddeca2baf3a63301396",
+      "optionIdRaw": "1",
+      "mkrSupport": "14054.045965076573831919",
+      "chainId": 42161,
+      "blockTimestamp": "2025-05-14T04:02:38+00:00",
+      "hash": "0x66f382b6827b978c0516987ddb86e70405def06ebe4f8b6d5df37a6466ab0794",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0xcfe1c10b90dc49a063742b6eb29d1bdc7e722aa2",
+      "optionIdRaw": "1",
+      "mkrSupport": "903.381642502997913969",
+      "chainId": 42161,
+      "blockTimestamp": "2025-05-13T09:49:29+00:00",
+      "hash": "0x3af5a2aeaa1e408d75c256a15f1477822d0c913c8a92883cfc0d03d80487b7b3",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0x88252ed60c64925c3cfcb44ed15ba4b343ee1297",
+      "optionIdRaw": "1",
+      "mkrSupport": "117.612986985161272555",
+      "chainId": 42161,
+      "blockTimestamp": "2025-05-12T21:49:35+00:00",
+      "hash": "0x3128f0c4f9107eb621139bbfb1547bb7a571a85091e8380afafdcd7e97908440",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0xf1b837ec2ad556de5490f3fab600afb36670380d",
+      "optionIdRaw": "1",
+      "mkrSupport": "88.675120303606849202",
+      "chainId": 42161,
+      "blockTimestamp": "2025-05-13T13:27:51+00:00",
+      "hash": "0x06a0d6817edb5b049f4422b7fdad2f72c38efddf539a96d2ac181ccae94fb90b",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0xd5515682c4fec4835e36d81fe28264d80602d637",
+      "optionIdRaw": "1",
+      "mkrSupport": "83.789403279225165606",
+      "chainId": 1,
+      "blockTimestamp": "2025-05-13T10:54:47+00:00",
+      "hash": "0x475f4060adc516b230bd75b86486aec250fcaaee4d68f6d3983402805ff5f62c",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0x6276e3d47cce873400d4ba3664bfb4b9c8ece79c",
+      "optionIdRaw": "1",
+      "mkrSupport": "3.380050291172938595",
+      "chainId": 42161,
+      "blockTimestamp": "2025-05-15T03:55:38+00:00",
+      "hash": "0x8ec9eee1b7bd32e2f6b9dd5c75f8b32ec0808f44da28d0867e2cc6aa503bbd7d",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0x015122a625b45f68e6d795c0ab99fc7107e4c3b9",
+      "optionIdRaw": "1",
+      "mkrSupport": "0.204990000000000000",
+      "chainId": 1,
+      "blockTimestamp": "2025-05-15T14:29:35+00:00",
+      "hash": "0x5b22b29d4aecc98f79dc0a075e719caf1af6092f5f4688853ea84d4de82a1128",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0x274829c52bba894d62a4931b46b76cfe0606ac26",
+      "optionIdRaw": "1",
+      "mkrSupport": "0.125618300000000000",
+      "chainId": 42161,
+      "blockTimestamp": "2025-05-12T16:29:31+00:00",
+      "hash": "0x66fb5a7aa897a159c6c1b89afae2eb65fe2d22729f4831f13c37d43107bc4c4d",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    },
+    {
+      "voter": "0xd9feeea9408ad561d4d5a0694d2a397ef399120b",
+      "optionIdRaw": "1",
+      "mkrSupport": "0.000000000000000000",
+      "chainId": 1,
+      "blockTimestamp": "2025-05-14T15:59:35+00:00",
+      "hash": "0xc658af5b798429d8851a09b92dcc5fa8d24a9f3d0b19207f5a3259f2a4cc2b47",
+      "ballot": [
+        1
+      ],
+      "pollId": 1246
+    }
+  ]
+}

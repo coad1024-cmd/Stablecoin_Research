@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithmic Stablecoin Attack Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900">Algorithmic Stablecoin Simulator</h1>
+            <p class="text-lg text-gray-600 mt-2">Model and attack a Terra/LUNA-style dual-token stablecoin system.</p>
+        </header>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column: Controls -->
+            <div class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-lg space-y-8">
+                
+                <!-- Initial Parameters -->
+                <div>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-4">1. Initial Conditions</h2>
+                    <div id="params-form" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="ust-price" class="block text-sm font-medium text-gray-700">UST Price</label>
+                                <input type="number" id="ust-price" value="1.00" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                            <div>
+                                <label for="luna-price" class="block text-sm font-medium text-gray-700">LUNA Price</label>
+                                <input type="number" id="luna-price" value="50.00" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                             <div>
+                                <label for="ust-supply" class="block text-sm font-medium text-gray-700">UST Supply</label>
+                                <input type="number" id="ust-supply" value="2000000000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                            <div>
+                                <label for="luna-supply" class="block text-sm font-medium text-gray-700">LUNA Supply</label>
+                                <input type="number" id="luna-supply" value="100000000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                             <div>
+                                <label for="ust-liquidity" class="block text-sm font-medium text-gray-700">UST Pool (USD)</label>
+                                <input type="number" id="ust-liquidity" value="500000000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                            <div>
+                                <label for="luna-liquidity" class="block text-sm font-medium text-gray-700">LUNA Pool (USD)</label>
+                                <input type="number" id="luna-liquidity" value="500000000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="market-depth" class="block text-sm font-medium text-gray-700">Market Depth (α)</label>
+                            <select id="market-depth" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                <option value="moderate" selected>Moderate (Medium α)</option>
+                                <option value="shallow">Shallow (High α)</option>
+                                <option value="deep">Deep (Low α)</option>
+                            </select>
+                        </div>
+                         <button id="start-sim-btn" class="w-full bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition">Start Simulation</button>
+                    </div>
+                </div>
+
+                <!-- Simulation Controls -->
+                <div>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-4">2. Simulation Controls</h2>
+                    <div class="flex items-center justify-between space-x-4">
+                        <div class="flex space-x-2">
+                             <button id="pause-resume-btn" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 transition" disabled>Pause</button>
+                             <button id="reset-btn" class="bg-gray-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-gray-600 transition">Reset</button>
+                        </div>
+                        <div class="flex-grow">
+                             <label for="speed-slider" class="block text-sm font-medium text-gray-700 text-center">Speed: <span id="speed-value">10</span> steps/sec</label>
+                            <input id="speed-slider" type="range" min="1" max="100" value="10" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attack Simulation -->
+                <div>
+                    <h2 class="text-2xl font-bold border-b pb-2 mb-4">3. Launch Attack</h2>
+                     <div class="space-y-3">
+                        <label for="attack-size" class="block text-sm font-medium text-gray-700">Attack Size (Sell UST)</label>
+                        <input type="number" id="attack-size" value="100000000" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <button id="attack-btn" class="w-full bg-red-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-red-700 transition" disabled>Execute Attack</button>
+                        <div id="attack-cost-info" class="text-sm text-center text-gray-600 h-5"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Column: Dashboard & Charts -->
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl shadow-lg space-y-6">
+                <!-- Key Metrics -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-4">Live System Metrics</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
+                        <div class="bg-gray-50 p-4 rounded-lg metric-card">
+                            <h3 class="text-sm font-medium text-gray-500">UST Price</h3>
+                            <p id="metric-ust-price" class="text-2xl font-semibold mt-1">$1.0000</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg metric-card">
+                            <h3 class="text-sm font-medium text-gray-500">LUNA Price</h3>
+                            <p id="metric-luna-price" class="text-2xl font-semibold mt-1">$50.00</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg metric-card">
+                            <h3 class="text-sm font-medium text-gray-500">Backing Ratio</h3>
+                            <p id="metric-backing-ratio" class="text-2xl font-semibold mt-1">2.50x</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg metric-card">
+                            <h3 class="text-sm font-medium text-gray-500">Peg Status</h3>
+                            <p id="metric-peg-status" class="text-2xl font-semibold mt-1 peg-stable">Stable</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg metric-card">
+                            <h3 class="text-sm font-medium text-gray-500">Attacker Net PNL</h3>
+                            <p id="metric-net-pnl" class="text-2xl font-semibold mt-1">$0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div>
+                    <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-center mb-2">UST Price Peg</h3>
+                            <div class="chart-container"><canvas id="ustChart"></canvas></div>
+                        </div>
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold text-center mb-2">LUNA Collateral Price</h3>
+                                <div class="chart-container"><canvas id="lunaChart"></canvas></div>
+                            </div>
+                    </div>
+                     <div class="mt-6 bg-gray-50 p-4 rounded-lg">
+                        <h3 class="text-lg font-semibold text-center mb-2">System Supplies (Log Scale)</h3>
+                        <div class="chart-container"><canvas id="supplyChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW: Simulation Log -->
+        <div class="mt-8 bg-white p-6 rounded-2xl shadow-lg">
+            <div class="flex justify-between items-center border-b pb-2 mb-4">
+                <h2 class="text-2xl font-bold">Simulation Log</h2>
+                <button id="download-log-btn" class="bg-green-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-green-700 transition">Download Log (CSV)</button>
+            </div>
+            <div class="table-container">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Run</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Market Depth</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attack Size</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Attack Cost</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Final PNL</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Peg Status</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Final UST Price</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Final LUNA Price</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-table-body" class="bg-white divide-y divide-gray-200">
+                        <!-- Log rows will be inserted here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Modules -->
+    <script src="core.js"></script>
+    <script src="charts.js"></script>
+    <script src="simulation.js"></script>
+    <script src="ui.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,4 @@
+asset,amount_usd,share_pct,custodian,type
+USDC-A,100000000,20.5,Coinbase,RWA
+WBTC-A,50000000,10.2,BitGo,Crypto
+RWA-001,20000000,4.1,Monetalis,RWA

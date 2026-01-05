@@ -1,0 +1,16 @@
+TERRA FORENSICS REPORT (HEADLESS MODE)
+======================================
+
+1. ABSORBER CAPACITY FORENSICS
+------------------------------
+Days with Nominal Insolvency (Ratio < 1): 7
+Days with Stressed Insolvency (Ratio < 1): 135
+
+2. ANCHOR SUBSIDY BURNOUT
+-------------------------
+Total Theoretical Subsidy Cost (Jan-May): $753,616,438.36
+
+3. LFG RESERVE ADEQUACY
+-----------------------
+Peak Reserve Coverage Ratio: 14.99%
+Verdict: NEVER EXCEEDED 20% THRESHOLD

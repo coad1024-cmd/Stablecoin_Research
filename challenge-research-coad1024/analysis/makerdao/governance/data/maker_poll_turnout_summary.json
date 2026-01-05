@@ -1,0 +1,14 @@
+{
+  "TOTAL_MKR_SUPPLY_used": 872290.0,
+  "n_polls": 50,
+  "avg_turnout_pct": 15.779739349633141,
+  "median_turnout_pct": 15.374367918224898,
+  "max_turnout_pct": 22.054848924840638,
+  "min_turnout_pct": 15.361272528872478,
+  "pct_polls_below_1pct": 0.0,
+  "pct_polls_below_5pct": 0.0,
+  "mean_top_delegate_share_pct": 52.96636189887697,
+  "median_top_delegate_share_pct": 54.17901204127327,
+  "polls_with_anomalies_count": 0,
+  "polls_with_anomalies": []
+}
