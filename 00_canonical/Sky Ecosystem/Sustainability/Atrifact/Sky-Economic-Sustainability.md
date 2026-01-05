@@ -8,7 +8,7 @@
 
 ## Abstract
 
-This paper provides a critical economic analysis of the Sky Ecosystem's transition from a crypto-native stablecoin protocol to a hybrid "Shadow Banking" entity. While the integration of Real-World Assets (RWAs) has stabilized the peg effectively, it has introduced a fundamental inversion in the protocol's unit economics. We demonstrate that the shift to a **Net Interest Margin (NIM)** business model has created a dependency on exogenous interest rate regimes, specifically the spread between US Treasuries and DeFi yield expectations. This report argues that the current "Endgame" strategy is not merely an optimization but a structural necessity to offset margin compression through massive scale.
+This paper provides a critical economic analysis of the Sky Ecosystem's transition from a crypto-native stablecoin protocol to a hybrid "Shadow Banking" entity ([Gorton & Zhang, 2021](#ref-gorton-zhang)). While the integration of Real-World Assets (RWAs) has stabilized the peg effectively, it has introduced a fundamental inversion in the protocol's unit economics. We demonstrate that the shift to a **Net Interest Margin (NIM)** business model has created a dependency on exogenous interest rate regimes, specifically the spread between US Treasuries and DeFi yield expectations. This report argues that the current "Endgame" strategy is not merely an optimization but a structural necessity to offset margin compression through massive scale.
 
 > [!IMPORTANT]
 > **Critical Lens**: This analysis challenges the assumption that "backed" equals "sustainable." It highlights the existential risks posed by regulatory capture vectors (Loop 1) and the fragility of the Net Interest Margin under contracting rate environments.
@@ -52,7 +52,7 @@ Unlike a monopoly protocol, Sky is now a price-taker availability. To retain Tot
 
 ### 2.3 Empirical Verification (January 2026)
 
-To validate the "Shadow Bank" thesis, we compiled on-chain metrics as of January 2026.
+To validate the "Shadow Bank" thesis, we compiled on-chain metrics as of January 2026 ([Sky Protocol Mainnet, 2026](#ref-data-sky-vow)).
 
 | Metric | Value | Source | Implications |
 | :--- | :--- | :--- | :--- |
@@ -99,7 +99,7 @@ The issuance of SubDAO tokens (e.g., Spark) effectively functions as a "Customer
 
 ## 4. Formal Regime Analysis: Exogenous Rate Dependence
 
-Applying the Klages-Mundt stability framework reveals a critical vulnerability to macroeconomic shifts.
+Applying the Klages-Mundt stability framework ([Klages-Mundt et al., 2020](#ref-klages-stability)) reveals a critical vulnerability to macroeconomic shifts.
 
 ### 4.1 The Unstable Domain
 
@@ -168,3 +168,15 @@ The transformation of MakerDAO into Sky represents a pragmatic acceptance of mar
 *   [← Part I: Backing Mechanism (The Architecture)](../Backing%20Mechanism/Drafts/Sky-Backing-Mechanism.md)
 *   **Part II: Economic Sustainability (The Audit)** (You are here)
 *   [Part III: Decentralization Risk (The Governance)](../Decentralization/Drafts/Decentralization-Risk.md) (Coming Soon)
+
+---
+
+## References
+
+<span id="ref-makerdao-whitepaper"></span>MakerDAO. (2017). *[The Maker Protocol: MakerDAO's Multi-Collateral Dai (MCD) System](https://makerdao.com/en/whitepaper/)*. Technical Whitepaper.
+
+<span id="ref-gorton-zhang"></span>Gorton, G., & Zhang, J. (2021). *[Taming Wildcat Stablecoins](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3888752)*. SSRN Electronic Journal.
+
+<span id="ref-klages-stability"></span>Klages-Mundt, A., Harz, D., Gudgeon, L., Liu, J.-Y., & Minca, A. (2020). *[While Stability Lasts: A Stochastic Model of Non-Custodial Stablecoins](https://arxiv.org/abs/2004.01304)*. arXiv:2004.01304 [q-fin.MF].
+
+<span id="ref-data-sky-vow"></span>Sky Protocol Mainnet. (2026). *Vow Contract Balance Query*. Retrieved Jan 5, 2026 via `pipeline/scripts/data_fetchers/fetch_makerdao_data.py`. Contract: `0xA950524441892A31ebddF91d3cEEfa04Bf454466`.

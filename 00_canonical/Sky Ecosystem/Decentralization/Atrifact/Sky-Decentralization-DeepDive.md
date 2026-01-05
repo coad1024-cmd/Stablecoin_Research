@@ -9,7 +9,7 @@
 
 ## 1. Executive Summary
 
-This report applies the **Stablecoin Decentralization Assessment Framework (v3.0)** to the Sky Ecosystem (formerly MakerDAO). The analysis reveals a stark dichotomy: while the protocol has achieved impressive **Operational Decentralization** (diverse liquidators, robust oracles), it exhibits critical centralization in its **Governance** and **Collateral** layers.
+This report applies the **Stablecoin Decentralization Assessment Framework (v3.0)** to the Sky Ecosystem (formerly MakerDAO) ([Internal Research, 2026](#ref-decentralization-framework)). The analysis reveals a stark dichotomy: while the protocol has achieved impressive **Operational Decentralization** (diverse liquidators, robust oracles), it exhibits critical centralization in its **Governance** and **Collateral** layers.
 
 **Final Composite Score:** **0.50 (Effectively Centralized)**
 
@@ -42,7 +42,7 @@ If any single dimension falls into the **RED (Centralized)** zone, the total sco
 Governance is the ultimate root of trust. In Sky, this root has narrowed to a singular point of failure.
 
 ### Data Findings
-*   **Token Distribution:** The Gini coefficient for MKR is **0.988**, indicating wealth inequality surpasses that of Bitcoin (0.88) and most nation-states.
+*   **Token Distribution:** The Gini coefficient for MKR is **0.988**, indicating wealth inequality surpasses that of Bitcoin (0.88) and most nation-states ([Sky Protocol Mainnet, 2026](#ref-data-sky-vow)).
 *   **Effective Control (Delegation):** While "token holding" is concentrated, "voting power" is even worse due to delegation.
     *   **Top 1 Delegate:** Controls **86.5%** of active voting weight (`0x1678...`).
     *   **Top 5 Delegates:** Control **99.2%** of voting weight.
@@ -71,7 +71,7 @@ Collateral decentralization evaluates whether the backing can be seized.
     *   **Crypto Native (ETH/WBTC):** ~$1.55B (**29%**).
 
 ### Implication
-The protocol violates the **Basel III Single-Counterparty Limit** (25%). With >40% of its balance sheet dependent on a single legal nexus (Circle/Coinbase), Sky imports the regulatory censorship set of the United States.
+The protocol violates the **Basel III Single-Counterparty Limit** (25%) ([Basel Committee, 2019](#ref-basel-framework)). With >40% of its balance sheet dependent on a single legal nexus (Circle/Coinbase), Sky imports the regulatory censorship set of the United States.
 
 > **Stress Test Result (USDC Freeze):** If Circle blacklists the Sky operational vaults (e.g., PSM), **42% of the diverse backing becomes worthless instantly**.
 > *   **Solvency Impact:** DAI drops to ~$0.58.
@@ -142,3 +142,13 @@ To reclaim the "Decentralized" label, Sky must:
 
 **Calculated D-Score:** 0.56  
 **Final D-Score (Capped):** 0.50
+
+---
+
+## References
+
+<span id="ref-decentralization-framework"></span>Internal Research. (2026). *[Stablecoin Decentralization Framework](../01_frameworks/Stablecoin-Decentralization-Framework.md)*. Methodological Framework.
+
+<span id="ref-data-sky-vow"></span>Sky Protocol Mainnet. (2026). *Vow Contract Balance Query*. Retrieved Jan 5, 2026 via `pipeline/scripts/data_fetchers/fetch_makerdao_data.py`. Contract: `0xA950524441892A31ebddF91d3cEEfa04Bf454466`.
+
+<span id="ref-basel-framework"></span>Basel Committee on Banking Supervision. (2019). *[The Basel Framework: Liquidity Coverage Ratio](https://www.bis.org/basel_framework/standard/LCR.htm)*. Bank for International Settlements.

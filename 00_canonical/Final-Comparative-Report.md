@@ -9,7 +9,7 @@
 
 ## 1. Executive Verdict: The Three Species
 
-The stablecoin landscape is no longer a binary choice between "Centralized" and "Decentralized". Our analysis reveals three distinct architectural species, each optimizing for a specific vertex of the **Impossible Trinity**.
+The stablecoin landscape is no longer a binary choice between "Centralized" and "Decentralized". Our analysis reveals three distinct architectural species, each optimizing for a specific vertex of the **Impossible Trinity** ([Catalini & de Gortari, 2021](#ref-catalini-degortari)).
 
 | Feature | **Sky Ecosystem** (The Bank) | **Liquity V1** (The Vault) | **Liquity V2** (The Hybrid) |
 |:---|:---|:---|:---|
@@ -33,7 +33,8 @@ The stablecoin landscape is no longer a binary choice between "Centralized" and 
 **Question:** *Can the protocol survive in a high-rate environment?*
 
 ### Sky Ecosystem: The Profit Machine
-*   **Mechanism:** Active Treasury Management. Sky captures the spread between RWA yields (5%) and DSR (1.25%).
+*   **Mechanism:** Active Treasury Management. Sky captures the spread between RWA yields (~3.63%) and DSR (1.25%).
+*   **Ecosystem Size:** **$10.62B** (On-chain verified, Block 24,171,462)
 *   **Result:** Massive surplus ($60M+) and ability to vote-buy growth.
 *   **Verdict:** **Resilient.** It acts like a sovereign wealth fund.
 
@@ -57,9 +58,9 @@ The stablecoin landscape is no longer a binary choice between "Centralized" and 
 *Figure 1: The Hierarchy of Trust. Sky (Red) relies on legal trust. Liquity V2 (Orange) relies on LST trust. Liquity V1 (Green) relies on Math.*
 
 ### Sky Ecosystem: Effectively Centralized
-*   **Governance:** Top-1 delegate holds 86% of voting power.
-*   **Collateral:** 42% USDC. Circle can freeze the protocol instantly.
-*   **Verdict:** Sky is a "Crypto-Wrapped Bank". It is not sovereign.
+*   **Governance:** Top-1 delegate holds 86% of voting power ([Internal Research, 2026](#ref-sky-decentralization)).
+*   **Collateral:** **37.6% USDC** ($3.99B in PSM Pocket). On-chain verified.
+*   **Verdict:** Sky is a "Crypto-Wrapped Bank". Moderate counterparty risk.
 
 ### Liquity V1: The Platinum Standard
 *   **Governance:** 0 Admin Keys. 0 Governance Votes.
@@ -109,15 +110,28 @@ Decentralization (Safety)
 | **Sophisticated User** | **Liquity V2 (BOLD)** | High yield potential, but requires monitoring LST risks. |
 
 ### The Future
-The industry is bifurcating. Sky is merging with Traditional Finance (TradFi). Liquity is retracting into "Hyper-DeFi". V2 is the bridge attempt. **We recommend maintaining exposure to distinct species to hedge regulatory vs. economic risks.**
+The industry is bifurcating. Sky is merging with Traditional Finance (TradFi) ([FSB, 2023](#ref-fsb-cryptoassets)). Liquity is retracting into "Hyper-DeFi". V2 is the bridge attempt ([Liquity, 2025](#ref-liquity-v2-docs)). **We recommend maintaining exposure to distinct species to hedge regulatory vs. economic risks.**
 
 ---
 
 ### Artifact Index
-See `research/00_canonical/` for verification data.
 *   [Sky Sustainability Profile](../00_canonical/Sky%20Ecosystem/Sustainability/Atrifact/Sky_Sustainability_Profile_Jan2026.md)
 *   [Sky Decentralization Profile](../00_canonical/Sky%20Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md)
 *   [Liquity V1 Sustainability Profile](../00_canonical/Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)
 *   [Liquity V1 Decentralization Profile](../00_canonical/Liquity/01_V1_LUSD/Decentralization/Artifact/Liquity_V1_Decentralization_Profile.md)
 *   [Liquity V2 Economic Resilience](../00_canonical/Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)
 *   [Liquity V2 Decentralization Analysis](../00_canonical/Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)
+
+---
+
+## References
+
+<span id="ref-catalini-degortari"></span>Catalini, C., & de Gortari, A. (2021). *[On the Economic Design of Stablecoins](https://www.nber.org/papers/w29115)*. NBER Working Paper No. 29115.
+
+<span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](../Sky%20Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
+
+<span id="ref-makerdao-whitepaper"></span>MakerDAO. (2017). *[The Maker Protocol: MakerDAO's Multi-Collateral Dai (MCD) System](https://makerdao.com/en/whitepaper/)*. Technical Whitepaper.
+
+<span id="ref-fsb-cryptoassets"></span>Financial Stability Board. (2023). *[Regulatory Framework for Crypto-Assets](https://www.fsb.org/2023/07/imf-fsb-synthesis-paper-policies-for-crypto-assets/)*. FSB Synthesis Paper.
+
+<span id="ref-liquity-v2-docs"></span>Liquity. (2025). *[Liquity V2 Technical Documentation](https://docs.liquity.org/v2/)*. Protocol Documentation.

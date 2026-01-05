@@ -55,16 +55,16 @@
 
 ### Internal Cross-References
 ```html
-<span id="ref-sky-sustainability"></span>Research Team. (2026). *[Sky Economic Sustainability Analysis](Sky%20Ecosystem/Sustainability/Atrifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
+<span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](Sky%20Ecosystem/Sustainability/Atrifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
 
-<span id="ref-liquity-v2-decentralization"></span>Research Team. (2026). *[Liquity V2 Decentralization Analysis](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)*. Canonical Artifact.
+<span id="ref-liquity-v2-decentralization"></span>Internal Research. (2026). *[Liquity V2 Decentralization Analysis](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)*. Canonical Artifact.
 
-<span id="ref-decentralization-framework"></span>Research Team. (2026). *[Stablecoin Decentralization Framework](../01_frameworks/Stablecoin-Decentralization-Framework.md)*. Methodological Framework.
+<span id="ref-decentralization-framework"></span>Internal Research. (2026). *[Stablecoin Decentralization Framework](../01_frameworks/Stablecoin-Decentralization-Framework.md)*. Methodological Framework.
 ```
 
 ### Data Sources
 ```html
-<span id="ref-data-sky-vow"></span>Sky Protocol Mainnet. (2026). *Vow Contract Balance Query*. Retrieved Jan 5, 2026 via `scripts/fetch_maker_data.js`. Contract: `0x...`.
+<span id="ref-data-sky-vow"></span>Sky Protocol Mainnet. (2026). *Vow Contract Balance Query*. Retrieved Jan 5, 2026 via `pipeline/scripts/data_fetchers/fetch_makerdao_data.py`. Contract: `0x...`.
 
 <span id="ref-data-liquity-v2"></span>Liquity V2 Mainnet. (2025). *Trove Snapshot Dataset*. Captured Dec 9, 2025. Source: `analysis/Liquity/data/trove_snapshot_mainnet.csv`.
 
@@ -107,7 +107,7 @@ Sky Ecosystem shows severe governance concentration with a single delegate contr
 
 ### After (With Citations):
 ```markdown
-Sky Ecosystem shows severe governance concentration with a single delegate controlling 86% of voting power ([Research Team, 2026](#ref-sky-decentralization)). This level of plutocratic control is well-documented in governance capture literature ([Catalini & de Gortari, 2021](#ref-catalini-degortari)).
+Sky Ecosystem shows severe governance concentration with a single delegate controlling 86% of voting power ([Internal Research, 2026](#ref-sky-decentralization)). This level of plutocratic control is well-documented in governance capture literature ([Catalini & de Gortari, 2021](#ref-catalini-degortari)).
 ```
 
 ### References Section:
@@ -116,7 +116,7 @@ Sky Ecosystem shows severe governance concentration with a single delegate contr
 
 ## References
 
-<span id="ref-sky-decentralization"></span>Research Team. (2026). *[Sky Decentralization Profile](Sky%20Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
+<span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](Sky%20Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
 
 <span id="ref-catalini-degortari"></span>Catalini, C., & de Gortari, A. (2021). *[On the Economic Design of Stablecoins](https://www.nber.org/papers/w29115)*. NBER Working Paper No. 29115.
 ```

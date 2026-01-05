@@ -8,7 +8,7 @@
 
 ## Abstract
 
-This paper evaluates the censorship resistance and control dynamics of Liquity V2 (BOLD). While Part I established the mechanism's correctness and Part II its economic viability, this final analysis interrogates its **Sovereignty**. We apply the **G-B-O Framework** (Governance, Backing, Operational) to quantify the protocol's resilience against nation-state adversarial vectors. Our findings indicate a "Restricted" governance model (Admin Keys = 0) that significantly mitigates human error, offset by a **Structural Regression** in collateral trustlessness due to the integration of Liquid Staking Tokens (LSTs). We conclude that Liquity V2 **trades "Pure Trustlessness" (V1) for "Scalability"**, introducing meaningful counterparty risks relative to its predecessor.
+This paper evaluates the censorship resistance and control dynamics of Liquity V2 (BOLD). While Part I established the mechanism's correctness and Part II its economic viability, this final analysis interrogates its **Sovereignty**. We apply the **G-B-O Framework** (Governance, Backing, Operational) to quantify the protocol's resilience against nation-state adversarial vectors ([Internally Developed, 2025](#ref-decentralization-framework)). Our findings indicate a "Restricted" governance model (Admin Keys = 0) that significantly mitigates human error, offset by a **Structural Regression** in collateral trustlessness due to the integration of Liquid Staking Tokens (LSTs). We conclude that Liquity V2 **trades "Pure Trustlessness" (V1) for "Scalability"**, introducing meaningful counterparty risks relative to its predecessor.
 
 ---
 
@@ -75,19 +75,19 @@ Unlike MakerDAO, where token holders vote on *parameters* (e.g., "Raise the DSR 
 
 ### 2.2 Power Distribution (Real Mainnet Data)
  
-We analyzed the active voting power based on **Real On-Chain Trove Debt** (Jan 2026 Snapshot).
+We analyzed the active voting power based on **Real On-Chain Trove Debt** (Jan 2026 Snapshot) ([Liquity V2 Mainnet, 2025](#ref-data-liquity-v2)).
  
 *   **Active Voters (Troves):** **3** (Bootstrapping Phase).
 *   **Nakamoto Coefficient:** **1** (Critical Red Flag).
 *   **Gini Coefficient:** **0.30**.
 
 > [!WARNING]
-> **Bootstrapping Centralization**: The protocol currently has only 3 active voting troves. A single entity controls >50% of the vote. This is expected for a new launch but represents a **temporary dictatorship**.
+> **Bootstrapping Centralization**: The protocol currently has only 3 active voting troves. A single entity (Trove ID `1022...0154`) holds **95.4%** of the total debt ($658k of $690k), granting them unilateral control over the average interest rate. This is expected for a new launch but represents a **temporary dictatorship**.
 
-The voting distribution is **Highly Centralized**. While "projected" models estimated a Nakamoto of 4, the live reality is that the protocol is currently controlled by a single whale (likely the team or an early partner).
+The voting distribution is **Highly Centralized**. While "projected" models estimated a Nakamoto of 4, the live reality is that the protocol is currently controlled by a single whale.
 
 ![Voting Power Distribution](../diagrams/voting_distribution.png)
-*Figure 1: Voting Power Distribution. The "Power Law" distribution is evident, with the top 3 delegates holding ~50% of the weight.*
+*Figure 1: Voting Power Distribution. The top borrower controls 95.4% of the weight, resulting in a Nakamoto Coefficient of 1.*
 
 ![Lorenz Curve](../diagrams/lorenz_curve.png)
 *Figure 2: Lorenz Curve of Voting Power. The deviation from the "Line of Equality" visually represents the Gini Coefficient of 0.54.*
@@ -110,7 +110,7 @@ Liquity V1 was backed 100% by native Ether. Liquity V2 introduces Liquid Staking
 
 We analyzed the actual V2 mainnet trove collateral distribution (Dec 2025 snapshot).
  
-*   **Source Data**: Real Trove Snapshot (`../data/collateral_data_v2_real.json`).
+*   **Source Data**: Real Trove Snapshot (`../data/collateral_data_v2_real.json`) ([Liquity V2 Mainnet, 2025](#ref-data-liquity-v2)).
 *   **Measured HHI**: **6,659** (High Concentration - Above 2,500 threshold).
 *   **Critical Finding**: **RETH dominates at 80.16%** of total collateral, creating severe counterparty concentration on Rocket Pool.
 
@@ -146,10 +146,12 @@ We analyzed the actual V2 mainnet trove collateral distribution (Dec 2025 snapsh
 Liquity V2 retains the "Kickback" model. There is no `liquity.com` that facilitates transactions. Instead, a competitive market of third-party frontends hosts the UI.
 
 *   **Benefit**: Robustness. If `DefiSaver` is geoblocked, users can switch to `Instadapp` or `Liquity.App` instantly.
-*   **Projected HHI**: **3,558**. The market is expected to be dominated by a few large aggregators, but the *long tail* remains permissionless.
+*   **Benefit**: Robustness. If `DefiSaver` is geoblocked, users can switch to `Instadapp` or `Liquity.App` instantly.
+*   **Infrastructure Diversity**: **63 Independent Providers** (Legacy V1 Capacity).
+*   **Analysis**: Code analysis of `Liquity/bold` confirms V2 has **removed on-chain frontend registration** (no `frontEndTag`). This eliminates the "Kickback" model, forcing frontends to compete on UX/Swap Fees rather than protocol subsidies. However, the existing V1 network (63 verified providers) ensures a dormant decentralized delivery network exists ([Liquity Frontend Registry, 2026](#ref-frontend-registry)).
 
-![Frontend Market Shares](operational/plots/frontend_shares.png)
-*Figure 5: Frontend Market Share Projection. While large players dominate, the "Long Tail" (43%) ensures access even if top players capitulate to regulation.*
+![Frontend Market Shares](../diagrams/frontend_shares.png)
+*Figure 5: Frontend Market Share (Theoretical Power Law). The distribution relies on the 63 established V1 operators migrating to V2 ([Frontend Registry](#ref-frontend-registry)).*
 
 ### 4.2 Stability Pool Health
 
@@ -161,7 +163,7 @@ The protocol relies on "Keepers" (Liquidators) to maintain solvency. The **Stabi
 - **WETH Pool**: $8.0M (85.51% coverage, 3.19% APY)
 - **rETH Pool**: $2.2M (44.74% coverage, 1.54% APY)
 
-*Source: `../data/operational_stats_v2_real.json`*
+*Source: `../data/operational_stats_v2_real.json` ([Liquity Protocol, 2026](#ref-liquity-api))*
 
 > [!NOTE]
 > **Concentration Analysis (Projected)**: Individual depositor distribution is not publicly available. The projection below assumes whale-heavy concentration typical of DeFi yield pools, with an estimated top provider at ~25% share.
@@ -169,12 +171,29 @@ The protocol relies on "Keepers" (Liquidators) to maintain solvency. The **Stabi
 *   **Risk**: If the Stability Pool is dominated by 1-2 whales, they could theoretically grief the system by withdrawing liquidity just before a crash.
 *   **Projection**: The distribution of liquidity providers follows a healthy decay curve, well within censorship-resistant thresholds.
 
-![Stability Pool Concentration](operational/plots/stability_pool_concentration.png)
+![Stability Pool Concentration](../diagrams/stability_pool_concentration.png)
 *Figure 6: Stability Pool Concentration (Projected Model). The estimated top provider holds ~25%, below the 33% threshold required to unilaterally block automated offset liquidations.*
 
 ---
 
-## 5. Final Scorecard & Conclusion
+## 5. Emergency Response (E)
+ 
+In the event of catastrophic market failure or technical exploit, the protocol's resilience depends on its emergency handling mechanisms.
+ 
+### 5.1 Admin Keys & Pausability
+ 
+*   **Admin Keys**: **0** (Verified). Liquity V2 has no governance multisig capable of pausing the system or freezing funds.
+*   **Pausability**: **None**. The contract logic is immutable and unstoppable.
+*   **Assessment**: **Trustless**. This is the highest standard of security, preventing both internal rug-pulls and external regulatory coercive shutdowns.
+ 
+### 5.2 Oracle Redundancy
+ 
+*   **Primary Oracle**: Chainlink.
+*   **Fallback**: If Chainlink fails or freezes, the system likely defaults to a secondary oracle or freezes specific operations (needs confirmation in `PriceFeed.sol` analysis), but unlike MakerDAO, there is no "Emergency Shutdown Module" triggered by token holders.
+ 
+---
+ 
+## 6. Final Scorecard & Conclusion
 
 We aggregate the findings into the G-B-O Scorecard.
 
@@ -183,9 +202,10 @@ We aggregate the findings into the G-B-O Scorecard.
 
 | Dimension | Rating | Justification |
 | :--- | :--- | :--- |
-| **Governance (G)** | **Platinum** | 0 Admin Keys. Immutability is absolute. The highest standard in DeFi. |
+| **Governance (G)** | **Platinum** | 0 Admin Keys. Ownership renounced at init. Absolute Immutability. |
 | **Backing (B)** | **Silver** | Regression from V1 due to LST inclusion. High HHI concentration risk. |
 | **Operational (O)** | **Gold** | "Headless" frontend model remains the gold standard for access resilience. |
+| **Emergency (E)** | **Platinum** | Unstoppable. No "Pause Button". Note: Trades safety for absolute censorship resistance. |
 
 ### The Verdict: Pragmatic Sovereignty
 
@@ -199,3 +219,15 @@ Across Parts I, II, and III, we find that **Liquity V2** does NOT "solve" the Sc
 ---
 
 *This concludes the Research Series.*
+
+---
+
+## References
+
+<span id="ref-decentralization-framework"></span>Internally Developed, 2025. *[Stablecoin Decentralization Framework](../../../../../01_frameworks/Stablecoin-Decentralization-Framework.md)*. Methodological Framework.
+
+<span id="ref-data-liquity-v2"></span>Liquity V2 Mainnet. (2025). *Trove Snapshot Dataset*. Captured Dec 9, 2025. Source: [trove_snapshot_mainnet.csv](../data/trove_snapshot_mainnet.csv).
+
+<span id="ref-liquity-api"></span>Liquity Protocol. (2026). *[Official V2 Statistics API](https://api.liquity.org/v2/ethereum.json)*. Real-time operational data.
+
+<span id="ref-frontend-registry"></span>Liquity Community. (2026). *[Liquity Frontend Registry](https://github.com/liquity/frontend-registry)*. GitHub Repository. Verified Jan 5, 2026.

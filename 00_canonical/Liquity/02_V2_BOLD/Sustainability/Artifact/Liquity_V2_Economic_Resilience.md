@@ -9,7 +9,7 @@
 
 ## 1. Abstract
 
-This paper analyzes the economic resilience of Liquity, a governance-free stablecoin protocol. While MakerDAO (Sky) evolved into a "Centralized Bank" managing a balance sheet for profit (NIM), Liquity V1 represents a "Public Utility" designed for extreme safety at the cost of capital efficiency. We demonstrate how V1's failure to capture yield in a positive-interest-rate environment necessitated the design of V2 (BOLD), which introduces a user-set interest rate mechanism to restore economic sustainability without compromising censorship resistance.
+This paper analyzes the economic resilience of Liquity, a governance-free stablecoin protocol. While MakerDAO (Sky) evolved into a "Centralized Bank" managing a balance sheet for profit (NIM), Liquity V1 represents a "Public Utility" designed for extreme safety at the cost of capital efficiency ([Liquity, 2021](#ref-liquity-v1-paper)). We demonstrate how V1's failure to capture yield in a positive-interest-rate environment necessitated the design of V2 (BOLD), which introduces a user-set interest rate mechanism to restore economic sustainability without compromising censorship resistance ([Liquity, 2025](#ref-liquity-v2-docs)).
 
 ---
 
@@ -32,7 +32,7 @@ V2 attempts to fix V1 by outsourcing the treasury. However, the mechanism is hos
     *   ![Interest Rate Distribution](../diagrams/interest_rate_distribution.png)
 *   **The Mechanism:** Troves are ordered by Interest Rate. Redemptions hit lowest rate contributors first (LIFO logic inverted to Rate-Logic).
     *   *Validation:* Confirmed by **Chaos Labs Design Review** (Oct 2024). Borrowers effectively bid for "Safety from Redemption".
-    *   *Source:* `resources/Liquity/marker_converted/converted_docs/Liquity V2 Mechanism Desgin Review.md`
+    *   *Source:* `resources/protocols/Liquity/marker_converted/converted_docs/Liquity V2 Mechanism Desgin Review.md` ([Liquity, 2025](#ref-liquity-v2-docs))
 *   **Result (Yield via Pain):** To avoid losing their ETH exposure (redemption), borrowers force themselves to pay the market equilibrium rate ($\rho_t$, often pegged to Aave Borrow APY).
 *   **Sustainability:** This guarantees BOLD yield $\approx$ Market RFR. It fixes the "Dead Asset" problem of LUSD.
 *   **The Reality:** Borrowers want to pay 0%. They only raise rates to avoid **Redemption Risk**.
@@ -90,3 +90,13 @@ Liquity V2 is not a "Holy Grail" but a **Compromise**.
 *   **V1 TCR:** 704% (Hyper-safe).
 *   **Stability Pool Coverage:** 43%.
 *   **Governance Cost:** $0.
+
+---
+
+## References
+
+<span id="ref-liquity-v1-paper"></span>Liquity. (2021). *[Liquity: Decentralized Borrowing Protocol](https://docsend.com/view/bwiczmy)*. Technical Paper.
+
+<span id="ref-liquity-v2-docs"></span>Liquity. (2025). *[Liquity V2 Technical Documentation](https://docs.liquity.org/v2/)*. Protocol Documentation.
+
+<span id="ref-data-liquity-v2"></span>Liquity V2 Mainnet. (2025). *Trove Snapshot Dataset*. Captured Dec 9, 2025. Source: `analysis/Liquity/data/trove_snapshot_mainnet.csv`.

@@ -78,7 +78,7 @@
 
 **Internal Project Reference:**
 ```html
-<span id="ref-sky-sustainability"></span>Research Team. (2026). *[Sky Ecosystem Economic Sustainability Analysis](../Sky%20Ecosystem/Sustainability/Artifact/Sky-Economic-Sustainability.md)*. Project Artifact.
+<span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Ecosystem Economic Sustainability Analysis](../Sky%20Ecosystem/Sustainability/Artifact/Sky-Economic-Sustainability.md)*. Project Artifact.
 ```
 
 **On-Chain Data:**
@@ -117,7 +117,7 @@
 
 ### For On-Chain Verified Data
 ```html
-<span id="ref-data-sky-vow"></span>Ethereum Mainnet. (2026). *Sky Vow Balance Query*. Retrieved via `scripts/fetch_maker_data.js` on Jan 5, 2026. Contract: `0x...`.
+<span id="ref-data-sky-vow"></span>Ethereum Mainnet. (2026). *Sky Vow Balance Query*. Retrieved via `pipeline/scripts/data_fetchers/fetch_makerdao_data.py` on Jan 5, 2026. Contract: `0x...`.
 ```
 
 ### For Snapshot Data
@@ -145,7 +145,7 @@ Sky Ecosystem has high USDC exposure creating centralization risk.
 
 ### Updated Format (With Citation)
 ```markdown
-Sky Ecosystem has high USDC exposure creating centralization risk ([Research Team, 2026](#ref-sky-decentralization)).
+Sky Ecosystem has high USDC exposure creating centralization risk ([Internal Research, 2026](#ref-sky-decentralization)).
 ```
 
 ### Adding Reference Section
@@ -154,7 +154,7 @@ Sky Ecosystem has high USDC exposure creating centralization risk ([Research Tea
 
 ## References
 
-<span id="ref-sky-decentralization"></span>Research Team. (2026). *[Sky Decentralization Profile](../Sky%20Ecosystem/Decentralization/Artifact/Sky_Decentralization_Profile_Jan2026.md)*. Project Artifact.
+<span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](../Sky%20Ecosystem/Decentralization/Artifact/Sky_Decentralization_Profile_Jan2026.md)*. Project Artifact.
 ```
 
 ---
@@ -164,7 +164,7 @@ Sky Ecosystem has high USDC exposure creating centralization risk ([Research Tea
 ```markdown
 # Document Title
 
-**Authors**: Research Team  
+**Authors**: Internal Research  
 **Date**: January 2026  
 
 ---
