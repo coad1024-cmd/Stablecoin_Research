@@ -28,7 +28,7 @@ Before deriving the optimal design, we must explicitly categorize standard stabl
 
 **Design Implication:** We have effectively eliminated liquidation risk and price-based insolvency commitments. However, **Operational and Custodial risks persist**. The resulting design, therefore, must not be viewed as "risk-free" but rather as a system optimized specifically to manage these residual threats.
 
-## 3. The Limit-Case Model: "Zero-Volatility Narrow Bank"
+## 3. The Limit-Case Model: "Zero-Volatility Primary-Market-Only Tokenized Liability"
 
 Under the assumption of rational agents and risk-free reserves, the optimal design is reduced to:
 

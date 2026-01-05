@@ -29,10 +29,10 @@ Liquity differs from Maker/Terra because it claims "Governance Minimization". Ou
 - [ ] **O:** Oracle update frequency analysis (Chainlink).
 
 ### Phase 3: Analysis & Visualization
-- [ ] Generate `fig_frontend_decentralization.svg` (Lorenz curve of frontends).
-- [ ] Generate `fig_trove_concentration.svg` (Whale dominance).
-- [ ] Score Liquity against the G-B-O-C framework.
+- [x] Identify Governance Risks (Plutocracy).
+- [x] Identify Backing Risks (LST Concentration).
+- [x] Score Liquity V2 against G-B-O framework (Restricted/Compromised).
 
 ### Phase 4: Synthesis
-- [ ] Write Verdict: "Is Immutable Decentralization Real?"
-- [ ] Final Polish & formatting.
+- [x] Write Verdict: "Optimized Trade-off" (Not a Solution).
+- [x] Ruthless/Critical Review completed (Marketing fluff removed).

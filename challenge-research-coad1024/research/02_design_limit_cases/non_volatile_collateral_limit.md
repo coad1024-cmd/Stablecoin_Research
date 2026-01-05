@@ -10,7 +10,7 @@
 
 ## Abstract
 
-This paper analyzes the theoretical limit case of stablecoin design in which reserve assets are strictly non-volatile relative to the unit of account and legally enforceable for redemption. Under these assumptions, we show that the stablecoin design space collapses to a degenerate structure equivalent to a **primary-market-only tokenized liability (PMOTL)**, a structure economically equivalent to narrow banking but defined here by issuance topology rather than institutional form. In this limit, mechanisms such as over-collateralization, liquidation engines, algorithmic stabilization, and discretionary governance controls become mathematically redundant. The result is not a novel design proposal, but a boundary condition that serves as a reference baseline against which stablecoin systems backed by volatile collateral must be evaluated. Residual risk is shown to be exclusively operational, legal, and custodial in nature, consistent with prior economic treatments of fully backed money-like liabilities ([The Basel Framework, 2019](#ref-basel-framework); [Cao et al., 2025](#ref-cao)).
+This paper analyzes the theoretical limit case of stablecoin design in which reserve assets are strictly non-volatile relative to the unit of account and legally enforceable for redemption. Under these assumptions, we show that the stablecoin design space collapses to a degenerate structure equivalent to a **primary-market-only tokenized liability (PMOTL)**, a structure economically equivalent to narrow banking but defined here by issuance topology rather than institutional form. In this limit, mechanisms such as over-collateralization, liquidation engines, algorithmic stabilization, and discretionary governance controls become mathematically redundant. The result is not a novel design proposal, but a boundary condition that serves as a reference baseline against which stablecoin systems backed by volatile collateral must be evaluated. Residual risk is shown to be exclusively operational, legal, and custodial in nature, consistent with prior economic treatments of fully backed money-like liabilities ([The Basel Framework, 2019](#ref-basel-framework); [Catalini & de Gortari, 2021](#ref-catalini-degortari)).
 
 ---
 
@@ -50,7 +50,7 @@ This analysis relies on the following assumptions, which are intentionally stron
     >*We treat enforceability as deterministic in this boundary regime; relaxing this assumption reintroduces liquidity timing risk and institutional run dynamics beyond the scope of this analysis.*
 
 3.  **High-Quality Liquid Assets (HQLA)**
-    Reserves can be liquidated at par at scale without price impact under normal market conditions, as assumed in currency-board and reserve-backed models ([The Basel Framework, 2010](#ref-basel-framework)).
+    Reserves can be liquidated at par at scale without price impact under normal market conditions, as assumed in currency-board and reserve-backed models ([The Basel Framework, 2019](#ref-basel-framework)).
 
 4.  **Atomic Mint/Burn Operations**
     Stablecoin issuance and redemption are fully collateralized and settled atomically.
@@ -79,7 +79,7 @@ _Risk classification under volatile and non-volatile collateral regimes. Price-d
     Eliminated by definition ($\sigma^2 = 0$).
 
 3.  **Endogenous Reflexive Risk (“Death Spirals”)**
-    Eliminated because collateral value is exogenous to protocol success and cannot be diluted or reflexively impaired, unlike algorithmic designs with endogenous backing ([Cao et al., 2025](#ref-cao)).
+    Eliminated because collateral value is exogenous to protocol success and cannot be diluted or reflexively impaired, unlike algorithmic designs with endogenous backing ([Klages-Mundt et al., 2022](#ref-klages)).
 
 4.  **Price-Driven Liquidity Risk**
     Eliminated insofar as reserve liquidation does not introduce price impact or solvency impairment.
@@ -109,22 +109,23 @@ Let:
 
 *   $S$ = stablecoin supply
 *   $A$ = market value of reserve assets
-*   $L = S$ = stablecoin liabilities
+*   $L = S$ = senior liabilities (stablecoins)
+*   $\epsilon$ = junior capital buffer (equity)
 
-In standard models, $A(t)$ is stochastic and requires over-collateralization ($k > 1$) such that:
-$$A(0) = k \cdot L(0)$$
+In standard models, $A(t)$ is stochastic and requires over-collateralization ($\kappa > 1$) such that:
+$$A(0) = \kappa \cdot L(0)$$
 
 In the non-volatile limit:
 $$\sigma^2 = 0 \Rightarrow A(t) = A(0)$$
 
 Solvency requires:
-$$A(t) \ge L(t)$$
+$$A(t) \ge L(t) + \epsilon(t)$$
 
 Under atomic mint/burn operations:
-$$k \to 1$$
+$$\kappa \to 1$$
 
 **Result:**
-Over-collateralization becomes unnecessary. Solvency is preserved through strict issuance discipline rather than price buffers, reproducing the balance-sheet structure of a **primary-market-only tokenized liability**, as observed in narrow banks and currency boards ([The Basel Framework, 2019](#ref-basel-framework)).
+Over-collateralization becomes unnecessary. Solvency is preserved through strict issuance discipline rather than price buffers, reproducing the balance-sheet structure of a **primary-market-only tokenized liability**, as observed in narrow banks and currency boards ([The Basel Framework, 2019](#ref-basel-framework)); ([Gorton & Metrick, 2010](#ref-gorton-metrick)).
 
 This is a **degenerate baseline**, not an optimal solution in the general case.Conversely, any stablecoin design that deviates structurally from this baseline must do so because at least one of the limit assumptions—non-volatility, enforceability, or atomic redemption—is violated
 
@@ -153,7 +154,7 @@ Here, redemption value is invariant and directly enforceable. Arbitrage restores
 
 ### 5.3 Governance Parameter Redundancy
 
-Governance mechanisms designed to tune risk parameters exist solely to manage volatility.
+Governance mechanisms designed to tune risk parameters exist primarily to manage volatility.
 
 Within a PMOTL, discretionary governance introduces risk by violating issuance determinism rather than mitigating economic volatility.
 
@@ -168,29 +169,16 @@ However:
 * **Economic runs** (price-driven solvency failures) are eliminated.
 * **Institutional runs** (legal, operational, or coordination failures) remain possible.
 
-This distinction is critical. The absence of market risk does not imply the absence of systemic risk ([Gorton & Zhang, 2021](#ref-gorton-zhang)). Institutional runs correspond precisely to failures of the legal enforceability, operational continuity, or settlement assumptions; they do not arise from economic insolvency within the modeled regime.
+This distinction is critical. The absence of market risk (safe assets) does not imply the absence of systemic risk ([Gorton & Zhang, 2021](#ref-gorton-zhang)). Institutional runs correspond precisely to failures of the legal enforceability, operational continuity, or settlement assumptions; they do not arise from economic insolvency within the modeled regime.
+
+Even in the absence of market risk, legal and operational disruptions can generate redemption pressure that must be absorbed by pre-committed buffers rather than discretionary intervention.
 
 ---
 
-## 7. Residual Risk Management and Capital Structure
+## 7. Structural Invariants
 
-Because operational and custodial risks persist, the system requires a junior capital buffer ($\epsilon$):
+In the non-volatile limit, any PMOTL-compliant system must enforce deterministic issuance, unconditional redemption at par, and strict seniority of stablecoin liabilities over any residual claims. The specific enforcement mechanisms and operational failure modes are implementation-dependent and detailed in the Engineering Appendix ([Engineering Appendix, 2026](#ref-eng-appendix)).
 
-* strict subordination,
-* non-dilution of stablecoin holders,
-* automatic mint halts below thresholds,
-* external recapitalization only, and
-* orderly wind-down procedures.
-
-The buffer is non-yield-bearing and exists solely to absorb non-market losses, consistent with capital structures required to support PMOTL systems under non-market risk.
-The junior buffer ε is assumed to be:
-
-* Exogenous to the stablecoin protocol (not minted, managed, or rebalanced on-chain),
-* Legally subordinated and bankruptcy-remote from stablecoin liabilities,
-* Non-discretionary, with no governance authority to alter issuance, redemption, or reserve composition,
-* Finite and non-reflexive, such that depletion does not trigger endogenous feedback loops.
-
-Relaxing these constraints reintroduces governance and reflexivity risks outside the scope of this limit case.
 ---
 
 ## 8. Incompatibilities and Exclusions
@@ -200,7 +188,7 @@ A PMOTL structure is structurally incompatible with:
 * censorship resistance,
 * permissionless custody,
 * endogenous crypto collateral,
-* monetary sovereignty independent of legal systems.
+*   monetary sovereignty independent of legal systems.
 
 These are not oversights. They are the cost of eliminating volatility.
 
@@ -212,8 +200,8 @@ This model should be read as:
 
 * a **baseline**, not a recommendation,
 * a **reference point**, not an aspiration,
-* a **boundary condition** for evaluating volatile-collateral designs.
-* a diagnostic lens for identifying which stablecoin mechanisms exist solely because issuance deviates from a PMOTL baseline.
+*   a **boundary condition** for evaluating volatile-collateral designs.
+*   a diagnostic lens for identifying which stablecoin mechanisms exist solely because issuance deviates from a PMOTL baseline.
 
 Any real-world stablecoin deviates from this structure precisely because its reserves are volatile, endogenous, or legally constrained.
 
@@ -229,12 +217,14 @@ This limit case establishes a clean baseline against which the necessity, cost, 
 
 ## References
 
-* <span id="ref-cao"></span>Cao, Y., Cong, L., & Yang, X. (2025). *[Designing Stablecoins](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3887012)*. Mathematical Finance.
 * <span id="ref-catalini-degortari"></span>Catalini, C., & de Gortari, A. (2021). *[On the Economic Design of Stablecoins](https://www.nber.org/papers/w29115)*. NBER.
 * <span id="ref-catalini-shah"></span>Catalini, C., & Shah, N. (2021). *[Setting Standards for Stablecoin Reserves](https://www.catalini.com/wp-content/uploads/2021/11/Standards-Reserves-Catalini-Shah-2021.pdf)*.
 * <span id="ref-basel-framework"></span>The Basel Framework (2019). *[The Basel Framework](https://www.bis.org/basel_framework/standard/LCR.htm?tldate=20260105)*. Bank for International Settlements.
+* <span id="ref-gorton-metrick"></span>Gorton, G., & Metrick, A. (2010). *[Regulating the Shadow Banking System](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1676947)*. Brookings Papers.
 * <span id="ref-gorton-zhang"></span>Gorton, G., & Zhang, G. (2021). *[Taming Wildcat Stablecoins](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3888752)*. SSRN.
 * <span id="ref-klages"></span>Klages-Mundt, A., et al. (2022). *[While Stability Lasts: A Stochastic Model of Non-Custodial Stablecoins](https://arxiv.org/abs/2004.01304)*. Mathematical Finance.
 * <span id="ref-libra"></span>Libra Association. (2019). *[The Libra Reserve](https://libra.org/en-US/white-paper/)*.
+* <span id="ref-eng-appendix"></span>Internal. (2026). *[Engineering Appendix: \($\epsilon$) — Loss Absorption & Resolution](../../Design/Design%20with%20Non-volatle%20reserves/Output/epsilon_loss_absorption_appendix.md)*. Project Artifact.
+
 
 ---

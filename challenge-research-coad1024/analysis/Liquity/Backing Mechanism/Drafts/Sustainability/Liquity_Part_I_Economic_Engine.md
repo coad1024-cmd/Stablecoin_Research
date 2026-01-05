@@ -1,7 +1,7 @@
 
 # Liquity Sustainability Analysis - Part I: The Economic Engine
 
-**Last Updated:** December 8, 2024
+**Last Updated:** December 8, 2025
 **Protocol Version:** Liquity V2 (BOLD) & V1 (LUSD)
 **Framework:** Sustainability Requirement (Pillar I)
 
