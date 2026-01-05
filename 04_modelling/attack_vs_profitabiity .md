@@ -109,7 +109,7 @@ This establishes the **cost of attack** in isolation.
 
 ---
 
-### [Phase 2](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase2_results.png) — Short + Dump (Coordinated Attack)
+### [Phase 2](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase2_results.png) — Short + Dump (Coordinated Soros-Style Attack)
 
 * Action: Open CT short, then dump AS
 
@@ -228,6 +228,10 @@ The experiments and results presented in this artifact are fully reproducible.
 * **Extended attack model (this work):** A forked repository containing the attacker agent, portfolio tracking, and visualization runners used for the attack–profitability analysis.
 
 The fork introduces **instrumentation and adversarial extensions only** (attacker agent, PnL tracking, and plotting utilities). Core protocol mechanics from the original DualTokenSim implementation remain unchanged.
+
+In addition to the command-line simulation runners, an interactive web-based interface was developed to visualize system dynamics and attacker behavior in real time. The web application does not alter the simulation logic and serves solely as an exploratory and educational interface for inspecting parameter sensitivity and attack trajectories.
+The web interface is built directly on top of the same simulation codebase used for the experiments reported here.
+
 
 **Code references:**
 * **Paper:** Calandra, F., et al. (2025). ["Algorithmic Stablecoins: A Simulator for the Dual-Token Model in Normal and Panic Scenarios"](https://ieeexplore.ieee.org/document/11114693)

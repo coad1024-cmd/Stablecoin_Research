@@ -22,9 +22,7 @@ A stablecoin backed by such an asset must maintain a value near a fixed referenc
 
 The fundamental constraint is **solvency**, not peg maintenance:
 
-$$
-C_t P_t \ge D_t
-$$
+$$C_t P_t \ge D_t$$
 
 where $C_t$ is collateral quantity and $D_t$ is outstanding stablecoin liability.
 
@@ -61,9 +59,7 @@ The system holds crypto collateral in a custodian contract and issues two claims
 
 The accounting identity enforced at all times is:
 
-$$
-V_A(t) + V_B(t) = \frac{C_t P_t}{\beta_t}
-$$
+$$V_A(t) + V_B(t) = \frac{C_t P_t}{\beta_t}$$
 
 where $\beta_t$ is a conversion factor updated after payouts and resets.
 
@@ -84,9 +80,7 @@ It is defined as **continued solvency and deterministic redemption**.
 
 The enforced invariant is:
 
-$$
-C_t P_t \ge N_A V_A(t) + N_B V_B(t)
-$$
+$$C_t P_t \ge N_A V_A(t) + N_B V_B(t)$$
 
 where $N_A$ and $N_B$ are outstanding supplies of the two tranches.
 
@@ -107,9 +101,7 @@ Between reset events:
 
 The instantaneous leverage of the junior tranche is:
 
-$$
-\lambda_t = 1 + \frac{V_A}{V_B}
-$$
+$$\lambda_t = 1 + \frac{V_A}{V_B}$$
 
 As $V_B$ shrinks during drawdowns, leverage increases automatically. This behavior mirrors the leverage amplification observed in structured financial products ([Dai et al., 2018](#ref-dai-lev)).
 
@@ -130,7 +122,9 @@ State transitions occur deterministically under the following conditions:
    Gains are realized, leverage is re-centered, and NAVs are rebased.
 
 3. **Downward reset ($V_B \le H_d$)**
-   Losses are realized, junior supply is reduced, and senior protection is preserved *conditional on solvency*.
+   *   **Partial Liquidation (Cash Payout)**: The difference between target coverage and actual coverage is immediately paid out in reserve assets (ETH) to Class A holders to reduce liability exposure.
+   *   **Reverse Split (Merge)**: The remaining Class A tokens are consolidated (e.g., 4:1) to restore the unit NAV to $1.00$ while maintaining the total value of the reduced aggregate supply.
+   *   *Result*: Holders receive liquidity + recapitalized tokens; the peg is restored via accounting rather than market buying.
 
 4. **Full liquidation ($V_B < 0$)**
    Remaining collateral is distributed to senior holders; issuance halts.
@@ -169,13 +163,13 @@ It makes tail risk explicit and bounded ([Klages-Mundt & Minca, 2022](#ref-klage
 
 All logic depends on discrete price observations. If $P_t$ gaps between oracle updates, the system may transition directly from healthy to insolvent without intermediate resets.
 
-This limitation is fundamental to any on-chain system operating under jump-diffusion price dynamics ([Kou, 2002](#ref-kou02); [Cai & Kou, 2011](#ref-cai)).
+This limitation is fundamental to any on-chain system operating under jump-diffusion price dynamics ([Kou, 2002](#ref-kou02); [Cai & Kou, 2011](#ref-cai)). In practice, oracle risk dominates price risk in short time horizons; this design assumes oracle correctness as a precondition rather than a mitigated risk.
 
 ---
 
 ## 9. Governance Is Relocated, Not Removed
 
-Although execution is autonomous, governance remains responsible for oracle selection, parameter initialization, and upgrade authority. Autonomy applies at runtime, not at design time.
+Although execution is autonomous, governance remains responsible for oracle selection, parameter initialization, and upgrade authority. Autonomy applies at runtime, not at design time. Governance risk is orthogonal to the capital structure and remains an exogenous trust assumption rather than an on-chain mitigated risk.
 
 ---
 
@@ -184,7 +178,7 @@ Although execution is autonomous, governance remains responsible for oracle sele
 This design is:
 
 * a bounded-loss architecture, not a guarantee
-* a structural alternative to liquidation, not a volatility cure
+* a structural alternative to continuous market liquidation, not a volatility cure
 * a canonical reference for volatile-reserve stablecoins
 
 ---
@@ -200,7 +194,7 @@ By internalizing volatility through deterministic capital structure, autonomous 
 ## References
 
 * <span id="ref-cai"></span>Cai, N., & Kou, S. G. (2011). [Option pricing under a mixed-exponential jump diffusion model](https://www.columbia.edu/~sk75/mixedExpManagementSci.pdf). *Management Science*, 57(11), 2067-2084.
-* <span id="ref-dai"></span>Dai, M., Kou, S. G., Yang, C., et al. (2018). *[Designing Stablecoins](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3856569)*. SSRN Working Paper.
+* <span id="ref-dai"></span>Dai, M., Kou, S. G., Yang, C., et al. (2021). *[Designing Stablecoins](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3856569)*. SSRN Working Paper.
 * <span id="ref-dai-lev"></span>Dai, M., Kou, S., Yang, C., & Ye, Z. (2018). *[The overpricing of leveraged products: A case study of dual-purpose funds in China](https://www.chinainvestmentresearch.org/wp-content/uploads/2019/01/PE-Review-Issue-4.pdf)*. Working Paper.
 * <span id="ref-diem"></span>Diem Association. (2020). *[Libra White Paper v2.0](https://www.accc.gov.au/system/files/public-registers/documents/54.%20Libra%20Whitepaper%20v2.0,%20April%202020.pdf)*.
 * <span id="ref-klages20"></span>Klages-Mundt, A., et al. (2020). Stablecoins 2.0: Economic foundations and risk-based models. *[arXiv:2006.12388](https://arxiv.org/abs/2006.12388)*.
