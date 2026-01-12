@@ -26,9 +26,11 @@ research/00_canonical/
 
 | Protocol | Sustainability | Backing Mechanism | Decentralization |
 |:---|:---|:---|:---|
-| **Sky Ecosystem** | ✅ Complete | ⏳ Pending | ✅ Complete |
+| **Sky Ecosystem** | ✅ Complete | ✅ Complete | ✅ Complete |
 | **Liquity V1 (LUSD)** | ✅ Complete | ✅ Complete | ✅ Complete |
 | **Liquity V2 (BOLD)** | ✅ Complete | ✅ Complete | ✅ Complete |
+| **Terra (UST)** | ⏳ Pending | ✅ Complete | ⏳ Pending |
+| **Terra (UST)** | ⏳ Pending | ✅ Complete | ⏳ Pending |
 
 ---
 
@@ -121,6 +123,12 @@ research/00_canonical/
 |:---|:---|:---|
 | `Liquity_V2_Decentralization_Analysis.md` | ✅ Complete | **V2 Analysis**. Trades trustlessness for scale (LSTs). |
 
+### Terra Case Study (Failed State)
+
+* **Backing Mechanism (Algorithmic - FAILED)**
+  * [Profile (Executive Verdict)](Terra/Backing%20Mechanism/Artifact/Terra_Backing_Profile.md)
+  * [Deep Dive (Architecture & Death Spiral)](Terra/Backing%20Mechanism/Artifact/Terra_Backing_DeepDive.md)
+
 ### Comparison Metrics (3-Way Analysis)
 
 | Metric | Sky Ecosystem | Liquity V1 (LUSD) | Liquity V2 (BOLD) |
@@ -136,9 +144,9 @@ research/00_canonical/
 
 **Key Findings:**
 
-- **Sky**: Mature but centralized (USDC exposure, delegate concentration)
-- **Liquity V1**: Censorship-resistant but economically stagnant (704% TCR, 95% supply contraction)
-- **Liquity V2**: Bootstrapping phase with concerning concentration (1 governance voter, 80% RETH collateral)
+* **Sky**: Mature but centralized (USDC exposure, delegate concentration)
+* **Liquity V1**: Censorship-resistant but economically stagnant (704% TCR, 95% supply contraction)
+* **Liquity V2**: Bootstrapping phase with concerning concentration (1 governance voter, 80% RETH collateral)
 
 ### Data Provenance & Verification
 
@@ -153,15 +161,15 @@ research/00_canonical/
 
 **Data Visualization Scripts:**
 
-- **Decentralization Metrics**: `pipeline/scripts/visualization/generate_decentralization_plots.py`
-- **Liquity Plots**: `pipeline/scripts/visualization/generate_liquity_plots.py`
-- **MakerDAO/Sky Plots**: `pipeline/scripts/visualization/generate_makerdao_plots.py`
+* **Decentralization Metrics**: `pipeline/scripts/visualization/generate_decentralization_plots.py`
+* **Liquity Plots**: `pipeline/scripts/visualization/generate_liquity_plots.py`
+* **MakerDAO/Sky Plots**: `pipeline/scripts/visualization/generate_makerdao_plots.py`
 
 **Verification Standard:**
 
-- ✅ **Real Data**: Direct blockchain queries or official API responses
-- ⚠️ **Projections**: Clearly labeled where granular data unavailable (e.g., SP depositor distribution)
-- 📊 **All data files** stored in respective `/data/` directories with timestamps and source attribution
+* ✅ **Real Data**: Direct blockchain queries or official API responses
+* ⚠️ **Projections**: Clearly labeled where granular data unavailable (e.g., SP depositor distribution)
+* 📊 **All data files** stored in respective `/data/` directories with timestamps and source attribution
 
 ---
 
@@ -175,6 +183,6 @@ research/00_canonical/
 
 ## Naming Convention
 
-- `{Protocol}_{Topic}_Profile_{Date}.md` — Compact synthesis artifact
-- `{Protocol}-{Topic}-DeepDive.md` — Detailed research paper
-- Diagrams: Descriptive names (e.g., `revenue_composition.png`)
+* `{Protocol}_{Topic}_Profile_{Date}.md` — Compact synthesis artifact
+* `{Protocol}-{Topic}-DeepDive.md` — Detailed research paper
+* Diagrams: Descriptive names (e.g., `revenue_composition.png`)

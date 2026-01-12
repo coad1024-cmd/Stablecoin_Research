@@ -43,7 +43,7 @@ Each system is analyzed along three orthogonal dimensions.
 
 #### Terra
 
-* A1. Terra — Backing Mechanism
+* A1. [Terra — Backing Mechanism](Terra/Backing%20Mechanism/Artifact/Terra_Backing_Profile.md)
 * A2. Terra — Sustainability
 * A3. Terra — Decentralization
 
