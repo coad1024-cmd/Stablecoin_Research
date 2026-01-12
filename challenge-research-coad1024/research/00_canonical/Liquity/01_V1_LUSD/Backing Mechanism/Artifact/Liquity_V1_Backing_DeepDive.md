@@ -32,27 +32,7 @@ Most stablecoins rely on human governance to adjust parameters (Risk Premiums, D
 
 The state is compartmentalized into specific "Pools" that handle distinct logic, preventing monolithic failure.
 
-```mermaid
-graph TD
-    User((User))
-    BO[BorrowerOperations]
-    TM[TroveManager]
-    
-    subgraph "Asset Silos (The Backing)"
-        AP[ActivePool]
-        SP[StabilityPool]
-        DP[DefaultPool]
-    end
-    
-    User -- 1. Deposit ETH --> BO
-    BO -- 2. Move ETH --> AP
-    User -- 3. Issue LUSD --> TM
-    TM --> User
-    
-    style AP fill:#10B981,stroke:#047857,stroke-width:2px
-    style SP fill:#F59E0B,stroke:#B45309,stroke-width:2px
-    style DP fill:#EF4444,stroke:#B91C1C,stroke-width:2px
-```
+![System Architecture](../diagrams/v1_system_architecture.png)
 
 * **ActivePool:** Holds ETH for all healthy Troves.
 * **DefaultPool:** Holds ETH/Debt for liquidated Troves pending redistribution.
@@ -86,21 +66,7 @@ Redemptions are not random; they are a **disciplinary force**.
 
 Liquity V1 prioritizes **speed-to-solvency** over auction complexity. There are no auctions. Liquidations are atomic.
 
-```mermaid
-graph TD
-    Trigger[Undercollateralized Trove (ICR < 110%)] --> CheckSP{Stability Pool > Debt?}
-    
-    CheckSP -- Yes --> Offset[Offset Mechanism]
-    Offset --> Burn[Burn LUSD from SP]
-    Offset --> Move[Move ETH to SP Depositors]
-    Move --> Solvency(Solvent)
-    
-    CheckSP -- No --> Redist[Redistribution Mechanism]
-    Redist --> Spread[Spread Debt & ETH to All Active Troves]
-    
-    style Offset fill:#10B981,color:white
-    style Redist fill:#EF4444,color:white
-```
+![Liquidation Waterfall](../diagrams/v1_liquidation_waterfall.png)
 
 ### 3.1 Primary Defense: Stability Pool (Offset)
 
