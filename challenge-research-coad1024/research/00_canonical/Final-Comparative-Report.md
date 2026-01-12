@@ -32,7 +32,7 @@ The stablecoin landscape is no longer a binary choice between "Centralized" and 
 
 ## 2. Sustainability Analysis (The Business Case)
 
-**Question:** *Can the protocol survive in a high-rate environment?*
+**Question:** *How does the revenue engine adapt to market conditions?*
 
 ### Sky Ecosystem: The Profit Machine
 
@@ -57,7 +57,7 @@ The stablecoin landscape is no longer a binary choice between "Centralized" and 
 
 ## 3. Decentralization Analysis (The Sovereignty Case)
 
-**Question:** *Who controls the money?*
+**Question:** *How does the architecture enforce sovereignty?*
 
 ![Comparative Decentralization Scorecard](comparative_decentralization_bar.png)
 *Figure 1: The Hierarchy of Trust. Sky (Red) relies on legal trust. Liquity V2 (Orange) relies on LST trust. Liquity V1 (Green) relies on Math.*
