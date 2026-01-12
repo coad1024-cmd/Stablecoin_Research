@@ -87,7 +87,7 @@ The stablecoin landscape is no longer a binary choice between "Centralized" and 
 
 ## 4. Backing Analysis (The Solvency Case)
 
-**Question:** *Is the collateral actually there?*
+**Question:** *How does the system physics enforce solvency?*
 
 ### Sky Ecosystem: The Rehypothecated Dollar
 
