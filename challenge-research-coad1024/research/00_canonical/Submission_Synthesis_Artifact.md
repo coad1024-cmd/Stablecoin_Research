@@ -37,7 +37,7 @@ This document contains **no analysis** and **no conclusions**.
 These artifacts are the **source of truth**.
 All published, rendered, or summarized materials derive from these.
 
-### 2.1 System Analysis Articles (9)
+### 2.1 System Analysis Articles (12)
 
 Each system is analyzed along three orthogonal dimensions.
 
@@ -55,11 +55,12 @@ Each system is analyzed along three orthogonal dimensions.
 
 #### Liquity
 
-* A7. [Liquity V1 — Sustainability](Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)
-* A8. [Liquity V1 — Decentralization](Liquity/01_V1_LUSD/Decentralization/Artifact/Liquity_V1_Decentralization_Profile.md)
-* A9. [Liquity V2 — Backing Mechanism](Liquity/02_V2_BOLD/Backing%20Mechanism/Artifact/Liquity_V2_Backing_Profile.md)
-* A10. [Liquity V2 — Sustainability](Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)
-* A11. [Liquity V2 — Decentralization](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)
+* A7. [Liquity V1 — Backing Mechanism](Liquity/01_V1_LUSD/Backing%20Mechanism/Artifact/Liquity_V1_Backing_Profile.md)
+* A8. [Liquity V1 — Sustainability](Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)
+* A9. [Liquity V1 — Decentralization](Liquity/01_V1_LUSD/Decentralization/Artifact/Liquity_V1_Decentralization_Profile.md)
+* A10. [Liquity V2 — Backing Mechanism](Liquity/02_V2_BOLD/Backing%20Mechanism/Artifact/Liquity_V2_Backing_Profile.md)
+* A11. [Liquity V2 — Sustainability](Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)
+* A12. [Liquity V2 — Decentralization](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)
 
 Each artifact:
 
