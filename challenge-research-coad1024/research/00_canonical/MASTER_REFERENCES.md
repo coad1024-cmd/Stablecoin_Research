@@ -30,13 +30,13 @@
 
 ## 4. Internal Canonical Artifacts
 
-* <span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](../Sky%20Ecosystem/Sustainability/Atrifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
+* <span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](Sky%20Ecosystem/Sustainability/Artifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
 
-* <span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](../Sky%20Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
+* <span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](Sky%20Ecosystem/Decentralization/Artifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
 
-* <span id="ref-liquity-v1-sustainability"></span>Internal Research. (2026). *[Liquity V1 Sustainability Profile](../Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)*. Canonical Artifact.
+* <span id="ref-liquity-v1-sustainability"></span>Internal Research. (2026). *[Liquity V1 Sustainability Profile](Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)*. Canonical Artifact.
 
-* <span id="ref-liquity-v2-resilience"></span>Internal Research. (2026). *[Liquity V2 Economic Resilience](../Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)*. Canonical Artifact.
+* <span id="ref-liquity-v2-resilience"></span>Internal Research. (2026). *[Liquity V2 Economic Resilience](Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)*. Canonical Artifact.
 
 ## 5. Data Sources
 

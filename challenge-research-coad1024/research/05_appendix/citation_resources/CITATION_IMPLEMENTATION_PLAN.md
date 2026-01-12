@@ -9,18 +9,21 @@
 ## Documents Requiring Citations
 
 ### Priority 1: Synthesis Documents (High Impact)
+
 - [ ] `Final-Comparative-Report.md` - Main comparative analysis
 - [ ] `INDEX.md` - Master index (already has data citations, needs academic refs)
 
 ### Priority 2: Deep Dive Papers (Research Quality)
-- [ ] `Sky Ecosystem/Decentralization/Atrifact/Sky-Decentralization-DeepDive.md`
-- [ ] `Sky Ecosystem/Sustainability/Atrifact/Sky-Economic-Sustainability.md`
+
+- [ ] `Sky Ecosystem/Decentralization/Artifact/Sky-Decentralization-DeepDive.md`
+- [ ] `Sky Ecosystem/Sustainability/Artifact/Sky-Economic-Sustainability.md`
 - [ ] `Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md`
 - [ ] `Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md`
 
 ### Priority 3: Profile Documents (Quick Reference)
-- [ ] `Sky Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md`
-- [ ] `Sky Ecosystem/Sustainability/Atrifact/Sky_Sustainability_Profile_Jan2026.md`
+
+- [ ] `Sky Ecosystem/Decentralization/Artifact/Sky_Decentralization_Profile_Jan2026.md`
+- [ ] `Sky Ecosystem/Sustainability/Artifact/Sky_Sustainability_Profile_Jan2026.md`
 - [ ] `Liquity/01_V1_LUSD/Decentralization/Artifact/Liquity_V1_Decentralization_Profile.md`
 - [ ] `Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md`
 
@@ -29,6 +32,7 @@
 ## Common References to Add
 
 ### Academic Literature (Stablecoins)
+
 ```html
 <span id="ref-catalini-degortari"></span>Catalini, C., & de Gortari, A. (2021). *[On the Economic Design of Stablecoins](https://www.nber.org/papers/w29115)*. NBER Working Paper No. 29115.
 
@@ -38,6 +42,7 @@
 ```
 
 ### Protocol Documentation
+
 ```html
 <span id="ref-makerdao-whitepaper"></span>MakerDAO. (2017). *[The Maker Protocol: MakerDAO's Multi-Collateral Dai (MCD) System](https://makerdao.com/en/whitepaper/)*. Technical Whitepaper.
 
@@ -47,6 +52,7 @@
 ```
 
 ### Regulatory/Framework References
+
 ```html
 <span id="ref-basel-framework"></span>Basel Committee on Banking Supervision. (2019). *[The Basel Framework: LCR](https://www.bis.org/basel_framework/standard/LCR.htm)*. Bank for International Settlements.
 
@@ -54,8 +60,9 @@
 ```
 
 ### Internal Cross-References
+
 ```html
-<span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](Sky%20Ecosystem/Sustainability/Atrifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
+<span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](Sky%20Ecosystem/Sustainability/Artifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
 
 <span id="ref-liquity-v2-decentralization"></span>Internal Research. (2026). *[Liquity V2 Decentralization Analysis](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)*. Canonical Artifact.
 
@@ -63,6 +70,7 @@
 ```
 
 ### Data Sources
+
 ```html
 <span id="ref-data-sky-vow"></span>Sky Protocol Mainnet. (2026). *Vow Contract Balance Query*. Retrieved Jan 5, 2026 via `pipeline/scripts/data_fetchers/fetch_makerdao_data.py`. Contract: `0x...`.
 
@@ -76,21 +84,26 @@
 ## Implementation Steps
 
 ### Step 1: Create Master References File
+
 Create `research/00_canonical/MASTER_REFERENCES.md` with all common citations that can be referenced across documents.
 
 ### Step 2: Document-Specific Citations
+
 For each document:
+
 1. Identify claims requiring citations
 2. Add in-text citations using `([Author, Year](#ref-id))` format
 3. Create References section at end
 4. Add `<span id="ref-id"></span>` anchors
 
 ### Step 3: Cross-Reference Internal Documents
+
 - Link between canonical artifacts using internal citations
 - Reference frameworks and methodologies
 - Cite data provenance (scripts, snapshots)
 
 ### Step 4: Verification
+
 - [ ] Test all anchor links work (click-through)
 - [ ] Verify no broken references
 - [ ] Check citation format consistency
@@ -100,23 +113,26 @@ For each document:
 
 ## Example Implementation
 
-### Before (No Citations):
+### Before (No Citations)
+
 ```markdown
 Sky Ecosystem shows severe governance concentration with a single delegate controlling 86% of voting power.
 ```
 
-### After (With Citations):
+### After (With Citations)
+
 ```markdown
 Sky Ecosystem shows severe governance concentration with a single delegate controlling 86% of voting power ([Internal Research, 2026](#ref-sky-decentralization)). This level of plutocratic control is well-documented in governance capture literature ([Catalini & de Gortari, 2021](#ref-catalini-degortari)).
 ```
 
-### References Section:
+### References Section
+
 ```markdown
 ---
 
 ## References
 
-<span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](Sky%20Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
+<span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](Sky%20Ecosystem/Decentralization/Artifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
 
 <span id="ref-catalini-degortari"></span>Catalini, C., & de Gortari, A. (2021). *[On the Economic Design of Stablecoins](https://www.nber.org/papers/w29115)*. NBER Working Paper No. 29115.
 ```

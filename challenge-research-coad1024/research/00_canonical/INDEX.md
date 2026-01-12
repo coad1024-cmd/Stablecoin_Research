@@ -10,13 +10,13 @@
 research/00_canonical/
 ├── {Protocol}/
 │   ├── Sustainability/
-│   │   ├── Atrifact/          ← Finalized documents
+│   │   ├── Artifact/          ← Finalized documents
 │   │   └── diagrams/          ← Supporting visualizations
 │   ├── Backing Mechanism/
-│   │   ├── Atrifact/
+│   │   ├── Artifact/
 │   │   └── diagrams/
 │   └── Decentralization/
-│       ├── Atrifact/
+│       ├── Artifact/
 │       └── diagrams/
 ```
 
@@ -26,25 +26,27 @@ research/00_canonical/
 
 | Protocol | Sustainability | Backing Mechanism | Decentralization |
 |:---|:---|:---|:---|
-| **Sky Ecosystem** | ✅ Complete | ⏳ Pending | ✅ Complete |
+| **Sky Ecosystem** | ✅ Complete | ✅ Complete | ✅ Complete |
 | **Liquity V1 (LUSD)** | ✅ Complete | ⏳ Pending | ✅ Complete |
-| **Liquity V2 (BOLD)** | ✅ Complete | ⏳ Pending | ✅ Complete |
+| **Liquity V2 (BOLD)** | ✅ Complete | ✅ Complete | ✅ Complete |
 
 ---
 
 ## Sky Ecosystem / Sustainability (✅ Complete)
 
-### Artifacts
+### Sustainability Artifacts
+
 | File | Type | Status |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | `Sky_Sustainability_Profile_Jan2026.md` | Primary Profile | ✅ On-chain verified |
 | `Sky-Economic-Sustainability.md` | Research Paper | ✅ 10 figures |
 | `data/balance_sheet.json` | Data Source | Balance Sheet Estimates |
 | `data/yield_metrics.csv` | Data Source | On-chain DSR |
 
 ### Key Verified Metrics (Block 24,171,462)
+
 | Metric | Value | Source |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | Combined Supply (DAI+USDS) | **$10.62B** | On-chain |
 | DAI Supply | $4.22B | On-chain |
 | USDS Supply | $6.40B | On-chain |
@@ -56,17 +58,32 @@ research/00_canonical/
 
 ---
 
+## Sky Ecosystem / Backing Mechanism (✅ Complete)
+
+### Backing Artifacts
+
+| File | Type | Status |
+| :--- | :--- | :--- |
+| `Sky_Backing_Profile_Jan2026.md` | Primary Profile | ✅ Kinetic Scorecard |
+| `Sky_Backing_DeepDive.md` | Deep Dive Report | ✅ Unbackedness Analysis |
+| `diagrams/solvency_invariant.png` | Visualization | Core Inequality |
+| `diagrams/sky_solvency_pipeline.png` | Architecture | Liquidations 2.0 |
+
+---
+
 ## Sky Ecosystem / Decentralization (✅ Complete)
 
-### Artifacts
+### Decentralization Artifacts
+
 | File | Type | Status |
-|:---|:---|:---|
+| :--- | :--- | :--- |
 | `Sky_Decentralization_Profile_Jan2026.md` | Primary Profile | ✅ Framework v3.0 |
 | `Sky-Decentralization-DeepDive.md` | Deep Dive Report | ✅ Stress Tested |
 | `data/governance_delegation.json` | Data Source | MakerDAO API |
 | `data/operational_liquidations.md` | Data Source | Bot Logs |
 
 ### Key Scorecard Metrics (Framework v3.0)
+
 | Dimension | Score | Finding |
 |:---|:---|:---|
 | **Governance (G)** | 0.02 | 🔴 Plutocratic (Top-1 holds 86%) |
@@ -80,26 +97,38 @@ research/00_canonical/
 ## Liquity Case Study (✅ Complete)
 
 ### Sustainability (V1 - The Reference)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V1_Sustainability_Profile.md` | ✅ Complete | **Constrained**. 0% Yield. ETH-only. |
- 
+
 ### Sustainability (V2 - The Risk)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V2_Economic_Resilience.md` | ✅ Complete | "Yield via Pain". Market-driven rates. |
- 
+
 ### Decentralization (V1 - Platinum Standard)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V1_Decentralization_Profile.md` | ✅ Complete | **Score 1.0/1.0**. Immutable. No Governance. |
 
 ### Decentralization (V2 - Risk Analysis)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V2_Decentralization_Analysis.md` | ✅ Complete | **V2 Analysis**. Trades trustlessness for scale (LSTs). |
 
+### Backing Mechanism (V2 - Kinetic Solvency)
+
+| File | Status | Key Finding |
+|:---|:---|:---|
+| `Liquity_V2_Backing_Profile.md` | ✅ Complete | **Federated Solvency**. Isolated risk buckets. |
+| `Liquity_V2_Backing_DeepDive.md` | ✅ Complete | **Unbackedness Routing**. Self-healing peg. |
+
 ### Comparison Metrics (3-Way Analysis)
+
 | Metric | Sky Ecosystem | Liquity V1 (LUSD) | Liquity V2 (BOLD) |
 |:---|:---|:---|:---|
 | **Governance Model** | Delegated (MKR) | None (Immutable) | Initiative-Based (LQTY) |
@@ -112,6 +141,7 @@ research/00_canonical/
 | **Data Verification** | ✅ On-chain verified | ✅ On-chain verified | ✅ Real mainnet snapshot |
 
 **Key Findings:**
+
 - **Sky**: Mature but centralized (USDC exposure, delegate concentration)
 - **Liquity V1**: Censorship-resistant but economically stagnant (704% TCR, 95% supply contraction)
 - **Liquity V2**: Bootstrapping phase with concerning concentration (1 governance voter, 80% RETH collateral)
@@ -128,11 +158,13 @@ research/00_canonical/
 | **V2 Operational** | Official Liquity API | `pipeline/scripts/data_fetchers/fetch_v2_operational_stats.js` | Jan 5, 2026 |
 
 **Data Visualization Scripts:**
+
 - **Decentralization Metrics**: `pipeline/scripts/visualization/generate_decentralization_plots.py`
 - **Liquity Plots**: `pipeline/scripts/visualization/generate_liquity_plots.py`
 - **MakerDAO/Sky Plots**: `pipeline/scripts/visualization/generate_makerdao_plots.py`
 
 **Verification Standard:**
+
 - ✅ **Real Data**: Direct blockchain queries or official API responses
 - ⚠️ **Projections**: Clearly labeled where granular data unavailable (e.g., SP depositor distribution)
 - 📊 **All data files** stored in respective `/data/` directories with timestamps and source attribution
@@ -141,7 +173,7 @@ research/00_canonical/
 
 ## Usage
 
-1. **For synthesis:** Use `Atrifact/` folder contents
+1. **For synthesis:** Use `Artifact/` folder contents
 2. **For presentations:** Use `diagrams/` folder
 3. **For deep reference:** Cross-check with `analysis/` folder
 

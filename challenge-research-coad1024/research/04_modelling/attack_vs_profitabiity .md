@@ -1,4 +1,5 @@
 # Stablecoins — Modelling the Economic Feasibility of a De‑Peg Attack
+
 *Canonical Version — Citation-Anchored (Frozen)*
 
 ## 1. Challenge Alignment
@@ -19,7 +20,9 @@ This study does not aim to forecast market price trajectories or optimize protoc
 
 ---
 
-## 3. Model Theory ([Conceptual](https://ieeexplore.ieee.org/document/11114693))
+## 3. Model Theory
+
+The theoretical foundation for this analysis draws on the dual-token stabilization framework formalized by [Calandra et al. (2025)](#ref-calandra-dualtokensim) and the stochastic stability conditions established by [Klages-Mundt et al. (2022)](#ref-klages-stability).
 
 ### 3.1 Dual‑Token Stabilization Logic
 
@@ -39,7 +42,7 @@ Under stress, this creates a **reflexive feedback loop**:
 5. Falling CT price reduces system confidence
 6. Further AS selling is induced
 
-Once this loop dominates, the system enters a *death spiral*.
+Once this loop dominates, the system enters a *death spiral*—a phenomenon rigorously analyzed in [Klages-Mundt et al. (2022)](#ref-klages-stability) as a "submartingale" condition where expected collateral value trends toward zero.
 
 ---
 
@@ -67,7 +70,7 @@ The attack is profitable if:
 
 ### 4.1 Base Simulator
 
-This work builds on **DualTokenSim**, introduced by Calandra et al. in *“Algorithmic Stablecoins: A Simulator for the Dual‑Token Model in Normal and Panic Scenarios”*, and its accompanying open‑source implementation.
+This work builds on **DualTokenSim**, introduced by [Calandra et al. (2025)](#ref-calandra-dualtokensim) in *"Algorithmic Stablecoins: A Simulator for the Dual‑Token Model in Normal and Panic Scenarios"*, and its accompanying open‑source implementation.
 
 DualTokenSim models:
 
@@ -109,7 +112,9 @@ This establishes the **cost of attack** in isolation.
 
 ---
 
-### [Phase 2](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase2_results.png) — Short + Dump (Coordinated Soros-Style Attack)
+### [Phase 2](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase2_results.png) — Short + Dump (Coordinated Attack)
+
+This phase models a "Soros-style" attack pattern, where the attacker combines a directional bet with a market-moving trigger—a strategy documented in currency crisis literature ([Gorton & Zhang, 2021](#ref-gorton-zhang)).
 
 * Action: Open CT short, then dump AS
 
@@ -232,10 +237,24 @@ The fork introduces **instrumentation and adversarial extensions only** (attacke
 In addition to the command-line simulation runners, an interactive web-based interface was developed to visualize system dynamics and attacker behavior in real time. The web application does not alter the simulation logic and serves solely as an exploratory and educational interface for inspecting parameter sensitivity and attack trajectories.
 The web interface is built directly on top of the same simulation codebase used for the experiments reported here.
 
-
 **Code references:**
+
 * **Paper:** Calandra, F., et al. (2025). ["Algorithmic Stablecoins: A Simulator for the Dual-Token Model in Normal and Panic Scenarios"](https://ieeexplore.ieee.org/document/11114693)
 * Original DualTokenSim: [https://github.com/FedericoCalandra/DualTokenSim](https://github.com/FedericoCalandra/DualTokenSim)
 * Attack-modelling fork (this work): **[https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model/DualTokenSim](https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model/DualTokenSim)**
 
 These repositories together constitute the full experimental setup used for this submission.
+
+---
+
+## References
+
+<span id="ref-calandra-dualtokensim"></span>Calandra, F., et al. (2025). *[Algorithmic Stablecoins: A Simulator for the Dual-Token Model in Normal and Panic Scenarios](https://ieeexplore.ieee.org/document/11114693)*. IEEE Access.
+
+<span id="ref-klages-stability"></span>Klages-Mundt, A., Harz, D., Gudgeon, L., Liu, J.-Y., & Minca, A. (2022). *[While Stability Lasts: A Stochastic Model of Non-Custodial Stablecoins](https://arxiv.org/abs/2004.01304)*. Mathematical Finance.
+
+<span id="ref-gorton-zhang"></span>Gorton, G., & Zhang, J. (2021). *[Taming Wildcat Stablecoins](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3888752)*. SSRN Electronic Journal.
+
+<span id="ref-dualtokensim-repo"></span>Calandra, F. (2025). *[DualTokenSim Repository](https://github.com/FedericoCalandra/DualTokenSim)*. GitHub.
+
+<span id="ref-attack-fork"></span>Internal Research. (2025). *[Attack-Modelling Fork](https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model/DualTokenSim)*. Extended implementation for adversarial analysis.

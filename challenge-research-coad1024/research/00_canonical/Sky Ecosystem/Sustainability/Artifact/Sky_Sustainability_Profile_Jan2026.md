@@ -43,6 +43,7 @@
 *Calculated values with explicit assumptions.*
 
 ### 2.1 Net Interest Margin (NIM)
+
 **Score: 🟢 Robust (>1%)**
 
 | Component | Value | Source | Assumption |
@@ -55,6 +56,7 @@
 > **Assumption Caveat:** True asset yield requires income audit. T-Bill proxy used pending RWA income verification.
 
 ### 2.2 Systemic Backing Breakdown
+
 **Score: 🟡 Moderate (USDC-Heavy)**
 
 | Asset Class | Value | Percentage | Source |
@@ -67,6 +69,7 @@
 > **RWA Claim Conflict:** The $10.3B RWA claim from web sources exceeds the total ecosystem size ($10.62B). This is **mathematically impossible** and requires separate investigation.
 
 ### 2.3 Liquidation Dependency Ratio (LDR)
+
 **Score: 🟢 Robust (<20%)**
 
 Estimated LDR < 0.4% based on prior revenue decomposition ([Steakhouse Financial, 2023](#ref-steakhouse-liquidations)).
@@ -75,6 +78,7 @@ Estimated LDR < 0.4% based on prior revenue decomposition ([Steakhouse Financial
 > **Definition:** $LDR = \frac{\text{Liquidation Penalty Revenue}}{\text{Total Protocol Revenue}}$. Low confidence due to 2023 data vintage.
 
 ### 2.4 Balance Sheet Solvency
+
 **Score: 🔴 Critical (Deficit)**
 
 | Metric | Value | Frame |
@@ -87,6 +91,7 @@ Estimated LDR < 0.4% based on prior revenue decomposition ([Steakhouse Financial
 > **Frame Specification:** On-chain accounting insolvency per Vat/Vow definitions. Does not reflect market-value solvency or legal claims hierarchy.
 
 ### 2.5 SBE Burn Rate
+
 **Score: 🟢 Efficient**
 
 $96M+ burned (Feb 2025 − Jan 2026), removing 3.28% of SKY supply ([CoinMarketCap, Jan 4 2026](#ref-coinmarketcap-sbe)).
@@ -102,6 +107,7 @@ $96M+ burned (Feb 2025 − Jan 2026), removing 3.28% of SKY supply ([CoinMarketC
 Sky has successfully transitioned from a "Crypto-Collateralized Stablecoin" to an "RWA-Backed Sovereign Wrapper." With ~68% of the supply backed by U.S. Treasuries and other RWAs, the protocol now acts as a decentralized interface for sovereign yield capture ([Internal Research, 2026](#ref-sky-sustainability); [Gorton & Zhang, 2021](#ref-gorton-zhang)).
 
 **Classification Criteria:**
+
 - Liabilities (DAI/USDS) issued at DSR cost
 - Assets ($10.3B RWA portfolio) earn yield > DSR
 - Spread retained as protocol surplus
@@ -158,7 +164,7 @@ Sky successfully lowered DSR to 1.25% while competitors offer higher rates, sugg
 
 <span id="ref-gorton-zhang"></span>Gorton, G., & Zhang, J. (2021). *[Taming Wildcat Stablecoins](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3888752)*. SSRN Electronic Journal.
 
-<span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](../Sky%20Ecosystem/Sustainability/Atrifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
+<span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](../Sky%20Ecosystem/Sustainability/Artifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
 
 <span id="ref-data-sky-vow"></span>Sky Protocol Mainnet. (2026). *Vow Contract Balance Query*. Retrieved Jan 5, 2026 via `pipeline/scripts/data_fetchers/fetch_makerdao_data.py`. Contract: `0xA950524441892A31ebddF91d3cEEfa04Bf454466`.
 
