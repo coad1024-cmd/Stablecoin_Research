@@ -1,0 +1,527 @@
+# Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+.pytest_cache/
+.tox/
+.venv/
+venv/
+env/
+
+# Editor/IDE
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+
+# Logs and databases
+*.log
+*.sqlite
+*.sqlite3
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Gemini related files
+.gemini/
+
+# Project-specific ignores based on initial listing
+data/ # Assuming data directory at root is for local/generated data, not source-controlled.
+*.zip # Ignore zip files
+*.png # Ignore png files
+*.md # Ignore markdown files 
+*.json # Ignore json files
+*.csv # Ignore csv files
+*.npy # Ignore npy files
+*.pdf # Ignore pdf files
+*.sol # Ignore sol files
+*.js # Ignore js files
+*.ts # Ignore ts files
+*.yml # Ignore yml files
+*.toml # Ignore toml files
+*.lock # Ignore lock files
+*.sh # Ignore sh files
+*.md # Ignore md files
+*.mdx # Ignore mdx files
+*.mdx # Ignore mdx files
+*.toml # Ignore toml files
+*.yaml # Ignore yaml files
+*.log # Ignore log files
+*.env # Ignore env files
+*.sample # Ignore sample files
+*.template # Ignore template files
+*.example # Ignore example files
+*.bak # Ignore backup files
+*.tmp # Ignore temporary files
+*.temp # Ignore temporary files
+*.swp # Ignore swap files
+*.swo # Ignore swap files
+*.sps # Ignore swap files
+*.un~ # Ignore swap files
+*.orig # Ignore original files
+*.rej # Ignore rejected files
+*.diff # Ignore diff files
+*.patch # Ignore patch files
+*.iml # Ignore intellij idea files
+*.ipr # Ignore intellij idea files
+*.iws # Ignore intellij idea files
+.project # Ignore eclipse files
+.classpath # Ignore eclipse files
+.settings # Ignore eclipse files
+.factorypath # Ignore eclipse files
+.buildpath # Ignore eclipse files
+*.min.js # Ignore minified js files
+*.min.css # Ignore minified css files
+*.map # Ignore source map files
+*.wasm # Ignore webassembly files
+*.wasm.map # Ignore webassembly map files
+*.d.ts # Ignore typescript declaration files
+.DS_Store # Ignore macOS system files
+.localized # Ignore macOS system files
+.Trashes # Ignore macOS system files
+._* # Ignore macOS system files
+.AppleDouble # Ignore macOS system files
+.LSOverride # Ignore macOS system files
+Icon? # Ignore macOS system files
+ehthumbs.db # Ignore windows system files
+ehthumbs_vista.db # Ignore windows system files
+Desktop.ini # Ignore windows system files
+*.psd # Ignore photoshop files
+*.ai # Ignore illustrator files
+*.sketch # Ignore sketch files
+*.graffle # Ignore omnigraffle files
+*.gdoc # Ignore google docs files
+*.gslides # Ignore google slides files
+*.gsheet # Ignore google sheets files
+*.key # Ignore keynote files
+*.pages # Ignore pages files
+*.numbers # Ignore numbers files
+*.drawio # Ignore drawio files
+*.svg # Ignore svg files
+*.svgz # Ignore svgz files
+*.ai # Ignore adobe illustrator files
+*.eps # Ignore encapsulated postscript files
+*.pdf # Ignore pdf files
+*.tiff # Ignore tiff files
+*.tif # Ignore tiff files
+*.gif # Ignore gif files
+*.ico # Ignore icon files
+*.cur # Ignore cursor files
+*.bmp # Ignore bitmap files
+*.jsonc # Ignore jsonc files
+*.lockb # Ignore lockb files
+*.pnpm # Ignore pnpm files
+*.tgz # Ignore tgz files
+*.log* # Ignore log files
+*.npmdebug # Ignore npm debug files
+*.node_modules # Ignore node_modules directory
+*.cache # Ignore cache directory
+*.tmp_cache # Ignore temporary cache directory
+.eslintcache # Ignore eslint cache file
+.prettiercache # Ignore prettier cache file
+.next # Ignore next.js build directory
+.nuxt # Ignore nuxt.js build directory
+.output # Ignore nuxt.js build directory
+dist # Ignore build directory
+build # Ignore build directory
+out # Ignore build directory
+package-lock.json # Ignore package-lock.json
+yarn.lock # Ignore yarn.lock
+pnpm-lock.yaml # Ignore pnpm-lock.yaml
+report.xml # Ignore report.xml
+coverage # Ignore coverage directory
+.nyc_output # Ignore nyc output directory
+.grunt # Ignore grunt directory
+.sass-cache # Ignore sass cache directory
+.webassets-cache # Ignore webassets cache directory
+.bundle # Ignore bundle directory
+.env.development # Ignore development environment file
+.env.production # Ignore production environment file
+.env.local # Ignore local environment file
+.env.test # Ignore test environment file
+.env.staging # Ignore staging environment file
+.env.*.local # Ignore local environment files
+.flaskenv # Ignore flask environment file
+.terraform # Ignore terraform directory
+*.tfplan # Ignore terraform plan files
+*.tfstate # Ignore terraform state files
+*.tfstate.backup # Ignore terraform state backup files
+.terraform.lock.hcl # Ignore terraform lock file
+*.zip # Ignore zip files
+*.tar # Ignore tar files
+*.tar.gz # Ignore tar.gz files
+*.rar # Ignore rar files
+*.7z # Ignore 7z files
+*.dmg # Ignore dmg files
+*.iso # Ignore iso files
+*.bin # Ignore bin files
+*.dat # Ignore dat files
+*.class # Ignore java class files
+*.jar # Ignore java jar files
+*.war # Ignore java war files
+*.ear # Ignore java ear files
+*.jks # Ignore java keystore files
+*.key # Ignore java key files
+*.cer # Ignore java certificate files
+*.crt # Ignore java certificate files
+*.pem # Ignore java pem files
+*.p12 # Ignore java p12 files
+*.pfx # Ignore java pfx files
+*.keystore # Ignore java keystore files
+*.factorypath # Ignore eclipse factorypath
+*.log # Log files
+.classpath
+.project
+.settings
+.factorypath
+*.log
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode
+.idea
+*.suo
+*.user
+*.bak
+*.orig
+*.swp
+*.swo
+*.sps
+*.un~
+*.rej
+*.diff
+*.patch
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings
+.factorypath
+*.min.js
+*.min.css
+*.map
+*.wasm
+*.wasm.map
+*.d.ts
+.DS_Store
+.localized
+.Trashes
+._*
+.AppleDouble
+.LSOverride
+Icon?
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+*.psd
+*.ai
+*.sketch
+*.graffle
+*.gdoc
+*.gslides
+*.gsheet
+*.key
+*.pages
+*.numbers
+*.drawio
+*.svg
+*.svgz
+*.ai
+*.eps
+*.pdf
+*.tiff
+*.tif
+*.gif
+*.ico
+*.cur
+*.bmp
+*.jsonc
+*.lockb
+*.pnpm
+*.tgz
+*.log*
+*.npmdebug
+node_modules
+.cache
+.tmp_cache
+.eslintcache
+.prettiercache
+.next
+.nuxt
+.output
+dist
+build
+out
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+report.xml
+coverage
+.nyc_output
+.grunt
+.sass-cache
+.webassets-cache
+.bundle
+.env.development
+.env.production
+.env.local
+.env.test
+.env.staging
+.env.*.local
+.flaskenv
+.terraform
+*.tfplan
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
+*.dmg
+*.iso
+*.bin
+*.dat
+*.class
+*.jar
+*.war
+*.ear
+*.jks
+*.key
+*.cer
+*.crt
+*.pem
+*.p12
+*.pfx
+*.keystore
+.tool-versions
+.node-version
+dprint.json
+yarn.lock
+yarn-error.log
+yarn.public.lock
+api-documenter.json
+api-extractor.base.json
+hardhat.config.mainnet-fork.ts
+ngrok.config.template.yml
+package.public.json
+tsconfig.base.json
+.mocharc.yml
+accounts.json
+etc/lib-base.api.md
+etc/lib-ethers.api.md
+.npmignore
+.npmrc
+test-report.md
+truffle-config.js
+secrets.js.template
+hardhat.config.echidna.js
+hardhat.config.js
+hardhat.config.mainnet-fork.js
+hardhatAccountsList100k.js
+hardhatAccountsList2k.js
+brownie-config.yaml
+Dockerfile
+docker-compose.yml
+index.html
+vite.config.ts
+yalc.lock
+.eslintrc.cjs
+.oxlintrc.json
+eslint.config.js
+graphql-codegen.ts
+next.config.js
+panda.config.ts
+postcss.config.cjs
+RELEASING.md
+Banner.example.tsx
+main.tsx
+setupTests.ts
+tsconfig.node.json
+vite-env.d.ts
+.gitattributes
+Makefile
+.solcover.js
+fuzz
+hardhat.config.js
+hardhatAccountsList2k.js
+package.json
+remappings.txt
+requirements.txt
+slither.config.json
+sourcify-chains.json
+sourcify-config.js
+tsconfig.json
+.node-version
+.tool-versions
+dprint.json
+INSTRUCTIONS.md
+.gitmodules
+.project # Generic IDE project file
+.classpath # Generic IDE classpath file
+.settings # Generic IDE settings directory
+.factorypath # Generic IDE factorypath file
+*.log # Log files
+.DS_Store # macOS system files
+Thumbs.db # Windows system files
+Desktop.ini # Windows system files
+.vscode # VS Code configuration directory
+.idea # IntelliJ IDEA configuration directory
+*.suo # Visual Studio solution user options
+*.user # Visual Studio user options
+*.bak # Backup files
+*.orig # Original files (from merges, patches)
+*.swp # Vim swap files
+*.swo # Vim swap files
+*.sps # Vim swap files
+*.un~ # Emacs temporary files
+*.rej # Reject files (from patches)
+*.diff # Diff files
+*.patch # Patch files
+*.iml # IntelliJ IDEA module file
+*.ipr # IntelliJ IDEA project file
+*.iws # IntelliJ IDEA workspace file
+*.min.js # Minified JavaScript files
+*.min.css # Minified CSS files
+*.map # Source map files
+*.wasm # WebAssembly files
+*.wasm.map # WebAssembly source map files
+*.d.ts # TypeScript declaration files
+.localized # macOS system files
+.Trashes # macOS system files
+._* # macOS system files
+.AppleDouble # macOS system files
+.LSOverride # macOS system files
+Icon? # macOS system files
+ehthumbs.db # Windows system files
+ehthumbs_vista.db # Windows system files
+*.psd # Photoshop files
+*.ai # Adobe Illustrator files
+*.sketch # Sketch files
+*.graffle # OmniGraffle files
+*.gdoc # Google Docs files
+*.gslides # Google Slides files
+*.gsheet # Google Sheets files
+*.key # Keynote files
+*.pages # Pages files
+*.numbers # Numbers files
+*.drawio # draw.io diagrams
+*.svg # SVG files
+*.svgz # Compressed SVG files
+*.eps # Encapsulated PostScript files
+*.pdf # PDF files
+*.tiff # TIFF files
+*.tif # TIFF files
+*.gif # GIF files
+*.ico # Icon files
+*.cur # Cursor files
+*.bmp # Bitmap files
+*.jsonc # JSON with comments
+*.lockb # Lock B files
+*.pnpm # PNPM related files
+*.tgz # Tar GZip archives
+*.log* # Log files
+*.npmdebug # NPM debug files
+node_modules/ # Node.js modules directory
+.cache/ # Cache directories
+.tmp_cache/ # Temporary cache directories
+.eslintcache # ESLint cache file
+.prettiercache # Prettier cache file
+.next/ # Next.js build directory
+.nuxt/ # Nuxt.js build directory
+.output/ # Nuxt.js output directory
+dist/ # Distribution directory
+build/ # Build directory
+out/ # Output directory
+package-lock.json # npm package-lock file
+yarn.lock # Yarn lock file
+pnpm-lock.yaml # pnpm lock file
+report.xml # Test reports
+coverage/ # Test coverage reports
+.nyc_output/ # NYC test coverage output
+.grunt/ # Grunt.js directory
+.sass-cache/ # Sass cache directory
+.webassets-cache/ # Webassets cache directory
+.bundle/ # Ruby Bundler directory
+.env.development # Environment files
+.env.production
+.env.local
+.env.test
+.env.staging
+.env.*.local
+.flaskenv # Flask environment file
+.terraform/ # Terraform directory
+*.tfplan # Terraform plan files
+*.tfstate # Terraform state files
+*.tfstate.backup # Terraform state backup files
+.terraform.lock.hcl # Terraform lock file
+*.zip # Zip archives
+*.tar # Tar archives
+*.tar.gz # Tar Gzip archives
+*.rar # Rar archives
+*.7z # 7z archives
+*.dmg # macOS disk images
+*.iso # ISO disk images
+*.bin # Binary files
+*.dat # Data files
+*.class # Java class files
+*.jar # Java JAR files
+*.war # Java WAR files
+*.ear # Java EAR files
+*.jks # Java KeyStore files
+*.key # Key files
+*.cer # Certificate files
+*.crt # Certificate files
+*.pem # PEM files
+*.p12 # PKCS#12 files
+*.pfx # PFX files
+*.keystore # Keystore files
+.tool-versions # asdf tool-versions file
+.node-version # Node.js version file
+dprint.json # dprint configuration file
+package.public.json # Public package.json
+tsconfig.base.json # TypeScript base config
+.mocharc.yml # Mocha config
+accounts.json # Account config
+etc/lib-base.api.md # API documentation
+etc/lib-ethers.api.md # API documentation
+.npmignore # npm ignore file
+.npmrc # npm config file
+test-report.md # Test report
+truffle-config.js # Truffle config
+secrets.js.template # Secrets template
+hardhat.config.echidna.js # Hardhat config
+hardhat.config.js # Hardhat config
+hardhat.config.mainnet-fork.js # Hardhat config
+hardhatAccountsList100k.js # Hardhat accounts list
+hardhatAccountsList2k.js # Hardhat accounts list
+brownie-config.yaml # Brownie config
+Dockerfile # Dockerfile
+docker-compose.yml # Docker Compose file
+index.html # HTML file
+vite.config.ts # Vite config
+yalc.lock # Yalc lock file
+.eslintrc.cjs # ESLint config
+.oxlintrc.json # Oxlint config
+eslint.config.js # ESLint config
+graphql-codegen.ts # GraphQL Codegen config
+next.config.js # Next.js config
+panda.config.ts # Panda CSS config
+postcss.config.cjs # PostCSS config
+RELEASING.md # Releasing documentation
+Banner.example.tsx # Example banner
+main.tsx # Main TypeScript file
+setupTests.ts # Test setup
+tsconfig.node.json # TypeScript node config
+vite-env.d.ts # Vite environment declaration
+.gitattributes # Git attributes
+Makefile # Makefile
+.solcover.js # Solidity coverage config
+fuzz # Fuzz testing directory
+.gitmodules # Git submodules
+foundry.toml # Foundry config
