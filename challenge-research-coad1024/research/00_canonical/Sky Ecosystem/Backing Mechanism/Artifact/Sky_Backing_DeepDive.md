@@ -62,7 +62,7 @@ On March 12, 2020:
 1. **ETH Crash**: Price dropped 43% in hours.
 2. **Network Congestion**: Gas prices spiked > 500 gwei.
 3. **Keeper Failure**: It became unprofitable to place bids.
-4. **Result**: $5.67M of ETH was sold for **$0** because only one keeper showed up ([Kjaeer Martin, 2021](#ref-kjaeer-thesis)).
+4. **Result**: \$5.67M of ETH was sold for **\$0** because only one keeper showed up ([Kjaeer, 2021](#ref-kjaeer-thesis)).
 
 > [!WARNING]
 > **Lesson**: Solvency is not just Asset Value. Solvency is **Execution Throughput**.

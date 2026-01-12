@@ -49,15 +49,17 @@ Each system is analyzed along three orthogonal dimensions.
 
 #### Sky Ecosystem
 
-* A4. Sky — Backing Mechanism
-* A5. Sky — Sustainability
-* A6. Sky — Decentralization
+* A4. [Sky — Backing Mechanism](Sky%20Ecosystem/Backing%20Mechanism/Artifact/Sky_Backing_Profile_Jan2026.md)
+* A5. [Sky — Sustainability](Sky%20Ecosystem/Sustainability/Artifact/Sky_Sustainability_Profile_Jan2026.md)
+* A6. [Sky — Decentralization](Sky%20Ecosystem/Decentralization/Artifact/Sky_Decentralization_Profile_Jan2026.md)
 
 #### Liquity
 
-* A7. Liquity — Backing Mechanism
-* A8. Liquity — Sustainability
-* A9. Liquity — Decentralization
+* A7. [Liquity V1 — Sustainability](Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)
+* A8. [Liquity V1 — Decentralization](Liquity/01_V1_LUSD/Decentralization/Artifact/Liquity_V1_Decentralization_Profile.md)
+* A9. [Liquity V2 — Backing Mechanism](Liquity/02_V2_BOLD/Backing%20Mechanism/Artifact/Liquity_V2_Backing_Profile.md)
+* A10. [Liquity V2 — Sustainability](Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)
+* A11. [Liquity V2 — Decentralization](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)
 
 Each artifact:
 
@@ -73,38 +75,38 @@ Each artifact:
 
 These artifacts abstract across systems and are explicitly **non-empirical**.
 
-*   **D1. Stablecoin Design with Non-Volatile Collateral** (`non_volatile_collateral_limit.md`)
-    *   **Thesis**: In the limit of zero collateral volatility and legal enforceability, all stablecoin designs collapse to a degenerate "narrow bank" structure. Mechanisms like liquidations and governance become redundant.
-    *   **Role**: Serves as the theoretical baseline (control group) for evaluating volatile designs.
+* **D1. Stablecoin Design with Non-Volatile Collateral** (`non_volatile_collateral_limit.md`)
+  * **Thesis**: In the limit of zero collateral volatility and legal enforceability, all stablecoin designs collapse to a degenerate "narrow bank" structure. Mechanisms like liquidations and governance become redundant.
+  * **Role**: Serves as the theoretical baseline (control group) for evaluating volatile designs.
 
-*   **D2. Stablecoin Design with Highly Volatile Collateral** (`volatile_collateral_limit.md`)
-    *   **Thesis**: Volatility cannot be eliminated, only contained. Stability under jump-diffusion price dynamics requires a deterministic dual-tranche capital structure (Senior/Junior) with autonomous reset rules.
-    *   **Role**: Defines the "canonical" architecture for crypto-native stablecoins, separating risk absorption (Junior) from stability conservation (Senior).
+* **D2. Stablecoin Design with Highly Volatile Collateral** (`volatile_collateral_limit.md`)
+  * **Thesis**: Volatility cannot be eliminated, only contained. Stability under jump-diffusion price dynamics requires a deterministic dual-tranche capital structure (Senior/Junior) with autonomous reset rules.
+  * **Role**: Defines the "canonical" architecture for crypto-native stablecoins, separating risk absorption (Junior) from stability conservation (Senior).
 
 Properties:
 
-*   represent theoretical "limit cases"
-*   operate under explicit hypothetical assumptions
-*   derive from academic literature and formal theory (independent of A1–A9)
-*   do not claim optimality
+* represent theoretical "limit cases"
+* operate under explicit hypothetical assumptions
+* derive from academic literature and formal theory (independent of A1–A9)
+* do not claim optimality
 
 ---
 
 ## 4. Modeling Artifact (1)
 
-*   **M1. Economic Feasibility of Attacks on Stablecoin Systems** (`attack_vs_profitabiity .md`)
-    *   **Methodology**: Agent-based simulation (`DualTokenSim`) of a dual-token algorithmic stablecoin under "Soros-style" speculative attack.
-    *   **Key Findings**:
-        1.  **Cost of Attack**: Dumping the stablecoin alone is a loss-making strategy (slippage > de-peg value).
-        2.  **Profitability Condition**: Attack becomes profitable *only* if the attacker holds a short position on the collateral token.
-        3.  **Leverage Sensitivity**: Profit scales linearly with short leverage, creating a "profitability frontier" where the attack becomes risk-free once the peg breaks.
+* **M1. Economic Feasibility of Attacks on Stablecoin Systems** (`attack_vs_profitabiity .md`)
+  * **Methodology**: Agent-based simulation (`DualTokenSim`) of a dual-token algorithmic stablecoin under "Soros-style" speculative attack.
+  * **Key Findings**:
+        1. **Cost of Attack**: Dumping the stablecoin alone is a loss-making strategy (slippage > de-peg value).
+        2. **Profitability Condition**: Attack becomes profitable *only* if the attacker holds a short position on the collateral token.
+        3. **Leverage Sensitivity**: Profit scales linearly with short leverage, creating a "profitability frontier" where the attack becomes risk-free once the peg breaks.
 
 Scope:
 
-*   formal modeling of attack cost vs profit
-*   parameterized, not calibrated
-*   references only mechanisms defined in A1–A9
-*   uses mathematical abstraction (Appendix-style)
+* formal modeling of attack cost vs profit
+* parameterized, not calibrated
+* references only mechanisms defined in A1–A9
+* uses mathematical abstraction (Appendix-style)
 
 ---
 
@@ -197,4 +199,3 @@ It is not intended for public publication.
 ## End of Artifact
 
 ---
-

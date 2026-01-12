@@ -1,4 +1,4 @@
-*# Master References Repository
+# Master References Repository
 
 > **Usage:** Copy the relevant reference block into your document's "References" section. Use the anchors (e.g., `#ref-catalini-degortari`) for in-text citations.
 
@@ -30,13 +30,17 @@
 
 ## 4. Internal Canonical Artifacts
 
-* <span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](../Sky%20Ecosystem/Sustainability/Atrifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
+* <span id="ref-sky-sustainability"></span>Internal Research. (2026). *[Sky Economic Sustainability Analysis](Sky%20Ecosystem/Sustainability/Artifact/Sky-Economic-Sustainability.md)*. Canonical Artifact.
 
-* <span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](../Sky%20Ecosystem/Decentralization/Atrifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
+* <span id="ref-sky-decentralization"></span>Internal Research. (2026). *[Sky Decentralization Profile](Sky%20Ecosystem/Decentralization/Artifact/Sky_Decentralization_Profile_Jan2026.md)*. Canonical Artifact.
 
-* <span id="ref-liquity-v1-sustainability"></span>Internal Research. (2026). *[Liquity V1 Sustainability Profile](../Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)*. Canonical Artifact.
+* <span id="ref-sky-backing"></span>Internal Research. (2026). *[Sky Backing Profile](Sky%20Ecosystem/Backing%20Mechanism/Artifact/Sky_Backing_Profile_Jan2026.md)*. Canonical Artifact.
 
-* <span id="ref-liquity-v2-resilience"></span>Internal Research. (2026). *[Liquity V2 Economic Resilience](../Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)*. Canonical Artifact.
+* <span id="ref-liquity-v1-sustainability"></span>Internal Research. (2026). *[Liquity V1 Sustainability Profile](Liquity/01_V1_LUSD/Sustainability/Artifact/Liquity_V1_Sustainability_Profile.md)*. Canonical Artifact.
+
+* <span id="ref-liquity-v2-resilience"></span>Internal Research. (2026). *[Liquity V2 Economic Resilience](Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)*. Canonical Artifact.
+
+* <span id="ref-liquity-v2-backing"></span>Internal Research. (2026). *[Liquity V2 Backing Profile](Liquity/02_V2_BOLD/Backing%20Mechanism/Artifact/Liquity_V2_Backing_Profile.md)*. Canonical Artifact.
 
 ## 5. Data Sources
 
@@ -64,4 +68,3 @@
 <span id="ref-coinmarketcap-usds"></span>CoinMarketCap. (2026). *[Sky USDS Circulating Supply](https://coinmarketcap.com/currencies/sky-usds/)*. Retrieved Jan 5, 2026.
 
 <span id="ref-sky-money-litepsm-debt"></span>Sky.money. (2026). *[LitePSM Total Debt vs Collateral](https://sky.money/)*. Retrieved Jan 5, 2026.
-*
