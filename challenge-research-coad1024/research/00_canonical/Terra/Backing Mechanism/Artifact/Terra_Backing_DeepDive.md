@@ -14,7 +14,7 @@ Unlike collateralized stablecoins (MakerDAO, Liquity) that hold resilient assets
 ![Terra VAMM Concept](../diagrams/terra_vamm_concept.png)
 *Figure 1.0: Conceptual Overview of the Virtual AMM Model*
 
-*This model corresponds to the "Dual-Token Seigniorage" class defined by Calandra et al. (2023) <a href="#ref-calandra">[1]</a> and is subject to the impossibility results for endogenous collateral described by Klages-Mundt & Minca (2022) <a href="#ref-klages">[2]</a>.*
+*This model corresponds to the "Dual-Token Seigniorage" class defined by Calandra et al. ([Calandra et al., 2023](#ref-calandra)) and is subject to the impossibility results for endogenous collateral described by Klages-Mundt & Minca ([Klages-Mundt & Minca, 2022](#ref-klages)).*
 
 ### 1.1 The Market Module (`x/market`)
 
@@ -59,7 +59,7 @@ $$Spread = \max(MinSpread, \frac{UST_{Sold}}{BasePool})$$
 
 ### 2.2 The Hyper-Inflationary Trigger
 
-When confidence breaks, the mechanism enters a deterministic feedback loop, often described as a "Reflexive Ponzi" structure by Buterin (2022) <a href="#ref-vitalik">[3]</a>:
+When confidence breaks, the mechanism enters a deterministic feedback loop, often described as a "Reflexive Ponzi" structure by Buterin ([Buterin, 2022](#ref-vitalik)):
 
 1. **Peg Break:** UST drops to $0.90.
 2. **Arb Opportunity:** Traders buy UST for $0.90, swap for $1.00 LUNA, and dump LUNA.
@@ -81,7 +81,7 @@ This is not a bug; it is the correct function of the code to defend the $1.00 pe
 
 ## 3. The Sensor: Oracle Latency Risk
 
-Terra relies on a **Weighted Median** vote from validators to price LUNA.
+Terra relies on a **Weighted Median** vote from validators to price LUNA ([Terraform Labs, 2021](#ref-terra-core)).
 
 * **VotePeriod:** 5 Blocks (~30 seconds).
 * **Vulnerability:** The price is always **stale**.
@@ -111,7 +111,7 @@ Terra V1 proved that **Algorithmically Enforced Convertibility** is not a substi
 
 ## References
 
-<span id="ref-terra-core"></span>Terraform Labs. (2021). *[Terra Core Repository](https://github.com/terra-money/classic-core)* via `x/market`.
+<span id="ref-terra-core"></span>Terraform Labs. (2021). *[Terra Core Repository](https://github.com/terra-money/classic-core)* via `x/market` and `x/oracle`.
 
 <span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *Algorithmic Stablecoins: A Simulator for the Dual-Token Model*. University of Urbino.
 
