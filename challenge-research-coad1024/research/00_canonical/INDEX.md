@@ -27,14 +27,15 @@ research/00_canonical/
 | Protocol | Sustainability | Backing Mechanism | Decentralization |
 |:---|:---|:---|:---|
 | **Sky Ecosystem** | ✅ Complete | ⏳ Pending | ✅ Complete |
-| **Liquity V1 (LUSD)** | ✅ Complete | ⏳ Pending | ✅ Complete |
-| **Liquity V2 (BOLD)** | ✅ Complete | ⏳ Pending | ✅ Complete |
+| **Liquity V1 (LUSD)** | ✅ Complete | ✅ Complete | ✅ Complete |
+| **Liquity V2 (BOLD)** | ✅ Complete | ✅ Complete | ✅ Complete |
 
 ---
 
 ## Sky Ecosystem / Sustainability (✅ Complete)
 
 ### Artifacts
+
 | File | Type | Status |
 |:---|:---|:---|
 | `Sky_Sustainability_Profile_Jan2026.md` | Primary Profile | ✅ On-chain verified |
@@ -43,6 +44,7 @@ research/00_canonical/
 | `data/yield_metrics.csv` | Data Source | On-chain DSR |
 
 ### Key Verified Metrics (Block 24,171,462)
+
 | Metric | Value | Source |
 |:---|:---|:---|
 | Combined Supply (DAI+USDS) | **$10.62B** | On-chain |
@@ -59,6 +61,7 @@ research/00_canonical/
 ## Sky Ecosystem / Decentralization (✅ Complete)
 
 ### Artifacts
+
 | File | Type | Status |
 |:---|:---|:---|
 | `Sky_Decentralization_Profile_Jan2026.md` | Primary Profile | ✅ Framework v3.0 |
@@ -67,6 +70,7 @@ research/00_canonical/
 | `data/operational_liquidations.md` | Data Source | Bot Logs |
 
 ### Key Scorecard Metrics (Framework v3.0)
+
 | Dimension | Score | Finding |
 |:---|:---|:---|
 | **Governance (G)** | 0.02 | 🔴 Plutocratic (Top-1 holds 86%) |
@@ -80,26 +84,45 @@ research/00_canonical/
 ## Liquity Case Study (✅ Complete)
 
 ### Sustainability (V1 - The Reference)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V1_Sustainability_Profile.md` | ✅ Complete | **Constrained**. 0% Yield. ETH-only. |
- 
+
 ### Sustainability (V2 - The Risk)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V2_Economic_Resilience.md` | ✅ Complete | "Yield via Pain". Market-driven rates. |
- 
+
+### Backing Mechanism (V1 - Platinum Standard)
+
+| File | Status | Key Finding |
+|:---|:---|:---|
+| `Liquity_V1_Backing_Profile.md` | ✅ Complete | **Score 10/10**. 110% ETH. Kinetic Solvency. |
+| `Liquity_V1_Backing_DeepDive.md` | ✅ Complete | Detailed Physics of Stability Pool. |
+
+### Backing Mechanism (V2 - Federated)
+
+| File | Status | Key Finding |
+|:---|:---|:---|
+| `Liquity_V2_Backing_Profile.md` | ✅ Complete | **Score 9/10**. Federated Architecture. |
+| `Liquity_V2_Backing_DeepDive.md` | ✅ Complete | Detailed Analysis of Multi-Collateral Hub. |
+
 ### Decentralization (V1 - Platinum Standard)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V1_Decentralization_Profile.md` | ✅ Complete | **Score 1.0/1.0**. Immutable. No Governance. |
 
 ### Decentralization (V2 - Risk Analysis)
+
 | File | Status | Key Finding |
 |:---|:---|:---|
 | `Liquity_V2_Decentralization_Analysis.md` | ✅ Complete | **V2 Analysis**. Trades trustlessness for scale (LSTs). |
 
 ### Comparison Metrics (3-Way Analysis)
+
 | Metric | Sky Ecosystem | Liquity V1 (LUSD) | Liquity V2 (BOLD) |
 |:---|:---|:---|:---|
 | **Governance Model** | Delegated (MKR) | None (Immutable) | Initiative-Based (LQTY) |
@@ -112,6 +135,7 @@ research/00_canonical/
 | **Data Verification** | ✅ On-chain verified | ✅ On-chain verified | ✅ Real mainnet snapshot |
 
 **Key Findings:**
+
 - **Sky**: Mature but centralized (USDC exposure, delegate concentration)
 - **Liquity V1**: Censorship-resistant but economically stagnant (704% TCR, 95% supply contraction)
 - **Liquity V2**: Bootstrapping phase with concerning concentration (1 governance voter, 80% RETH collateral)
@@ -128,11 +152,13 @@ research/00_canonical/
 | **V2 Operational** | Official Liquity API | `pipeline/scripts/data_fetchers/fetch_v2_operational_stats.js` | Jan 5, 2026 |
 
 **Data Visualization Scripts:**
+
 - **Decentralization Metrics**: `pipeline/scripts/visualization/generate_decentralization_plots.py`
 - **Liquity Plots**: `pipeline/scripts/visualization/generate_liquity_plots.py`
 - **MakerDAO/Sky Plots**: `pipeline/scripts/visualization/generate_makerdao_plots.py`
 
 **Verification Standard:**
+
 - ✅ **Real Data**: Direct blockchain queries or official API responses
 - ⚠️ **Projections**: Clearly labeled where granular data unavailable (e.g., SP depositor distribution)
 - 📊 **All data files** stored in respective `/data/` directories with timestamps and source attribution
