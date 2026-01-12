@@ -11,7 +11,8 @@
 
 Unlike collateralized stablecoins (MakerDAO, Liquity) that hold resilient assets in a vault, Terra operates as a **Virtual Automated Market Maker (VAMM)**. The "Backing" is not an asset, but a **Liquidity Commitment**: the protocol promises to mint $1 of LUNA for every 1 UST burned, regardless of market conditions.
 
-![Terra VAMM Concept](../diagrams/terra_vamm_concept.png)*Figure 1.0: Conceptual Overview of the Virtual AMM Model*
+![Terra VAMM Concept](../diagrams/terra_vamm_concept.png)
+*Figure 1.0: Conceptual Overview of the Virtual AMM Model*
 
 *This model corresponds to the "Dual-Token Seigniorage" class defined by Calandra et al. (2023) <a href="#ref-calandra">[1]</a> and is subject to the impossibility results for endogenous collateral described by Klages-Mundt & Minca (2022) <a href="#ref-klages">[2]</a>.*
 
@@ -22,12 +23,16 @@ The core engine is the `x/market` module. It maintains two **Virtual Pools** tha
 * **Reflexivity:** The pools do not hold tokens. They are mathematical variables (`TerraPoolDelta`) that track the deviation from equilibrium.
 * **Constant Product:** The pricing follows a $CP = BasePool^2$ invariant.
 
-![Terra System Architecture](../diagrams/terra_system_architecture.png)*Figure 1.1: Virtual Pool Architecture showing the interaction between User and x/market state*
+![Terra System Architecture](../diagrams/terra_system_architecture.png)
+*Figure 1.1: Virtual Pool Architecture showing the interaction between User and x/market state*
+
 ---
 
 **Atomic Execution:** The VAMM executes the swap as a single state transition. The protocol does not hold inventory; it burns the input asset, updates the `TerraPoolDelta` to calculate the new price, and mints the output asset directly to the user's wallet. Use atomic instructions to prevent reentrancy during this calculation.
 
-![Terra Swap Sequence](../diagrams/terra_swap_sequence.png)*Figure 1.2: Atomic Execution Flow of a Swap Transaction*
+![Terra Swap Sequence](../diagrams/terra_swap_sequence.png)
+*Figure 1.2: Atomic Execution Flow of a Swap Transaction*
+
 ---
 
 ## 2. Kinetic Solvency: The Death Spiral Mechanics
