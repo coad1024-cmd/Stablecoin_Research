@@ -14,6 +14,9 @@ Unlike collateralized stablecoins (MakerDAO, Liquity) that hold resilient assets
 ![Terra VAMM Concept](../diagrams/terra_vamm_concept.png)
 *Figure 1.0: Conceptual Overview of the Virtual AMM Model*
 
+> [!NOTE]
+> This model corresponds to the "Dual-Token Seigniorage" class defined by Calandra et al. (2023) <a href="#ref-calandra">[1]</a> and is subject to the impossibility results for endogenous collateral described by Klages-Mundt & Minca (2022) <a href="#ref-klages">[2]</a>.
+
 ### 1.1 The Market Module (`x/market`)
 
 The core engine is the `x/market` module. It maintains two **Virtual Pools** that simulate liquidity depth to calculate slippage.
@@ -47,7 +50,7 @@ $$Spread = \max(MinSpread, \frac{UST_{Sold}}{BasePool})$$
 
 ### 2.2 The Hyper-Inflationary Trigger
 
-When confidence breaks, the mechanism enters a deterministic feedback loop:
+When confidence breaks, the mechanism enters a deterministic feedback loop, often described as a "Reflexive Ponzi" structure by Buterin (2022) <a href="#ref-vitalik">[3]</a>:
 
 1. **Peg Break:** UST drops to $0.90.
 2. **Arb Opportunity:** Traders buy UST for $0.90, swap for $1.00 LUNA, and dump LUNA.
@@ -93,4 +96,8 @@ Terra V1 proved that **Algorithmically Enforced Convertibility** is not a substi
 
 <span id="ref-terra-core"></span>Terraform Labs. (2021). *[Terra Core Repository](https://github.com/terra-money/classic-core)* via `x/market`.
 
-<span id="ref-internal-analysis"></span>Internal Research. (2026). *[Terra Protocol Analysis](../../../../../analysis/Terra/Backing%20Mechanisms/Article_Backing.md)*. Draft Analysis.
+<span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *Algorithmic Stablecoins: A Simulator for the Dual-Token Model*. University of Urbino.
+
+<span id="ref-klages"></span>Klages-Mundt, A., & Minca, A. (2022). *While Stability Lasts: A Stochastic Model of Non-Custodial Stablecoins*. Cornell University.
+
+<span id="ref-vitalik"></span>Buterin, V. (2022). *Two Thought Experiments to Evaluate Automated Stablecoins*. Vitalik.ca.

@@ -11,11 +11,11 @@
 
 **Status:** 🔴 **FAILED (Algorithmic / Unbacked)**
 
-Terra (UST) represents the archetype of **Endogenous Backing**. While it claimed to be "backed" by LUNA, the framework classifies this as a **"Red Flag" (Type C: The Chimera)**. The system relies on the **Absorption Assumption**: that LUNA liquidity will always be sufficient to absorb UST exits. Because LUNA's value is derived from the success of UST, this circular dependency creates a "Death Spiral" condition where the collateral value evaporates exactly when it is needed most.
+Terra (UST) represents the archetype of **Endogenous Backing**. While it claimed to be "backed" by LUNA, the framework classifies this as a **"Red Flag" (Type C: The Chimera)**. The system relies on the **Absorption Assumption**: that LUNA liquidity will always be sufficient to absorb UST exits. Because LUNA's value is derived from the success of UST, this circular dependency creates a "Death Spiral" condition where the collateral value evaporates exactly when it is needed most (Klages-Mundt & Minca, 2022) <a href="#ref-klages">[1]</a>.
 
 ### The Solvency Lens
 
-* **Kinetic Solvency (Physics):** **Deterministic**. The system functioned exactly as coded (CPMM logic), but the economic physics were flawed.
+* **Kinetic Solvency (Physics):** **Deterministic**. The system functioned exactly as coded (CPMM logic), but the economic physics were flawed (Calandra et al., 2023) <a href="#ref-calandra">[2]</a>.
 * **Static Solvency (Assets):** **Zero**. LUNA is not an external asset; it is a claim on the system's future growth (Seigniorage Shares).
 
 ---
@@ -69,6 +69,10 @@ Terra (UST) represents the archetype of **Endogenous Backing**. While it claimed
 
 ## References
 
+<span id="ref-backup-framework"></span>Internal Research. (2026). *[General Backing Framework](../../../../01_frameworks/general_backing_framework.md)*. Canonical Methodology.
+
 <span id="ref-terra-analysis"></span>Internal Research. (2026). *[Terra Protocol Architecture Analysis](../../../../../analysis/Terra/Backing%20Mechanism/Article_Backing.md)*. Source Code Audit.
 
-<span id="ref-backup-framework"></span>Internal Research. (2026). *[General Backing Framework](../../../../01_frameworks/general_backing_framework.md)*. Canonical Methodology.
+<span id="ref-klages"></span>Klages-Mundt, A., & Minca, A. (2022). *While Stability Lasts: A Stochastic Model of Non-Custodial Stablecoins*. Cornell University.
+
+<span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *Algorithmic Stablecoins: A Simulator for the Dual-Token Model*. University of Urbino.
