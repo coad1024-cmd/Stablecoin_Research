@@ -10,13 +10,13 @@
 research/00_canonical/
 ├── {Protocol}/
 │   ├── Sustainability/
-│   │   ├── Atrifact/          ← Finalized documents
+│   │   ├── Artifact/          ← Finalized documents
 │   │   └── diagrams/          ← Supporting visualizations
 │   ├── Backing Mechanism/
-│   │   ├── Atrifact/
+│   │   ├── Artifact/
 │   │   └── diagrams/
 │   └── Decentralization/
-│       ├── Atrifact/
+│       ├── Artifact/
 │       └── diagrams/
 ```
 
@@ -167,7 +167,7 @@ research/00_canonical/
 
 ## Usage
 
-1. **For synthesis:** Use `Atrifact/` folder contents
+1. **For synthesis:** Use `Artifact/` folder contents
 2. **For presentations:** Use `diagrams/` folder
 3. **For deep reference:** Cross-check with `analysis/` folder
 
