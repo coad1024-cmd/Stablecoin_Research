@@ -40,9 +40,6 @@ $$\text{Solvency}_{\text{Global}} = \min(\text{Branch}_1, \text{Branch}_2, ... \
 * **The Hub (Registry):** Manages the global liability (BOLD) and routes redemptions. Holds **zero collateral**.
 * **The Spokes (Branches):** Independent markets (WETH, rETH) that hold collateral and manage their own risk parameters.
 
-![Federated Architecture](../diagrams/v2_hub_spoke_architecture.png)
-*Fig 1.1: The Hub-and-Spoke model. The CollateralRegistry routes redemptions to isolated Branches (WETH, wstETH, rETH), each with its own TroveManager and ActivePool.*
-
 ---
 
 ## 2. Architecture: The Hub-and-Spoke Registry
@@ -56,7 +53,7 @@ The `CollateralRegistry` acts as the system's "Solvency CPU." It **holds no coll
 3. **Asset Dispatch:** Instructs specific Branches to release assets
 4. **Liability Extinguishment:** Burns BOLD tokens globally
 
-![Detailed Hub Schematic](../diagrams/v2_hub_spoke_architecture_detailed.png)
+![Federated Architecture](../diagrams/v2_hub_spoke_architecture.png)
 *Fig 2.1: Detailed schematic of the CollateralRegistry Hub showing the Unbackedness data flows and redemption routing logic.*
 
 ### 2.2 The Spokes: Isolated Branch Economies
@@ -70,9 +67,6 @@ Each Branch is a fully self-contained lending market with five components:
 | **StabilityPool** | First line of defense for this branch only |
 | **DefaultPool** | Receives debt from overwhelmed SP |
 | **BorrowerOperations** | User interface for loans |
-
-![Premium Spoke View](../diagrams/v2_hub_spoke_architecture_premium.png)
-*Fig 2.2: High-fidelity view of the Spoke modules orbiting the Hub, highlighting the "Firewall" isolation between asset classes.*
 
 ### 2.3 The Bulkhead Security Pattern
 

@@ -16,7 +16,7 @@ The stablecoin landscape is no longer a binary choice between "Centralized" and 
 |:---|:---|:---|:---|
 | **Archetype** | Regulatory Neo-Bank | Cypherpunk Public Utility | Pragmatic DeFi Protocol |
 | **Primary Goal** | **Scale & Efficiency** | **Absolute Safety** | **Yield & Growth** |
-| **Backing** | Custodial (USDC/RWA) | Trustless (ETH) | Diversified (LSTs) |
+| **Backing** | Custodial (USDC/RWA) | Trustless (ETH) | Federated (Kinetic) |
 | **Governance** | Plutocratic (Active) | None (Immutable) | Limited (Incentive-Only) |
 | **Risk Profile** | Censorship / Regulatory | Economic Stagnation | LST Contagion |
 | **Score (Decent.)** | � **0.50** (Fail) | 🟢 **0.99** (Perfect) | � **0.85** (Compromised) |
@@ -83,23 +83,38 @@ The stablecoin landscape is no longer a binary choice between "Centralized" and 
 
 ---
 
-## 4. The Efficient Frontier
+---
+
+## 4. Backing Analysis (The Solvency Case)
+
+**Question:** *Is the collateral actually there?*
+
+### Sky Ecosystem: The Rehypothecated Dollar
+
+* **Mechanism:** 1:1 Peg with USDC/Treasuries. Dependent on Circle/Coinbase solvency.
+* **Risk:** **Custodial Seizure.** If the US Govt sanctions the PSM, the backing freezes.
+* **Verdict:** Safe from market volatility, vulnerable to state actors.
+
+### Liquity V1: The Hard Rock
+
+* **Mechanism:** 110% ETH Over-collateralization. Immutable liquidation logic.
+* **Risk:** **Price Volatility.** Extreme ETH crash could theoretically outpace liquidations (never happened in practice).
+* **Verdict:** The hardest money in DeFi. Limited by ETH's market cap.
+
+### Liquity V2: The Kinetic Federation
+
+* **Mechanism:** **Hub-and-Spoke.** Isolates risk into branches (WETH, rETH). System solvency is the *sum* of its parts, but failure is compartmentalized.
+* **Risk:** **Complex Contagion.** LST de-peg events are handled by the "Unbackedness Routing" algorithm.
+* **Verdict:** **Antifragile.** It turns LST risk into a localized pricing problem (interest rates) rather than a system-wide solvency crisis.
+
+---
+
+## 5. The Efficient Frontier
 
 We visualize the design space as a curve where you cannot maximize all variables.
 
-```
-Decentralization (Safety)
-  ^
-  |        [Liquity V1] (Max Safety, Min Scale)
-  |             *
-  |
-  |                        [Liquity V2] (Balanced Trade-off)
-  |                               *
-  |
-  |                                            [Sky Ecosystem]
-  |                                          (Max Scale, Min Safety)
-  |__________________________________________________________> Efficiency (Scale)
-```
+![Efficient Frontier Curve](efficient_frontier_curve.png)
+*Figure 2: The Stablecoin Trilemma Efficient Frontier. Liquity V2 expands the curve by balancing Safety and Scale.*
 
 **Strategic Insight:**
 
@@ -109,7 +124,7 @@ Decentralization (Safety)
 
 ---
 
-## 5. Final Recommendations
+## 6. Final Recommendations
 
 ### For Different user Profiles
 
@@ -135,6 +150,7 @@ The industry is bifurcating. Sky is merging with Traditional Finance (TradFi) ([
 * [Liquity V2 Economic Resilience](Liquity/02_V2_BOLD/Sustainability/Artifact/Liquity_V2_Economic_Resilience.md)
 * [Liquity V2 Decentralization Analysis](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)
 * [Liquity V2 Backing Profile](Liquity/02_V2_BOLD/Backing%20Mechanism/Artifact/Liquity_V2_Backing_Profile.md)
+* [Liquity V2 Backing Deep Dive](Liquity/02_V2_BOLD/Backing%20Mechanism/Artifact/Liquity_V2_Backing_DeepDive.md)
 
 ---
 
