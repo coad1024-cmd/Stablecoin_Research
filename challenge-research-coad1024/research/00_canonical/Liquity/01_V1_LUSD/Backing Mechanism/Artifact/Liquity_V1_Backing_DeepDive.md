@@ -9,7 +9,7 @@
 
 ## Abstract
 
-This report analyzes the **Kinetic Solvency** of Liquity V1 (LUSD). Unlike "Gov-Managed" stablecoins (MakerDAO) or "Fiat-Wrappers" (USDC), Liquity V1 operates as an **Immutable Vault**. It couples a rigid over-collateralization requirement (110% MCR) with an atomic **Stability Pool** mechanism that prioritizes speed of liquidation over capital efficiency.
+This report analyzes the **Kinetic Solvency** of Liquity V1 (LUSD). Unlike "Gov-Managed" stablecoins (MakerDAO) or "Fiat-Wrappers" (USDC), Liquity V1 operates as an **Immutable Vault**. It couples a rigid over-collateralization requirement (110% MCR) with an atomic **Stability Pool** mechanism that prioritizes speed of liquidation over capital efficiency ([Liquity, 2021](#ref-liquity-technical)).
 
 The core insight is **Redemption-Driven Value**: LUSD is not "pegged" by a market maker, but by the protocol's unconditional promise to exchange 1 LUSD for $1 of ETH collateral, creating a hard arbitrage floor.
 
@@ -132,4 +132,6 @@ Liquity V1 achieves **Absolute Backing Confidence** by sacrificing **Capital Eff
 
 ## References
 
-<span id="ref-liquity-technical"></span>Liquity. (2021). *[Liquity Protocol README](https://github.com/liquity/dev/blob/main/README.md)*. Source Code Documentation.
+<span id="ref-liquity-technical"></span>Liquity. (2021). *[Liquity Protocol README](https://github.com/liquity/dev/blob/main/README.md)*. GitHub Repository.
+
+<span id="ref-general-framework"></span>Internal Research. (2026). *[General Backing Framework](../../../../../01_frameworks/general_backing_framework.md)*. Canonical Methodology.

@@ -11,7 +11,7 @@
 
 **Status:** 🟢 **The Platinum Standard**
 
-Liquity V1 is the "Hard Rock" of decentralized stablecoins. It represents the theoretical limit of **Immutable Solvency**. By accepting only Ether (ETH) as collateral and enforcing a rigid 110% Minimum Collateral Ratio (MCR) with **zero administrative keys**, it eliminates all counterparty and governance risks. Its solvency engine relies entirely on the **Stability Pool** (instant offset) and **Redistribution** (socialized debt), creating a system that is mathematically constrained to be solvent as long as the ETH price does not drop faster than the liquidation speed.
+Liquity V1 is the "Hard Rock" of decentralized stablecoins. It represents the theoretical limit of **Immutable Solvency**. By accepting only Ether (ETH) as collateral and enforcing a rigid 110% Minimum Collateral Ratio (MCR) with **zero administrative keys**, it eliminates all counterparty and governance risks. Its solvency engine relies entirely on the **Stability Pool** (instant offset) and **Redistribution** (socialized debt), creating a system that is mathematically constrained to be solvent as long as the ETH price does not drop faster than the liquidation speed ([Internal Research, 2026](#ref-general-framework)).
 
 ### The Solvency Lens
 
@@ -70,4 +70,6 @@ Liquity V1 is the "Hard Rock" of decentralized stablecoins. It represents the th
 
 ## References
 
-<span id="ref-liquity-v1-docs"></span>Liquity. (2021). *[Liquity V1 Documentation](https://docs.liquity.org/)*. Source Analysis.
+<span id="ref-liquity-v1-docs"></span>Liquity. (2021). *[Liquity V1 Documentation](https://docs.liquity.org/)*. Project Documentation.
+
+<span id="ref-general-framework"></span>Internal Research. (2026). *[General Backing Framework](../../../../../01_frameworks/general_backing_framework.md)*. Canonical Methodology.
