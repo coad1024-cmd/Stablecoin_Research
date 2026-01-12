@@ -11,11 +11,9 @@
 
 Unlike collateralized stablecoins (MakerDAO, Liquity) that hold resilient assets in a vault, Terra operates as a **Virtual Automated Market Maker (VAMM)**. The "Backing" is not an asset, but a **Liquidity Commitment**: the protocol promises to mint $1 of LUNA for every 1 UST burned, regardless of market conditions.
 
-![Terra VAMM Concept](../diagrams/terra_vamm_concept.png)
-*Figure 1.0: Conceptual Overview of the Virtual AMM Model*
+![Terra VAMM Concept](../diagrams/terra_vamm_concept.png)*Figure 1.0: Conceptual Overview of the Virtual AMM Model*
 
-> [!NOTE]
-> This model corresponds to the "Dual-Token Seigniorage" class defined by Calandra et al. (2023) <a href="#ref-calandra">[1]</a> and is subject to the impossibility results for endogenous collateral described by Klages-Mundt & Minca (2022) <a href="#ref-klages">[2]</a>.
+*This model corresponds to the "Dual-Token Seigniorage" class defined by Calandra et al. (2023) <a href="#ref-calandra">[1]</a> and is subject to the impossibility results for endogenous collateral described by Klages-Mundt & Minca (2022) <a href="#ref-klages">[2]</a>.*
 
 ### 1.1 The Market Module (`x/market`)
 
@@ -24,12 +22,12 @@ The core engine is the `x/market` module. It maintains two **Virtual Pools** tha
 * **Reflexivity:** The pools do not hold tokens. They are mathematical variables (`TerraPoolDelta`) that track the deviation from equilibrium.
 * **Constant Product:** The pricing follows a $CP = BasePool^2$ invariant.
 
-![Terra System Architecture](../diagrams/terra_system_architecture.png)
-*Figure 1.1: Virtual Pool Architecture showing the interaction between User and x/market state*
+![Terra System Architecture](../diagrams/terra_system_architecture.png)*Figure 1.1: Virtual Pool Architecture showing the interaction between User and x/market state*
+---
 
-![Terra Swap Sequence](../diagrams/terra_swap_sequence.png)
-*Figure 1.2: Atomic Execution Flow of a Swap Transaction*
+**Atomic Execution:** The VAMM executes the swap as a single state transition. The protocol does not hold inventory; it burns the input asset, updates the `TerraPoolDelta` to calculate the new price, and mints the output asset directly to the user's wallet. Use atomic instructions to prevent reentrancy during this calculation.
 
+![Terra Swap Sequence](../diagrams/terra_swap_sequence.png)*Figure 1.2: Atomic Execution Flow of a Swap Transaction*
 ---
 
 ## 2. Kinetic Solvency: The Death Spiral Mechanics
@@ -42,6 +40,12 @@ To prevent bank runs, the protocol charges a dynamic specific tax called the **S
 
 ![Stability Spread Model](../diagrams/terra_stability_spread.png)
 *Figure 2.1: Stability Spread mechanics demonstrating cost-of-exit expansion during de-pegs*
+
+**The "Tobin Tax" Mechanism:** The spread is a function of the `TerraPoolDelta` (the net imbalance of UST sold vs. LUNA bought).
+
+* **Equilibrium:** When Δ = 0, the spread is the minimum (e.g., 0.5%).
+* **Panic:** As users flee UST, Δ grows rapidly. The swap fee expands exponentially (up to ~60-100%), intending to discourage panic selling by making the "exit door" prohibitively expensive.
+* **Failure:** In a true bank run, users accept *any* loss to exit, paying the 60% fee and pushing the LUNA price to zero faster.
 
 $$Spread = \max(MinSpread, \frac{UST_{Sold}}{BasePool})$$
 
@@ -59,6 +63,14 @@ When confidence breaks, the mechanism enters a deterministic feedback loop, ofte
 5. **Recursion:** More LUNA -> Lower Price -> More Minting -> Infinite Supply.
 
 This is not a bug; it is the correct function of the code to defend the $1.00 peg at the expense of LUNA equity.
+
+### 2.3 System Throughput (The Bottleneck)
+
+**Framework Requirement (Pillar II.C):** Maximum System Throughput.
+
+* **Constraint:** The protocol enforced a **Daily Minting Cap** (initially ~$293M).
+* **The Squeeze:** During the collapse, exit demand ($Billions) vastly exceeded this throughput limit.
+* **Result:** The "Stability Spread" expanded to >60%, effectively freezing efficient exits and trapping liquidity. The engine could not burn UST fast enough to save the peg.
 
 ---
 
