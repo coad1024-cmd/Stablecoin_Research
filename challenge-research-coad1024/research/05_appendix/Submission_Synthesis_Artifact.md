@@ -44,8 +44,11 @@ Each system is analyzed along three orthogonal dimensions.
 #### Terra
 
 * A1. [Terra — Backing Mechanism](Terra/Backing%20Mechanism/Artifact/Terra_Backing_Profile.md)
-* A2. Terra — Sustainability
-* A3. Terra — Decentralization
+* A1b. [Terra — Backing Deep Dive](Terra/Backing%20Mechanism/Artifact/Terra_Backing_DeepDive.md)
+* A2. [Terra — Sustainability](Terra/Sustainability/Artifact/Terra_Sustainability_Profile.md)
+* A2b. [Terra — Sustainability Deep Dive](Terra/Sustainability/Artifact/Terra_Sustainability_DeepDive.md)
+* A3. [Terra — Decentralization](Terra/Decentralization/Artifact/Terra_Decentralization_Profile.md)
+* A3b. [Terra — Decentralization Deep Dive](Terra/Decentralization/Artifact/Terra_Decentralization_DeepDive.md)
 
 #### Sky Ecosystem
 

@@ -1,4 +1,5 @@
 # Stablecoins — Modelling the Economic Feasibility of a De‑Peg Attack
+
 *Canonical Version — Citation-Anchored (Frozen)*
 
 ## 1. Challenge Alignment
@@ -15,11 +16,11 @@ The objective is to analyze **cost of attack vs. potential profit** for a ration
 
 **Under what conditions does a deliberate de‑peg attack on a dual‑token algorithmic stablecoin become profitable for an attacker?**
 
-This study does not aim to forecast market price trajectories or optimize protocol parameters. Rather, it isolates and analyzes the *economic incentives* inherent in the stabilization mechanism to determine if they can be rationally exploited by a sufficiently capitalized adversary. For a comprehensive technical specification of the underlying model, please refer to the [Model Deep Dive](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/model_deep_dive.md).
+This study does not aim to forecast market price trajectories or optimize protocol parameters. Rather, it isolates and analyzes the *economic incentives* inherent in the stabilization mechanism to determine if they can be rationally exploited by a sufficiently capitalized adversary. For a comprehensive technical specification of the underlying model, please refer to the Model Deep Dive ([Internal Research, 2026](#ref-model-deepdive)).
 
 ---
 
-## 3. Model Theory ([Conceptual](https://ieeexplore.ieee.org/document/11114693))
+## 3. Model Theory ([Calandra et al., 2023](#ref-calandra))
 
 ### 3.1 Dual‑Token Stabilization Logic
 
@@ -67,7 +68,7 @@ The attack is profitable if:
 
 ### 4.1 Base Simulator
 
-This work builds on **DualTokenSim**, introduced by Calandra et al. in *“Algorithmic Stablecoins: A Simulator for the Dual‑Token Model in Normal and Panic Scenarios”*, and its accompanying open‑source implementation.
+This work builds on **DualTokenSim**, introduced by Calandra et al. ([Calandra et al., 2023](#ref-calandra)) in *"Algorithmic Stablecoins: A Simulator for the Dual-Token Model in Normal and Panic Scenarios"*, and its accompanying open‑source implementation.
 
 DualTokenSim models:
 
@@ -94,7 +95,7 @@ The AMM mechanics, arbitrage logic, stochastic trade process, and stabilization 
 
 Three progressively stronger attack configurations are evaluated.
 
-### [Phase 1](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase1_results.png) — Raw Dump (Baseline)
+### Phase 1 ([Internal Research, 2026](#ref-phase1)) — Raw Dump (Baseline)
 
 * Action: Large AS sell to break the peg
 * Attacker position: No collateral short
@@ -109,7 +110,7 @@ This establishes the **cost of attack** in isolation.
 
 ---
 
-### [Phase 2](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase2_results.png) — Short + Dump (Coordinated Soros-Style Attack)
+### Phase 2 ([Internal Research, 2026](#ref-phase2)) — Short + Dump (Coordinated Soros-Style Attack)
 
 * Action: Open CT short, then dump AS
 
@@ -123,7 +124,7 @@ This demonstrates that profitability emerges only when the attacker is positione
 
 ---
 
-### [Phase 3](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase3_results.png) — High Leverage
+### Phase 3 ([Internal Research, 2026](#ref-phase3)) — High Leverage
 
 * Action: Increase CT short exposure while keeping trigger size similar
 
@@ -232,10 +233,29 @@ The fork introduces **instrumentation and adversarial extensions only** (attacke
 In addition to the command-line simulation runners, an interactive web-based interface was developed to visualize system dynamics and attacker behavior in real time. The web application does not alter the simulation logic and serves solely as an exploratory and educational interface for inspecting parameter sensitivity and attack trajectories.
 The web interface is built directly on top of the same simulation codebase used for the experiments reported here.
 
-
 **Code references:**
-* **Paper:** Calandra, F., et al. (2025). ["Algorithmic Stablecoins: A Simulator for the Dual-Token Model in Normal and Panic Scenarios"](https://ieeexplore.ieee.org/document/11114693)
-* Original DualTokenSim: [https://github.com/FedericoCalandra/DualTokenSim](https://github.com/FedericoCalandra/DualTokenSim)
-* Attack-modelling fork (this work): **[https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model/DualTokenSim](https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model/DualTokenSim)**
+
+* **Paper:** ([Calandra et al., 2023](#ref-calandra))
+* **Original DualTokenSim:** ([FedericoCalandra, 2023](#ref-dualtokensim))
+* **Attack-modelling fork:** ([Internal Research, 2026](#ref-attack-fork))
+* **Model Deep Dive:** ([Internal Research, 2026](#ref-model-deepdive))
 
 These repositories together constitute the full experimental setup used for this submission.
+
+---
+
+## References
+
+<span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *[Algorithmic Stablecoins: A Simulator for the Dual-Token Model](https://ieeexplore.ieee.org/document/11114693)*. IEEE Access.
+
+<span id="ref-dualtokensim"></span>FedericoCalandra. (2023). *[DualTokenSim Repository](https://github.com/FedericoCalandra/DualTokenSim)*. GitHub.
+
+<span id="ref-attack-fork"></span>Internal Research. (2026). *[Attack-Modelling Fork](https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model/DualTokenSim)*. GitHub Fork.
+
+<span id="ref-model-deepdive"></span>Internal Research. (2026). *[Model Deep Dive](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/model_deep_dive.md)*. Technical Documentation.
+
+<span id="ref-phase1"></span>Internal Research. (2026). *[Phase 1 Results](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase1_results.png)*. Simulation Output.
+
+<span id="ref-phase2"></span>Internal Research. (2026). *[Phase 2 Results](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase2_results.png)*. Simulation Output.
+
+<span id="ref-phase3"></span>Internal Research. (2026). *[Phase 3 Results](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase3_results.png)*. Simulation Output.

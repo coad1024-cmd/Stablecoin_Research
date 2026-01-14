@@ -12,7 +12,9 @@
 
 * <span id="ref-yoshimura-cbdc"></span>Yoshimura, A., et al. (2022). *[From Stablecoins to CBDCs: The Future of Money](https://dspace.mit.edu/handle/1721.1/143176)*. MIT Digital Currency Initiative.
 
-* <span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *Algorithmic Stablecoins: A Simulator for the Dual-Token Model*. University of Urbino.
+* <span id="ref-calandra-sim"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *[Algorithmic Stablecoins: A Simulator for the Dual-Token Model](https://ieeexplore.ieee.org/document/11114693)*. University of Urbino.
+
+* <span id="ref-calandra"></span>Calandra, D., et al. (2024). *[Learning from Terra-Luna: A Simulation-Based Study on Stabilizing Algorithmic Stablecoins](https://ceur-ws.org/Vol-3791/paper19.pdf)*. CEUR Workshop Proceedings, Vol-3791.
 
 * <span id="ref-klages"></span>Klages-Mundt, A., & Minca, A. (2022). *While Stability Lasts: A Stochastic Model of Non-Custodial Stablecoins*. Cornell University.
 
@@ -21,6 +23,7 @@
 ## 2. Protocol Documentation
 
 * <span id="ref-makerdao-whitepaper"></span>MakerDAO. (2017). *[The Maker Protocol: MakerDAO's Multi-Collateral Dai (MCD) System](https://makerdao.com/en/whitepaper/)*. Technical Whitepaper.
+* <span id="ref-spark-tokenomics"></span>Spark Protocol. (2026). *[SPK Token Governance & Emissions](https://docs.spark.fi/governance/spk-token)*. SubDAO Documentation.
 
 * <span id="ref-liquity-v1-paper"></span>Liquity. (2021). *[Liquity: Decentralized Borrowing Protocol](https://docsend.com/view/bwiczmy)*. Technical Paper.
 
@@ -53,6 +56,20 @@
 * <span id="ref-terra-backing-profile"></span>Internal Research. (2026). *[Terra Backing Profile](Terra/Backing%20Mechanism/Artifact/Terra_Backing_Profile.md)*. Canonical Artifact.
 
 * <span id="ref-terra-backing-deepdive"></span>Internal Research. (2026). *[Terra Backing Deep Dive](Terra/Backing%20Mechanism/Artifact/Terra_Backing_DeepDive.md)*. Canonical Artifact.
+
+* <span id="ref-terra-sustainability"></span>Internal Research. (2026). *[Terra Sustainability Profile](Terra/Sustainability/Artifact/Terra_Sustainability_Profile.md)*. Canonical Artifact.
+
+* <span id="ref-terra-sustainability-deepdive"></span>Internal Research. (2026). *[Terra Sustainability Deep Dive](Terra/Sustainability/Artifact/Terra_Sustainability_DeepDive.md)*. Canonical Artifact.
+
+* <span id="ref-terra-decentralization"></span>Internal Research. (2026). *[Terra Decentralization Profile](Terra/Decentralization/Artifact/Terra_Decentralization_Profile.md)*. Canonical Artifact.
+
+* <span id="ref-terra-decentralization-deepdive"></span>Internal Research. (2026). *[Terra Decentralization Deep Dive](Terra/Decentralization/Artifact/Terra_Decentralization_DeepDive.md)*. Canonical Artifact.
+
+* <span id="ref-liquity-v1-backing"></span>Internal Research. (2026). *[Liquity V1 Backing Profile](Liquity/01_V1_LUSD/Backing%20Mechanism/Artifact/Liquity_V1_Backing_Profile.md)*. Canonical Artifact.
+
+* <span id="ref-liquity-v1-decentralization"></span>Internal Research. (2026). *[Liquity V1 Decentralization Profile](Liquity/01_V1_LUSD/Decentralization/Artifact/Liquity_V1_Decentralization_Profile.md)*. Canonical Artifact.
+
+* <span id="ref-liquity-v2-decentralization"></span>Internal Research. (2026). *[Liquity V2 Decentralization Analysis](Liquity/02_V2_BOLD/Decentralization/Artifact/Liquity_V2_Decentralization_Analysis.md)*. Canonical Artifact.
 
 ## 5. Data Sources
 

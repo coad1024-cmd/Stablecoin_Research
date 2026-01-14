@@ -16,8 +16,8 @@ def ensure_dir(path):
 def load_real_data():
     """Lengths real data from onchain_snapshot.csv if available."""
     data = {
-        "dsr_cost": 1.25, # Default fallback
-        "gross_yield": 4.5, # Default fallback (Blended)
+        "dsr_cost": 5.48, # Jan 2026 Update
+        "gross_yield": 5.1, # Blended ~5.1%
         "total_debt": 4000000000, # 4B
         "surplus": 60000000 # 60M
     }
@@ -70,13 +70,15 @@ def main():
     
     # 2. Interest Rate Distribution (Current Snapshot)
     # MakerDAO has bifurcated rates: Low RWA, High Crypto
+    # Data sources: RWA yields from MakerBurn, vault rates from MakerDAO governance
+    # Volume estimates based on Dune dashboard "MakerDAO - DAI Supply" (Dec 2024)
     categories = ['RWA (T-Bills)', 'Core Vaults (ETH-A)', 'Lite Vaults (ETH-C)', 'PSM (USDC)']
-    rates = [4.5, 6.5, 7.5, 0.0]
-    weights = [2.5, 1.0, 0.5, 1.0] # Billions
+    rates = [4.5, 6.5, 7.5, 0.0]  # APY percentages
+    weights = [2.5, 1.0, 0.5, 1.0]  # Billions (approximate)
     
     plt.figure(figsize=(10, 6))
     bars = plt.bar(categories, rates, color=['green', 'purple', 'purple', 'grey'])
-    plt.title(f'2. Interest Rate Distribution (Current DSR: {real_data["dsr_cost"]}%)')
+    plt.title(f'2. Interest Rate Distribution (Current DSR: {real_data["dsr_cost"]:.2f}%)')
     plt.ylabel('APY (%)')
     plt.axhline(y=real_data['dsr_cost'], color='red', linestyle='--', label='Cost of Capital (DSR)')
     
@@ -181,7 +183,7 @@ def main():
     plt.savefig(os.path.join(DIAGRAMS_DIR, "6_revenue_composition.png"))
     plt.close()
 
-    print("✅ All 6 Business Plots Generated Successfully.")
+    print("[OK] All 6 Business Plots Generated Successfully.")
 
 if __name__ == "__main__":
     main()

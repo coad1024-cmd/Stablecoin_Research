@@ -113,7 +113,7 @@ Terra V1 proved that **Algorithmically Enforced Convertibility** is not a substi
 
 <span id="ref-terra-core"></span>Terraform Labs. (2021). *[Terra Core Repository](https://github.com/terra-money/classic-core)* via `x/market` and `x/oracle`.
 
-<span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *Algorithmic Stablecoins: A Simulator for the Dual-Token Model*. University of Urbino.
+<span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *[Algorithmic Stablecoins: A Simulator for the Dual-Token Model](https://ieeexplore.ieee.org/document/11114693)*. University of Urbino.
 
 <span id="ref-klages"></span>Klages-Mundt, A., & Minca, A. (2022). *[While Stability Lasts: A Stochastic Model of Non-Custodial Stablecoins](https://arxiv.org/abs/2004.01304)*. Cornell University.
 

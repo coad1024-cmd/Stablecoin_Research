@@ -36,7 +36,7 @@ Liquity V1 is the "Hard Rock" of decentralized stablecoins. It represents the th
 ### 3.1 Verified Facts (Type A)
 
 * **F1 (Immutable):** The contracts are non-upgradeable. No governance vote can change the MCR or seize funds.
-* **F2 (Hard Peg):** The `redeemCollateral()` function guarantees $1 parity ($1 LUSD -> $1 ETH) regardless of market price.
+* **F2 (Hard Peg):** The `redeemCollateral()` function guarantees \$1 parity (\$1 LUSD -> \$1 ETH) regardless of market price.
 * **F3 (Stability Pool):** Verified mechanism where LUSD holders act as "First Responders" to absorb bad debt instantly.
 
 ### 3.2 Risk Scenarios (Type D)
