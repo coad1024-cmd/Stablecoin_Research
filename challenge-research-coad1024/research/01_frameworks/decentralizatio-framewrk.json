@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://defiscan.info/schema/defiscan-framework.json",
+  "title": "DeFiScan Decentralization Assessment",
+  "description": "Schema for evaluating decentralization and centralization risks of DeFi protocols.",
+  "type": "object",
+  "required": [
+    "protocol",
+    "assessment",
+    "riskScores",
+    "stage",
+    "metadata"
+  ],
+  "properties": {
+    "protocol": {
+      "type": "object",
+      "required": [
+        "name",
+        "chain",
+        "contractsVerified",
+        "nonCustodial",
+        "documentationAvailable",
+        "sourceAvailable"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Canonical protocol name"
+        },
+        "chain": {
+          "type": "string",
+          "description": "Primary deployment chain (e.g., Ethereum, Arbitrum)"
+        },
+        "contractsVerified": {
+          "type": "boolean"
+        },
+        "nonCustodial": {
+          "type": "boolean"
+        },
+        "documentationAvailable": {
+          "type": "boolean"
+        },
+        "sourceAvailable": {
+          "type": "boolean"
+        },
+        "deploymentAddresses": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^0x[a-fA-F0-9]{40}$"
+          }
+        }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "required": [
+        "stage0Qualified"
+      ],
+      "properties": {
+        "stage0Qualified": {
+          "type": "boolean",
+          "description": "Whether protocol satisfies Stage 0 qualification requirements"
+        },
+        "disqualificationReason": {
+          "type": "string",
+          "description": "Explanation if protocol fails Stage 0"
+        }
+      }
+    },
+    "riskScores": {
+      "type": "object",
+      "required": [
+        "chain",
+        "upgradability",
+        "autonomy",
+        "exitWindow",
+        "accessibility"
+      ],
+      "properties": {
+        "chain": {
+          "$ref": "#/$defs/riskScore"
+        },
+        "upgradability": {
+          "$ref": "#/$defs/riskScore"
+        },
+        "autonomy": {
+          "$ref": "#/$defs/riskScore"
+        },
+        "exitWindow": {
+          "$ref": "#/$defs/riskScore"
+        },
+        "accessibility": {
+          "$ref": "#/$defs/riskScore"
+        }
+      }
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "Stage 0",
+        "Stage 1",
+        "Stage 2",
+        "Others",
+        "Under Review"
+      ],
+      "description": "Final decentralization stage classification"
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "EOA",
+            "Multisig",
+            "Security Council",
+            "Onchain Governance",
+            "None"
+          ]
+        },
+        "securityCouncil": {
+          "type": "object",
+          "required": [
+            "signers",
+            "threshold",
+            "nonInsiderRatio"
+          ],
+          "properties": {
+            "signers": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "threshold": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Signing threshold as fraction (e.g., 0.51)"
+            },
+            "nonInsiderRatio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "signersPublic": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "description": "Sources supporting risk scores",
+      "items": {
+        "type": "object",
+        "required": [
+          "dimension",
+          "description",
+          "source"
+        ],
+        "properties": {
+          "dimension": {
+            "type": "string",
+            "enum": [
+              "chain",
+              "upgradability",
+              "autonomy",
+              "exitWindow",
+              "accessibility"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "required": [
+        "frameworkVersion",
+        "assessedAt"
+      ],
+      "properties": {
+        "frameworkVersion": {
+          "type": "string",
+          "description": "DeFiScan framework version (e.g., v1.1)"
+        },
+        "assessedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "assessor": {
+          "type": "string",
+          "description": "Human or system performing the assessment"
+        },
+        "override": {
+          "type": "boolean",
+          "description": "Whether human override was applied"
+        },
+        "overrideRationale": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "riskScore": {
+      "type": "object",
+      "required": [
+        "level",
+        "rationale"
+      ],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Medium",
+            "Low"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "description": "Explanation for assigned risk level"
+        }
+      }
+    }
+  }
+}
