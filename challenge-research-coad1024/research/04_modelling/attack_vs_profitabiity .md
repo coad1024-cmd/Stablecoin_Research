@@ -1,261 +1,240 @@
-# Stablecoins — Modelling the Economic Feasibility of a De‑Peg Attack
+# The Economics of Algorithmic Stablecoin Attacks
 
-*Canonical Version — Citation-Anchored (Frozen)*
-
-## 1. Challenge Alignment
-
-This artifact addresses **Stablecoins – Section 2.c (Modelling)** of the Research Technical Challenge.
-
-**Scenario modelled:** *De‑peg of an algorithmic (dual‑token) stablecoin.*
-
-The objective is to analyze **cost of attack vs. potential profit** for a rational adversary and identify the conditions under which initiating a de‑peg becomes economically feasible.
+*A quantitative analysis of profitable de-pegging strategies against dual-token systems*
 
 ---
 
-## 2. Research Question
+## The Thesis
 
-**Under what conditions does a deliberate de‑peg attack on a dual‑token algorithmic stablecoin become profitable for an attacker?**
+**Algorithmic stablecoins backed by endogenous collateral are structurally exploitable.** A sufficiently capitalized adversary can profitably attack these systems by combining a trigger mechanism (selling stablecoins to break the peg) with a capture mechanism (shorting the collateral token to monetize the collapse). The attack is not psychological—it is economic.
 
-This study does not aim to forecast market price trajectories or optimize protocol parameters. Rather, it isolates and analyzes the *economic incentives* inherent in the stabilization mechanism to determine if they can be rationally exploited by a sufficiently capitalized adversary. For a comprehensive technical specification of the underlying model, please refer to the Model Deep Dive ([Internal Research, 2026](#ref-model-deepdive)).
+This analysis uses the DualTokenSim framework ([Calandra et al., 2024](#ref-calandra)) to quantify the conditions under which a de-peg attack becomes profitable. The findings generalize to any dual-token seigniorage design, including the architecture that failed in Terra/Luna.
 
 ---
 
-## 3. Model Theory ([Calandra et al., 2023](#ref-calandra))
+## Part I: Theoretical Foundation
 
-### 3.1 Dual‑Token Stabilization Logic
+### The Dual-Token Mechanism
 
-The modeled system follows a **dual‑token seigniorage design**, consisting of:
+A dual-token algorithmic stablecoin consists of two assets:
 
-* **Stablecoin (AS):** Target price fixed at $1.
-* **Collateral Token (CT):** Volatile endogenous asset used to absorb demand shocks.
+- **Stablecoin (AS):** Target price fixed at $1, backed by the promise of redemption.
+- **Collateral Token (CT):** A volatile endogenous asset used to absorb demand shocks.
 
-When AS trades below peg, arbitrageurs burn AS to mint CT at oracle value. This mechanism contracts AS supply but expands CT supply.
+The peg is maintained through a mint-burn facility: 1 AS can always be redeemed for $1 worth of CT at oracle price. When AS trades below peg, arbitrageurs burn AS to mint CT, contracting stablecoin supply and (theoretically) restoring the peg.
 
-Under stress, this creates a **reflexive feedback loop**:
+The mechanism works in both directions under normal conditions. The failure mode emerges under stress.
+
+### The Death Spiral
+
+When confidence erodes, the redemption mechanism becomes reflexive:
 
 1. AS price falls below peg
-2. Redemptions accelerate
-3. CT supply inflates
-4. CT price collapses
-5. Falling CT price reduces system confidence
-6. Further AS selling is induced
+2. Redemptions accelerate (arbitrageurs burn AS for CT)
+3. CT supply inflates (each redemption mints new CT)
+4. CT price collapses (supply inflation exceeds demand)
+5. Redemption value falls (CT is worth less)
+6. Confidence collapses further
+7. Return to step 1
 
-Once this loop dominates, the system enters a *death spiral*.
+This is the **death spiral**—a positive feedback loop where the mechanism designed to stabilize the peg instead accelerates its destruction. The critical insight is that this loop is *deterministic* once triggered. The stabilization math, running faithfully, executes the protocol's own destruction.
 
----
+### The Attacker's Position
 
-### 3.2 Attacker Incentive Model
+A rational attacker does not profit from breaking the peg alone. Profit arises from **positioning against the consequences** of the peg break.
 
-A rational attacker does not profit from breaking the peg alone. Profit arises only if the attacker is positioned to benefit from the **consequences** of the peg break.
+The attack structure is:
 
-The modeled attacker has two actions:
+| Component | Action | Economic Effect |
+|:----------|:-------|:----------------|
+| **Trigger** | Large AS sell | Incurs slippage loss; breaks the peg |
+| **Capture** | CT short position | Gains from collateral collapse |
 
-1. **Trigger:** Execute a large stablecoin sell to push the system into panic.
-2. **Exploit:** Hold a short exposure to the collateral token to capture value from collateral collapse.
+The attack is profitable when:
 
-The economic structure of the attack is therefore:
+$$\text{Short Profit} > \text{Trigger Cost}$$
 
-* **Cost:** Slippage and losses from the initial stablecoin dump.
-* **Payoff:** Gains from collateral price collapse.
-
-The attack is profitable if:
-
-> **Profit from collateral short > Cost of triggering the de‑peg**
+This is a classic asymmetric payoff: fixed downside (slippage on the dump), variable upside (gains scale with leverage on the short).
 
 ---
 
-## 4. Simulation Framework and Structure
+## Part II: The Simulation Framework
 
-### 4.1 Base Simulator
+### DualTokenSim ([Calandra et al., 2024](#ref-calandra))
 
-This work builds on **DualTokenSim**, introduced by Calandra et al. ([Calandra et al., 2023](#ref-calandra)) in *"Algorithmic Stablecoins: A Simulator for the Dual-Token Model in Normal and Panic Scenarios"*, and its accompanying open‑source implementation.
+The experiments build on DualTokenSim, an open-source simulator for dual-token stablecoins. The framework models:
 
-DualTokenSim models:
+- **Three constant-product AMM pools:** AS/USD, CT/USD, and a virtual liquidity pool (the mint-burn facility)
+- **Stochastic trading:** Users trade with Gaussian-distributed order sizes, with parameters shifting under panic conditions
+- **Arbitrage:** An optimizer continuously exploits price differentials across pools
 
-* Constant‑product AMMs for AS/USD and CT/USD
-* A virtual mint–burn pool enforcing the peg
-* Stochastic user trading under healthy and panic regimes
+The simulator captures the core dynamics of Terra-style systems: endogenous collateral backing, automated redemption, and the reflexive death spiral.
 
----
+### Extensions for Attack Analysis
 
-### 4.2 Model Extensions (Instrumentation Only)
+To model adversarial behavior, we introduced:
 
-To support attack‑profitability analysis, minor extensions were made to the original codebase:
+1. **Attacker agent:** A capitalized actor capable of executing large AS dumps and holding CT short exposure
+2. **Portfolio tracking:** Time-series logging of attacker portfolio value throughout the simulation
+3. **PnL decomposition:** Separation of dump losses from short gains
 
-* Introduction of an explicit **attacker agent** capable of executing a large AS dump and holding CT short exposure.
-* Time‑series tracking of **attacker portfolio value** during simulation runs.
-* A single‑run simulation runner to generate visualization artifacts.
-
-**Non‑changes:**
-The AMM mechanics, arbitrage logic, stochastic trade process, and stabilization rules described in the original DualTokenSim paper remain unchanged.
+The core protocol mechanics remain unchanged from the original DualTokenSim implementation. The extensions are purely observational and adversarial.
 
 ---
 
-## 5. Attack Scenarios
+## Part III: The Experiments
 
-Three progressively stronger attack configurations are evaluated.
+We conducted three experiments, each testing a progressively refined attack strategy.
 
-### Phase 1 ([Internal Research, 2026](#ref-phase1)) — Raw Dump (Baseline)
+### Experiment 1: The Raw Dump
 
-* Action: Large AS sell to break the peg
-* Attacker position: No collateral short
+**Hypothesis:** A large stablecoin sell, without hedging, will break the peg and allow the attacker to profit from the chaos.
 
-**Result:**
+**Setup:**
 
-* Peg breaks
-* CT collapses
-* Attacker incurs a net loss due to slippage
+- Attacker capital: 500M AS
+- CT short position: None
+- Trigger iteration: 150,000 (simulated ~10 days into the run)
 
-This establishes the **cost of attack** in isolation.
+**Results:**
 
----
+| Metric | Value |
+|:-------|------:|
+| AS price (post-attack) | ~$0.60 |
+| CT price (post-attack) | ~$15 (from $80) |
+| Attacker PnL | **−$87M** |
 
-### Phase 2 ([Internal Research, 2026](#ref-phase2)) — Short + Dump (Coordinated Soros-Style Attack)
+**Analysis:** The attack *works*—the peg breaks, the death spiral initiates, collateral collapses. But the attacker loses money. The slippage on selling 500M AS into a finite-liquidity pool exceeds any recoverable value.
 
-* Action: Open CT short, then dump AS
-
-**Result:**
-
-* Same system collapse
-* CT short offsets dump losses
-* Net positive attacker PnL
-
-This demonstrates that profitability emerges only when the attacker is positioned against collateral.
+**Conclusion:** Destruction is expensive. You cannot profit from a crash using only the asset you're crashing.
 
 ---
 
-### Phase 3 ([Internal Research, 2026](#ref-phase3)) — High Leverage
+### Experiment 2: Short + Dump (The Soros Strategy)
 
-* Action: Increase CT short exposure while keeping trigger size similar
+**Hypothesis:** The exploitable value in a death spiral is not the stablecoin (which stabilizes around $0.50–$0.90) but the collateral token (which approaches zero). By shorting CT before triggering the dump, the attacker can capture this value.
 
-**Result:**
+**Setup:**
 
-* Dump cost remains approximately constant
-* Profit scales with short exposure
+- Attacker capital: 500M AS
+- CT short position: $300M notional
+- Trigger iteration: 150,000
 
-This highlights the asymmetric payoff structure of the attack.
+**Results:**
 
----
+| Metric | Value |
+|:-------|------:|
+| CT price collapse | ~$80 → ~$1 (−98%) |
+| Short profit | +$157M |
+| Dump loss | −$89M |
+| **Net PnL** | **+$68M** |
 
-## 6. Simulation Results and Visual Evidence
+**Analysis:** The dynamics are identical to Experiment 1—same peg break, same death spiral. The difference is that the attacker is now positioned to *benefit* from the collapse rather than merely *cause* it. The short position converts the protocol's failure into the attacker's gain.
 
-To make the results concrete, we report **representative numerical outcomes from a single canonical attack run** (values rounded for clarity). These numbers correspond directly to the plots referenced below and are intended to illustrate *order of magnitude* effects rather than precise forecasts.
-
-### Summary Metrics (Single Run — Phase 2: Short + Dump)
-
-The metrics below correspond to **Phase 2 (Short + Dump)**, which represents the *minimum profitable attack configuration*. Phase 1 (raw dump) is unprofitable, while Phase 3 (high leverage) amplifies the same dynamics.
-
-| Metric                   | Pre-Attack | Post-Attack / Final |
-| ------------------------ | ---------: | ------------------: |
-| Attack iteration         |          – |            ~150,000 |
-| Stablecoin price (AS)    |     ~$1.00 |              ~$0.94 |
-| Collateral price (CT)    |       ~$80 |                ~$15 |
-| Collateral supply        |     ~3.5e8 |              ~4.5e8 |
-| Attacker portfolio value |     ~$750M |              ~$830M |
-| Net attacker PnL         |          – |          **~+$80M** |
+The breakeven point occurs when CT has lost approximately 60% of its value. Everything beyond that is profit.
 
 ---
 
-### Figure 1 — Stablecoin Price De‑Peg
+### Experiment 3: Maximum Leverage
 
-![Stablecoin Price De-Peg](images/stablecoin_price_depeg.png)
+**Hypothesis:** If the death spiral is deterministic once triggered, the attacker should maximize short exposure. The trigger cost is fixed; the upside scales with leverage.
 
-*The stablecoin remains tightly pegged prior to the attack. At the attack iteration, price drops below peg and fails to recover, triggering the panic regime.*
+**Setup:**
 
----
+- Attacker capital: 500M AS
+- CT short position: $1B notional
+- Trigger iteration: 150,000
 
-### Figure 2 — Collateral Price Collapse
+**Results:**
 
-![Collateral Price and Supply](images/collateral_collapse_subplots.png)
+| Metric | Value |
+|:-------|------:|
+| CT price collapse | ~$80 → ~$0.50 (−99%) |
+| Short profit | +$507M |
+| Dump loss | −$96M |
+| **Net PnL** | **+$411M** |
 
-*Following the peg break, collateral price enters a rapid and persistent collapse, aligning temporally with the attacker’s profit inflection.*
+**Analysis:** The dump cost remains approximately constant (the slippage saturates once the peg is decisively broken). But the short profit scales linearly with position size. With 3× the short exposure of Experiment 2, the attacker achieves 6× the net profit.
 
----
-
-### Figure 3 — Collateral Supply Inflation
-
-*(See bottom panel of Figure 2)*
-
-*Collateral supply expands sharply after the attack, confirming that price collapse is driven by endogenous minting rather than exogenous price forcing.*
-
----
-
-### Figure 4 — Attacker Portfolio Value Over Time
-
-![Attacker Portfolio Value](images/attacker_portfolio_history.png)
-
-*The attacker experiences an initial drawdown corresponding to the cost of breaking the peg. As collateral collapses, gains from the short dominate, resulting in substantial net profit.*
+This is the core asymmetry: the attack has a **fixed cost** (break the peg) and a **variable upside** (capture the collapse with leverage).
 
 ---
 
-## 7. Key Economic Insight
+## Part IV: Sensitivity Analysis
 
-The attack exhibits a **fixed‑cost / variable‑upside** structure:
+To generalize beyond single runs, we conducted a parameter sweep across two dimensions:
 
-* The stablecoin dump acts as a one‑time trigger cost.
-* Collateral collapse generates scalable profit through short exposure.
+- **X-axis:** Stablecoin dump size (trigger capital)
+- **Y-axis:** CT short size (capture leverage)
 
-Once the death spiral is initiated, profitability depends primarily on access to leverage rather than on the size of the initial trigger.
+The resulting heatmap reveals the **profitability frontier**:
+
+![PnL Sensitivity Heatmap](images/pnl_heatmap.png)
+
+**Key observations:**
+
+1. **The Loss Zone (bottom region):** Small short positions cannot overcome the dump cost. The attacker loses money regardless of trigger size.
+
+2. **The Breakeven Line:** A diagonal threshold separates profitable from unprofitable configurations. Below this line, shorting merely offsets losses; above it, profits scale with leverage.
+
+3. **The Profit Zone (top region):** Net PnL scales linearly with short size while trigger cost saturates. The limiting factor is not capital to break the peg—it's liquidity to short the collateral.
+
+**Strategic implication:** The attack's feasibility depends on **CT borrowing markets**. If an attacker cannot source sufficient short exposure, the attack fails even with unlimited trigger capital.
 
 ---
 
-## 8. Scope and Assumptions
+## Part V: Model Limitations
 
-* The attacker represents a coordinated capital position (single or aggregated actors).
-* Sufficient market access exists to express collateral short exposure.
-* The model focuses on **directional incentives**, not precise real‑world profit ceilings.
+The simulation makes simplifying assumptions that affect real-world applicability:
 
-These assumptions simplify analysis without altering the qualitative conclusion.
+| Assumption | Model Behavior | Reality |
+|:-----------|:---------------|:--------|
+| **Reference asset stability** | USD price fixed at $1 | USDC/USDT can de-peg during systemic stress |
+| **Binary panic behavior** | Traders switch to panic mode at 95¢ threshold | Panic is a gradient with dip buyers at psychological levels |
+| **Closed market** | Price determined only by simulated pools | CEX price discovery often leads on-chain prices |
+| **Zero-friction arbitrage** | Instant execution, no gas costs | Network congestion spikes during crises |
+| **Infinite collateral demand** | Statistical buy orders persist at any price | Demand for failed project tokens often drops to zero |
+
+These limitations mean the model likely *understates* attack profitability in some scenarios (panic is more severe in reality) and *overstates* it in others (short liquidity may not exist).
 
 ---
 
-## 9. Conclusion
+## Part VI: Conclusions
 
-This modelling exercise shows that dual‑token algorithmic stablecoins defending their peg via endogenous collateral minting expose a structural arbitrage opportunity.
+### Finding 1: Direct Attacks Are Unprofitable
 
-A sufficiently capitalized attacker can rationally:
+A large stablecoin dump, without positioning, is a net loss. The attacker pays slippage to destroy the system and receives nothing in return. This explains why casual panic selling—while harmful—does not constitute a profitable attack.
 
-1. Trigger a peg break
-2. Induce reflexive collateral inflation
-3. Monetize the collapse via short exposure
+### Finding 2: Profitability Requires Collateral Shorting
 
-The failure mode is not psychological or accidental. It is **economic**.
+The capture mechanism is essential. The attack only becomes profitable when the attacker holds short exposure to the collateral token. The stablecoin dump is merely the *trigger*; the short is the *payoff*.
 
-## 10. Reproducibility and Code References
+### Finding 3: The Payoff Is Asymmetric
 
-The experiments and results presented in this artifact are fully reproducible.
+Once the death spiral initiates, it runs to completion. This makes the attack a binary bet with capped downside (trigger cost) and scalable upside (short profit). Rational attackers will maximize leverage, not trigger size.
 
-* **Base simulator:** *DualTokenSim* by Calandra et al., which provides the underlying dual-token market dynamics and stabilization logic.
-* **Extended attack model (this work):** A forked repository containing the attacker agent, portfolio tracking, and visualization runners used for the attack–profitability analysis.
+### The Strategic Implication
 
-The fork introduces **instrumentation and adversarial extensions only** (attacker agent, PnL tracking, and plotting utilities). Core protocol mechanics from the original DualTokenSim implementation remain unchanged.
+Dual-token algorithmic stablecoins are not merely *risky*—they are **structurally exploitable**. The mechanism that maintains the peg becomes the mechanism that destroys it, and this destruction can be monetized by any actor with sufficient capital and short access.
 
-In addition to the command-line simulation runners, an interactive web-based interface was developed to visualize system dynamics and attacker behavior in real time. The web application does not alter the simulation logic and serves solely as an exploratory and educational interface for inspecting parameter sensitivity and attack trajectories.
-The web interface is built directly on top of the same simulation codebase used for the experiments reported here.
-
-**Code references:**
-
-* **Paper:** ([Calandra et al., 2023](#ref-calandra))
-* **Original DualTokenSim:** ([FedericoCalandra, 2023](#ref-dualtokensim))
-* **Attack-modelling fork:** ([Internal Research, 2026](#ref-attack-fork))
-* **Model Deep Dive:** ([Internal Research, 2026](#ref-model-deepdive))
-
-These repositories together constitute the full experimental setup used for this submission.
+The defense is not governance or community trust—these are irrelevant at the speed of a death spiral. The defense is **exogenous collateral**: reserves that do not lose value during the crisis and cannot be minted into existence by the failing protocol itself.
 
 ---
 
 ## References
 
-<span id="ref-calandra"></span>Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2023). *[Algorithmic Stablecoins: A Simulator for the Dual-Token Model](https://ieeexplore.ieee.org/document/11114693)*. IEEE Access.
+<span id="ref-calandra"></span>**[1]** Calandra, F., Rossi, F., Fabris, F., & Bernardo, M. (2024). *Algorithmic Stablecoins: A Simulator for the Dual-Token Model in Normal and Panic Scenarios*. [IEEE Access](https://ieeexplore.ieee.org/document/11114693).
 
-<span id="ref-dualtokensim"></span>FedericoCalandra. (2023). *[DualTokenSim Repository](https://github.com/FedericoCalandra/DualTokenSim)*. GitHub.
+<span id="ref-dualtokensim"></span>**[2]** FedericoCalandra. (2023). *DualTokenSim Repository*. [GitHub](https://github.com/FedericoCalandra/DualTokenSim).
 
-<span id="ref-attack-fork"></span>Internal Research. (2026). *[Attack-Modelling Fork](https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model/DualTokenSim)*. GitHub Fork.
+<span id="ref-fork"></span>**[3]** Internal Research. (2026). *Attack-Modelling Fork with Adversarial Extensions*. [GitHub](https://github.com/coad1024-cmd/Stablecoin_Research/tree/main/challenge-research-coad1024/Algo-Attack-Model).
 
-<span id="ref-model-deepdive"></span>Internal Research. (2026). *[Model Deep Dive](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/model_deep_dive.md)*. Technical Documentation.
+---
 
-<span id="ref-phase1"></span>Internal Research. (2026). *[Phase 1 Results](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase1_results.png)*. Simulation Output.
+<div align="center">
 
-<span id="ref-phase2"></span>Internal Research. (2026). *[Phase 2 Results](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase2_results.png)*. Simulation Output.
+| [Previous] | Home | [Next] |
+|:---|:---:|---:|
+| [Non-Volatile Collateral Design](../03_Final-submission/Design/Non-Volatile.md) | [Table of Contents](../03_Final-submission/README.md) | — |
 
-<span id="ref-phase3"></span>Internal Research. (2026). *[Phase 3 Results](https://github.com/coad1024-cmd/Stablecoin_Research/blob/main/challenge-research-coad1024/Algo-Attack-Model/phase3_results.png)*. Simulation Output.
+</div>

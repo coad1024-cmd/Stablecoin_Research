@@ -4,13 +4,42 @@
 # Designing a Stablecoin with a Highly Volatile Crypto Reserve
 
 ## A Structural Design Under Irreducible Price Risk
+
 *Canonical Version — Citation-Anchored (Frozen)*
+
+---
+
+#### TL;DR
+
+* This design draws heavy inspiration from **classical securitization**, particularly the way structured finance products (like CDOs, MBS, or dual-purpose funds) partition risk across different classes of claims against the same underlying asset pool.
+* It proposes a non-custodial stablecoin design backed by highly volatile crypto assets (e.g. ETH/BTC) that does not try to eliminate volatility — instead it internalizes and contains it through:
+
+* Dual-tranche structure → Senior (Class A) claim aims for stability, Junior (Class B) absorbs almost all volatility and leverage risk
+* Autonomous reset rules at fixed NAV barriers (upward rebalance + downward partial payout + reverse split) instead of continuous market liquidations
+* Strict on-chain solvency invariant enforced by smart contract (no human discretion)
+
+* **What it guarantees (only under continuous price paths like Black-Scholes)**:
+* Deterministic solvency, automatic deleveraging, and bounded losses for senior holders.
+What it explicitly does NOT guarantee:
+* Protection against price jumps (a single gap can jump over barriers → instant insolvency), perfect oracles, or zero losses for seniors.
+
+---
+
+#### TL;DR
+
+* **Concept**: Applies **structured finance** principles (securitization) to volatile collateral vs. eliminating volatility.
+* **Mechanism**:
+  * **Dual-Tranche**: Senior (Stability) vs. Junior (Volatility/Leverage) claims.
+  * **Autonomous Resets**: Fixed NAV barriers trigger rebalancing/payouts instead of market liquidations.
+  * **Solvency Invariant**: Deterministically enforced by smart contract.
+* **Guarantees**: Solvency and bounded losses (under continuous prices).
+* **Non-Guarantees**: Zero-loss or protection against discontinuous jumps/oracle failure.
 
 ---
 
 ## Abstract
 
-Designing a stablecoin backed by a highly volatile cryptocurrency presents a structural challenge: the collateral’s price exhibits high variance, fat tails, and discontinuous jumps that directly threaten solvency. Unlike systems backed by non-volatile reserves, volatility cannot be eliminated by assumption and must instead be explicitly contained. This paper presents a design framework in which collateral volatility is internalized through deterministic capital structure rather than suppressed through discretionary control or continuous liquidation markets. Building on dual-tranche stablecoin architectures formalized in the literature [Designing Stablecoins by Dai, Kou, Yang, and co-authors](#ref-dai), the design partitions risk between senior and junior claims, employs autonomous reset rules, and enforces on-chain solvency invariants. The result is not a risk-free stablecoin, but a system with bounded loss behavior under continuous price paths and explicitly characterized failure modes under jump risk, consistent with stochastic analyses of noncustodial stablecoins ([Klages-Mundt et al., 2020](#ref-klages20); [Klages-Mundt & Minca, 2022](#ref-klages22)).
+Designing a stablecoin backed by a highly volatile cryptocurrency presents a structural challenge: the collateral’s price exhibits high variance, fat tails, and discontinuous jumps that directly threaten solvency. Unlike systems backed by non-volatile reserves, volatility cannot be eliminated by assumption and must instead be explicitly contained. This paper presents a design framework in which collateral volatility is internalized through deterministic capital structure (**securitization**) rather than suppressed through discretionary control or continuous liquidation markets. Building on dual-tranche stablecoin architectures formalized in the literature [Designing Stablecoins by Dai, Kou, Yang, and co-authors](#ref-dai), the design partitions risk between senior and junior claims, employs autonomous reset rules, and enforces on-chain solvency invariants. The result is not a risk-free stablecoin, but a system with bounded loss behavior under continuous price paths and explicitly characterized failure modes under jump risk, consistent with stochastic analyses of noncustodial stablecoins ([Klages-Mundt et al., 2020](#ref-klages20); [Klages-Mundt & Minca, 2022](#ref-klages22)).
 
 ---
 
@@ -22,7 +51,7 @@ A stablecoin backed by such an asset must maintain a value near a fixed referenc
 
 The fundamental constraint is **solvency**, not peg maintenance:
 
-$$C_t P_t \ge D_t$$
+$$C_t P_t \ge D_t \tag{1}$$
 
 where $C_t$ is collateral quantity and $D_t$ is outstanding stablecoin liability.
 
@@ -40,7 +69,7 @@ There are only three coherent approaches to volatile collateral:
 2. Absorb volatility reflexively via endogenous collateral
 3. Internalize volatility through capital structure and payoff design
 
-Liquidation-based systems such as MakerDAO adopt the first approach ([MakerTeam, 2017](#ref-maker)), while reflexive algorithmic systems historically attempted the second with catastrophic outcomes ([Wong et al., 2022](#ref-wong)). This work adopts the third approach, consistent with risk-based stablecoin models ([Klages-Mundt et al., 2020](#ref-klages20)).
+Liquidation-based systems such as MakerDAO adopt the first approach ([MakerTeam, 2017](#ref-maker)), while reflexive algorithmic systems historically attempted the second with catastrophic outcomes ([Wong et al., 2022](#ref-wong)). **This work adopts the third approach, consistent with risk-based stablecoin models**
 
 > **Principle:**
 > Volatility is conserved. Stability is achieved by reallocating risk, not eliminating it.
@@ -59,13 +88,13 @@ The system holds crypto collateral in a custodian contract and issues two claims
 
 The accounting identity enforced at all times is:
 
-$$V_A(t) + V_B(t) = \frac{C_t P_t}{\beta_t}$$
+$$V_A(t) + V_B(t) = \frac{C_t P_t}{\beta_t}\tag{2}$$
 
 where $\beta_t$ is a conversion factor updated after payouts and resets.
 
 **Figure 1: Dual-Tranche Capital Structure**
 
-![Dual-Tranche Stablecoin Architecture](images/Leveraged%20Tranche%20Token-2026-01-02-163747.png)
+![Dual-Tranche Stablecoin Architecture](images/leveraged_tranche_token_improved.png)
 
 *A schematic showing a single collateral pool backing two claims with strict senior–junior priority. This partitioning follows tranche-based designs long studied in dual-purpose funds and adapted to stablecoins as an alternative to liquidation-based risk management*
 
@@ -80,7 +109,7 @@ It is defined as **continued solvency and deterministic redemption**.
 
 The enforced invariant is:
 
-$$C_t P_t \ge N_A V_A(t) + N_B V_B(t)$$
+$$C_t P_t \ge N_A V_A(t) + N_B V_B(t)\tag{3}$$
 
 where $N_A$ and $N_B$ are outstanding supplies of the two tranches.
 
@@ -101,7 +130,7 @@ Between reset events:
 
 The instantaneous leverage of the junior tranche is:
 
-$$\lambda_t = 1 + \frac{V_A}{V_B}$$
+$$\lambda_t = 1 + \frac{V_A}{V_B}\tag{4}$$
 
 As $V_B$ shrinks during drawdowns, leverage increases automatically. This behavior mirrors the leverage amplification observed in structured financial products ([Dai et al., 2018](#ref-dai-lev)).
 
@@ -111,6 +140,11 @@ Because leverage grows endogenously, **automatic resets are mandatory**, not opt
 
 ## 6. Autonomous Reset and Liquidation Logic
 
+**Figure 2: Reset and Liquidation State Machine**
+
+![Reset and Liquidation State Machine](images/autonomous_reset_state_machine_1768821632801.png)
+
+*A finite-state diagram showing transitions between normal operation, upward reset, downward reset, and liquidation. Reset-based solvency enforcement replaces continuous liquidation and is explicitly analyzed under both diffusion and jump processes in prior stablecoin models*
 The system defines upper and lower NAV barriers $H_u$ and $H_d$.
 
 State transitions occur deterministically under the following conditions:
@@ -122,18 +156,39 @@ State transitions occur deterministically under the following conditions:
    Gains are realized, leverage is re-centered, and NAVs are rebased.
 
 3. **Downward reset ($V_B \le H_d$)**
-   *   **Partial Liquidation (Cash Payout)**: The difference between target coverage and actual coverage is immediately paid out in reserve assets (ETH) to Class A holders to reduce liability exposure.
-   *   **Reverse Split (Merge)**: The remaining Class A tokens are consolidated (e.g., 4:1) to restore the unit NAV to $1.00$ while maintaining the total value of the reduced aggregate supply.
-   *   *Result*: Holders receive liquidity + recapitalized tokens; the peg is restored via accounting rather than market buying.
+   * **Partial Liquidation (Cash Payout)**: The difference between target coverage and actual coverage is immediately paid out in reserve assets (ETH) to Class A holders to reduce liability exposure.
+   * **Reverse Split (Merge)**: The remaining Class A tokens are consolidated (e.g., 4:1) to restore the unit NAV to $1.00$ while maintaining the total value of the reduced aggregate supply.
+   * *Result*: Holders receive liquidity + recapitalized tokens; the peg is restored via accounting rather than market buying.
 
 4. **Full liquidation ($V_B < 0$)**
    Remaining collateral is distributed to senior holders; issuance halts.
 
-**Figure 2: Reset and Liquidation State Machine**
+### Algorithm: Solvency Check Invariant
 
-![Reset and Liquidation State Machine](images/Reset%20Sequence%20Diagram%20(1)%20(1).png)
+```python
+def check_solvency_and_reset(V_B, H_u, H_d):
+    """
+    Executes autonomous state transitions based on Junior Tranche NAV (V_B).
+    Triggered periodically or on oracle updates.
+    """
+    if V_B < 0:
+        execute_full_liquidation()
+        return "LIQUIDATION"
 
-*A finite-state diagram showing transitions between normal operation, upward reset, downward reset, and liquidation. Reset-based solvency enforcement replaces continuous liquidation and is explicitly analyzed under both diffusion and jump processes in prior stablecoin models*
+    elif V_B <= H_d:
+        # Downward Reset: Recapitalize via reverse split
+        payout_senior_holders()
+        perform_reverse_split_class_A()
+        return "DOWNWARD_RESET"
+
+    elif V_B >= H_u:
+        # Upward Reset: Rebalance leverage
+        rebalance_tranches()
+        return "UPWARD_RESET"
+
+    else:
+        return "NORMAL_OPERATION"
+```
 
 No transition requires human approval.
 All execution is rule-based.
@@ -144,15 +199,15 @@ All execution is rule-based.
 
 ### Guaranteed (under continuous price paths)
 
-* Deterministic enforcement of solvency
-* Automatic deleveraging under sustained stress
-* Bounded loss exposure for senior claims
+* Deterministic enforcement of solvency:Under continuous price movements (Geometric Brownian Motion), the smart contract triggers a reset exactly when the leverage token hits the lower boundary ($H_d$). This ensures strictly deterministic solvency where the system mathematically cannot fail.
+* Automatic deleveraging under sustained stress: The system automatically rebalances leverage when the junior tranche hits the upper boundary ($H_u$), ensuring that the system remains solvent under sustained stress.
+* Bounded loss exposure for senior claims: The senior tranche is protected against loss by the junior tranche, which absorbs all losses up to the lower boundary ($H_d$). This ensures that senior holders are protected against loss under sustained stress.
 
 ### Explicitly not guaranteed
 
-* Immunity to price jumps
-* Oracle correctness or timeliness
-* Loss-free outcomes for senior holders
+* Immunity to price jumps: The system is not immune to price jumps, which can cause the system to transition directly from healthy to insolvent without intermediate resets.
+* Oracle correctness or timeliness: The system assumes oracle correctness as a precondition rather than a mitigated risk.
+* Loss-free outcomes for senior holders: The system does not guarantee loss-free outcomes for senior holders.
 
 This system does **not** eliminate tail risk.
 It makes tail risk explicit and bounded ([Klages-Mundt & Minca, 2022](#ref-klages22)).
