@@ -1,6 +1,6 @@
 # Sky Ecosystem: Structural Analysis of Hybrid Solvency (Part II)
 
-**Authors**: Research Challenge Team
+**Authors**: Hash
 **Date**: January 2026
 **Series**: Sky Research Series (Part II)
 
