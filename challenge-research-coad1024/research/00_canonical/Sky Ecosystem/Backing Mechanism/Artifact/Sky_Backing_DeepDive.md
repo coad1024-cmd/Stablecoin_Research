@@ -1,6 +1,6 @@
 # Sky Ecosystem: Kinetic Solvency & Backing Mechanics (Part I)
 
-**Authors**: Research Challenge Team
+**Authors**: Hash
 **Date**: January 2026
 **Series**: Sky Research Series (Part I)
 
